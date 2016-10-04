@@ -172,7 +172,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -182,7 +182,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -235,8 +235,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/10/04/手机端开发系列之九/" itemprop="url">
-                  手机端开发系列之九
+                <a class="post-title-link" href="/2016/10/04/手机端开发系列之十/" itemprop="url">
+                  手机端开发系列之十--css框架
                 </a>
               
             
@@ -248,7 +248,108 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-10-04T17:39:56+08:00" content="2016-10-04">
+              2016-10-04
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="css框架"><a href="#css框架" class="headerlink" title="css框架"></a>css框架</h2><p>随着Web应用变的越来越复杂，在大量的开发过程中我们发现有许多功能模块非常相似，比如轮播图、分页、选项卡、导航栏等，开发中往往会把这些具有通用性的功能模块进行一系列封装，使之成为一个个组件应用到项目中，可以极大的节约开发成本，将这些通用的组件缩合到一起就形成了前端框架。</p>
+<p>###1.1 Bootstrapcss框架</p>
+<p>简洁、直观、强悍的前端开发框架，让web开发更迅速、简单。<br>来自 Twitter，粉丝众多，是目前最受欢迎的前端框架。</p>
+<p><a href="http://www.bootcss.com/" target="_blank" rel="external">开始使用吧!</a></p>
+<p>###1.2 Amaze UI</p>
+<p>Amaze ~ 妹子UI，国人开发，后起之秀！<br><a href="http://amazeui.org/" target="_blank" rel="external">开始使用吧!</a></p>
+<p>###1.3 Framework7</p>
+<p>Framework7 是一个开源免费的框架可以用来开发混合移动应用（原生和HTML混合）或者开发 iOS &amp; Android 风格的WEB APP。<br><a href="http://framework7.taobao.org/" target="_blank" rel="external">开始使用吧！</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/10/04/手机端开发系列之九/" itemprop="url">
+                  手机端开发系列之九--网页布局
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2015-10-04T17:22:52+08:00" content="2015-10-04">
               2015-10-04
             </time>
@@ -342,7 +443,7 @@
               
                 
                 <a class="post-title-link" href="/2015/10/04/手机端开发系列之八/" itemprop="url">
-                  手机端开发系列之八
+                  手机端开发系列之八--移动类库
                 </a>
               
             
@@ -354,7 +455,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2015-10-04T16:56:14+08:00" content="2015-10-04">
               2015-10-04
             </time>
@@ -395,7 +496,9 @@
 <li>设用方法即可，</li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">$(&apos;.demo&apos;).on(&apos;click&apos;, function () &#123;</div><div class="line">        alert(&apos;不会得到快速响应&apos;);</div><div class="line">    &#125;);</div><div class="line">    // 引入引插件可以解决click延时问题</div><div class="line">    // 代表的含义是body元素以内所有被添加了</div><div class="line">    // click事件元素，都会得到快速响应</div><div class="line">    // FastClick.attach(document.body);</div><div class="line">    // 代表的含义是只有在.box元素以内的click事件</div><div class="line">    // 会得到一个快速响应</div><div class="line">    FastClick.attach(document.querySelector(&apos;.box&apos;));</div></pre></td></tr></table></figure>
-<h2 id="isSroll-js"><a href="#isSroll-js" class="headerlink" title="isSroll.js"></a>isSroll.js</h2><p>一个可以实现客户端原生滚动效果的类库。<br>1.<a href="">下载iScroll</a><br>2.build目录下提供了不同版本的iScroll，可根据情况选择使用<br>3.html要求有3层结构<br><strong>注意：下来下来会有文档，直接查看文档就可以了</strong></p>
+<h2 id="isSroll-js"><a href="#isSroll-js" class="headerlink" title="isSroll.js"></a>isSroll.js</h2><p>一个可以实现客户端原生滚动效果的类库。</p>
+<p>1.<a href="https://github.com/cubiq/iscroll" target="_blank" rel="external">下载iScroll</a><br>2.build目录下提供了不同版本的iScroll，可根据情况选择使用<br>3.html要求有3层结构</p>
+<p><strong>注意：下来下来会有文档，直接查看文档就可以了</strong></p>
 
           
         
@@ -446,7 +549,7 @@
               
                 
                 <a class="post-title-link" href="/2015/10/04/手机端开发系列之七/" itemprop="url">
-                  手机端开发系列之七
+                  手机端开发系列之七--less
                 </a>
               
             
@@ -458,7 +561,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2015-10-04T16:24:22+08:00" content="2015-10-04">
               2015-10-04
             </time>
@@ -551,7 +654,7 @@
               
                 
                 <a class="post-title-link" href="/2015/10/04/手机端开发系列之六/" itemprop="url">
-                  手机端开发系列之六
+                  手机端开发系列之六--调试工具
                 </a>
               
             
@@ -563,7 +666,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2015-10-04T16:15:45+08:00" content="2015-10-04">
               2015-10-04
             </time>
@@ -654,7 +757,7 @@
               
                 
                 <a class="post-title-link" href="/2015/10/04/手机端开发系列之五/" itemprop="url">
-                  手机端开发系列之五
+                  手机端开发系列之五--手机事件
                 </a>
               
             
@@ -666,7 +769,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2015-10-04T15:39:34+08:00" content="2015-10-04">
               2015-10-04
             </time>
@@ -717,7 +820,7 @@
 <p>手机上的jq</p>
 </blockquote>
 <p>zeptojs为我们封装了常的触屏事件，需要touch模块支持，默认没有构建此模，我们可以自定义构建。<br>1.安装Nodejs环境<br>2.下载zepto.js<br>3.解压缩<br>4.cmd命令行进入解压缩后的目录<br>5.执行npm install 命令<br>这个make是在我们的这个源代码的目录下的一个文件。<br>6.编辑make文件，添加自定义模块（只要把我们想要的这个模块名字加进去就可以了）并保存<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">modules = (env[&apos;MODULES&apos;]||&apos;zepto event ajax form &apos;).split(&apos; &apos;)</div></pre></td></tr></table></figure></p>
-<p>7.然后执行命令 npm run-script dist<br>这个时候在我们的这个源码的目录之下就会出现一个目录这个目录就是dist.<br>8.查看目录dist即构建好的zepto.js<br>注：关于命令行的使用<br>cd 切换目录<br>dir 查看当前目录<br>e:  切换到e盘<br>f:  切换到f盘<br>先切换盘符再使用cd目录</p>
+<p>7.然后执行命令 npm run-script dist<br>这个时候在我们的这个源码的目录之下就会出现一个目录这个目录就是dist.<br>8查看目录dist即构建好的zepto.js<br>注：关于命令行的使用<br>cd 切换目录<br>dir 查看当前目录<br>e:  切换到e盘<br>f:  切换到f盘<br>先切换盘符再使用cd目录</p>
 
           
         
@@ -768,7 +871,7 @@
               
                 
                 <a class="post-title-link" href="/2015/10/04/手机端开发系列之四/" itemprop="url">
-                  手机端开发系列之四
+                  手机端开发系列之四--媒体查询
                 </a>
               
             
@@ -780,7 +883,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2015-10-04T14:11:57+08:00" content="2015-10-04">
               2015-10-04
             </time>
@@ -893,7 +996,7 @@
               
                 
                 <a class="post-title-link" href="/2015/10/04/手机开发系列之三/" itemprop="url">
-                  手机端开发系列之三
+                  手机端开发系列之三--适配
                 </a>
               
             
@@ -905,7 +1008,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2015-10-04T13:12:12+08:00" content="2015-10-04">
               2015-10-04
             </time>
@@ -1017,7 +1120,7 @@
               
                 
                 <a class="post-title-link" href="/2015/10/04/手机端开发系列之二/" itemprop="url">
-                  手机端开发系列之二
+                  手机端开发系列之二--视口
                 </a>
               
             
@@ -1029,7 +1132,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2015-10-04T12:54:22+08:00" content="2015-10-04">
               2015-10-04
             </time>
@@ -1066,7 +1169,8 @@
 <p><code>第三方浏览器</code>：指安装在手机的浏览器如FireFox、Chrome、360等等。<br>在IOS和Android操作系统上自带浏览器、应用内置浏览器都是基础Webkit内核的。</p>
 <p><em>思考：移动端页面要达到什么效果才最合理？</em> </p>
 <h4 id="viewport"><a href="#viewport" class="headerlink" title="viewport"></a>viewport</h4><p>我们知道移动设备屏幕普遍都是比较小的，但是大部分的网站又都是为PC设备来设计的，要想让移动设备也可以正常显示网页，移动设备不得不做一些处理，只要viewport足够大（块级元素html就会比较大），就能保证原本为PC设备设计的网页也能在移动设备上正常显示，移动设备厂商也的确是这样来处理的。</p>
-<p>在移动设备上viewport不再受限于浏览器的窗口，而是允许开发人员自由设置viewport的大小，通常浏览器会设置一个默认大小的viewport，同时为了能够正常显示那些专为PC设计的网页，一般这个值的大小会大于屏幕的尺寸。 (这个值一般为980px)<br>这样的会我们网页设计的那些网页在移动端就不会错乱了。但是<br><strong>在iPhone5s和部分Android中我们发现页面内容（文字、图片）被缩放了（变的非常小），而在部分安卓设备中则出现了滚动条。</strong></p>
+<p>在移动设备上viewport不再受限于浏览器的窗口，而是允许开发人员自由设置viewport的大小，通常浏览器会设置一个默认大小的viewport，同时为了能够正常显示那些专为PC设计的网页，一般这个值的大小会大于屏幕的尺寸。 (这个值一般为980px)<br>这样的会我们网页设计的那些网页在移动端就不会错乱了。但是</p>
+<p><strong>在iPhone5s和部分Android中我们发现页面内容（文字、图片）被缩放了（变的非常小），而在部分安卓设备中则出现了滚动条。</strong></p>
 <h4 id="layout-viewport-amp-ideal-viewport"><a href="#layout-viewport-amp-ideal-viewport" class="headerlink" title="layout viewport&amp;ideal viewport"></a>layout viewport&amp;ideal viewport</h4><p><em>为什么呢？</em> 要解释上面的原因，需要进一步对移动设备的viewport进行分析，移动设备上有2个viewport，分别是layout viewport和ideal viewport。</p>
 <ol>
 <li><code>layout viewport</code>（布局视口）指的是我们可以进行网页布局区域的大小，同样是以CSS像素做为计量单位，可以通过下面方式获取 :<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">// 获取layout viewport</div><div class="line">document.documentElement.clientWidth;</div><div class="line">document.documentElement.clientHeight;</div></pre></td></tr></table></figure>
@@ -1129,7 +1233,7 @@
               
                 
                 <a class="post-title-link" href="/2015/10/04/手机端开发/" itemprop="url">
-                  手机端开发系列之一
+                  手机端开发系列之一-基础的概念解析
                 </a>
               
             
@@ -1141,7 +1245,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2015-10-04T11:08:07+08:00" content="2015-10-04">
               2015-10-04
             </time>
@@ -1221,111 +1325,13 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/10/03/hello-world/" itemprop="url">
-                  Hello World
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2015-10-03T11:08:07+08:00" content="2015-10-03">
-              2015-10-03
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -1364,8 +1370,8 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">10</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -1412,7 +1418,7 @@
 </div>
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">

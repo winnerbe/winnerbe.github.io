@@ -89,16 +89,16 @@ swipe.js1.下载swipe.js2.html结构要求有三层结构，
 注意结构的要求还有对应的CSS样式
 fastclick.js在移动设备上为了提升click的响应速度，我们选择了使用Zepto事件封装的tap来进行模拟，但是这会带来一个副作用，这个副作用就是“点透”，(自行查阅)从上可以看出Ze">
 <meta property="og:type" content="article">
-<meta property="og:title" content="手机端开发系列之八">
+<meta property="og:title" content="手机端开发系列之八--移动类库">
 <meta property="og:url" content="http://yoursite.com/2015/10/04/手机端开发系列之八/index.html">
 <meta property="og:site_name" content="chenzq  FE">
 <meta property="og:description" content="移动的类库swiper.js1.下载swiper.js，2.其中文网站非常详细介绍了其使用方法
 swipe.js1.下载swipe.js2.html结构要求有三层结构，
 注意结构的要求还有对应的CSS样式
 fastclick.js在移动设备上为了提升click的响应速度，我们选择了使用Zepto事件封装的tap来进行模拟，但是这会带来一个副作用，这个副作用就是“点透”，(自行查阅)从上可以看出Ze">
-<meta property="og:updated_time" content="2016-10-04T09:22:02.860Z">
+<meta property="og:updated_time" content="2016-10-04T09:39:31.281Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="手机端开发系列之八">
+<meta name="twitter:title" content="手机端开发系列之八--移动类库">
 <meta name="twitter:description" content="移动的类库swiper.js1.下载swiper.js，2.其中文网站非常详细介绍了其使用方法
 swipe.js1.下载swipe.js2.html结构要求有三层结构，
 注意结构的要求还有对应的CSS样式
@@ -125,7 +125,7 @@ fastclick.js在移动设备上为了提升click的响应速度，我们选择了
 
   <link rel="canonical" href="http://yoursite.com/2015/10/04/手机端开发系列之八/"/>
 
-  <title> 手机端开发系列之八 | chenzq  FE </title>
+  <title> 手机端开发系列之八--移动类库 | chenzq  FE </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -183,7 +183,7 @@ fastclick.js在移动设备上为了提升click的响应速度，我们选择了
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -193,7 +193,7 @@ fastclick.js在移动设备上为了提升click的响应速度，我们选择了
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -245,7 +245,7 @@ fastclick.js在移动设备上为了提升click的响应速度，我们选择了
             
             
               
-                手机端开发系列之八
+                手机端开发系列之八--移动类库
               
             
           </h1>
@@ -256,7 +256,7 @@ fastclick.js在移动设备上为了提升click的响应速度，我们选择了
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2015-10-04T16:56:14+08:00" content="2015-10-04">
               2015-10-04
             </time>
@@ -295,7 +295,9 @@ fastclick.js在移动设备上为了提升click的响应速度，我们选择了
 <li>设用方法即可，</li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">$(&apos;.demo&apos;).on(&apos;click&apos;, function () &#123;</div><div class="line">        alert(&apos;不会得到快速响应&apos;);</div><div class="line">    &#125;);</div><div class="line">    // 引入引插件可以解决click延时问题</div><div class="line">    // 代表的含义是body元素以内所有被添加了</div><div class="line">    // click事件元素，都会得到快速响应</div><div class="line">    // FastClick.attach(document.body);</div><div class="line">    // 代表的含义是只有在.box元素以内的click事件</div><div class="line">    // 会得到一个快速响应</div><div class="line">    FastClick.attach(document.querySelector(&apos;.box&apos;));</div></pre></td></tr></table></figure>
-<h2 id="isSroll-js"><a href="#isSroll-js" class="headerlink" title="isSroll.js"></a>isSroll.js</h2><p>一个可以实现客户端原生滚动效果的类库。<br>1.<a href="">下载iScroll</a><br>2.build目录下提供了不同版本的iScroll，可根据情况选择使用<br>3.html要求有3层结构<br><strong>注意：下来下来会有文档，直接查看文档就可以了</strong></p>
+<h2 id="isSroll-js"><a href="#isSroll-js" class="headerlink" title="isSroll.js"></a>isSroll.js</h2><p>一个可以实现客户端原生滚动效果的类库。</p>
+<p>1.<a href="https://github.com/cubiq/iscroll" target="_blank" rel="external">下载iScroll</a><br>2.build目录下提供了不同版本的iScroll，可根据情况选择使用<br>3.html要求有3层结构</p>
+<p><strong>注意：下来下来会有文档，直接查看文档就可以了</strong></p>
 
       
     </div>
@@ -321,16 +323,16 @@ fastclick.js在移动设备上为了提升click的响应速度，我们选择了
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/10/04/手机端开发系列之七/" rel="next" title="手机端开发系列之七">
-                <i class="fa fa-chevron-left"></i> 手机端开发系列之七
+              <a href="/2015/10/04/手机端开发系列之七/" rel="next" title="手机端开发系列之七--less">
+                <i class="fa fa-chevron-left"></i> 手机端开发系列之七--less
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/10/04/手机端开发系列之九/" rel="prev" title="手机端开发系列之九">
-                手机端开发系列之九 <i class="fa fa-chevron-right"></i>
+              <a href="/2015/10/04/手机端开发系列之九/" rel="prev" title="手机端开发系列之九--网页布局">
+                手机端开发系列之九--网页布局 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -380,10 +382,10 @@ fastclick.js在移动设备上为了提升click的响应速度，我们选择了
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
+            Übersicht
           </li>
         </ul>
       
@@ -399,8 +401,8 @@ fastclick.js在移动设备上为了提升click的响应速度，我们选择了
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">10</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -458,7 +460,7 @@ fastclick.js在移动设备上为了提升click的响应速度，我们选择了
 </div>
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
