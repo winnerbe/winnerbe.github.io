@@ -94,7 +94,7 @@
 <meta property="og:description" content="手机端开发–适配屏幕适配经过分析我们得到，移动页面最理想的状态是，避免滚动条且不被默认缩放处理，我们可以通过设置1&amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;&amp;quot;&amp;gt;
 来进行控制，并改变浏览器默认的layout viewport的宽度。
 避免滚动我们知道，滚动条是 layout viewport 相对于 ideal viewport">
-<meta property="og:updated_time" content="2016-10-04T05:52:37.688Z">
+<meta property="og:updated_time" content="2016-10-04T05:56:24.955Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="手机开发系列之三">
 <meta name="twitter:description" content="手机端开发–适配屏幕适配经过分析我们得到，移动页面最理想的状态是，避免滚动条且不被默认缩放处理，我们可以通过设置1&amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;&amp;quot;&amp;gt;
@@ -310,7 +310,7 @@
 <ol>
 <li>如果这个手机iPhone3，它的分辨率是320，也分成20份，每一份是16px。那么这个小人要显示的大小就是 16*0.5=8px; 实际上就是一个按比例显示的。</li>
 </ol>
-<p>怎么做的呢？ 这里涉及媒体查询上的一点知识：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">@media only screen and (width: 320px) &#123;</div><div class="line">            /* 320 / 20 = 16px */</div><div class="line">            html &#123;</div><div class="line">                font-size: 16px;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        /* Some Android Device */</div><div class="line">        @media only screen and (width: 360px) &#123;</div><div class="line">            /* 360 / 20 = 18px */</div><div class="line">            html &#123;</div><div class="line">                font-size: 18px;</div><div class="line">            &#125;</div><div class="line">        &#125;</div></pre></td></tr></table></figure></p>
+<p>怎么做的呢？ 这里涉及媒体查询上的一点知识：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">@media only screen and (width: 320px) &#123;</div><div class="line">    /* 320 / 20 = 16px */</div><div class="line">    html &#123;</div><div class="line">        font-size: 16px;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@media only screen and (width: 360px) &#123;</div><div class="line">    /* 360 / 20 = 18px */</div><div class="line">    html &#123;</div><div class="line">        font-size: 18px;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p><em>只要用上了这个你就可以随心所欲的用你的单位px了</em></p>
 
       
