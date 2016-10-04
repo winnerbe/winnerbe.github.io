@@ -86,20 +86,23 @@
 
 <meta name="description" content="手机端的开发对于手机端的开发首先来理解一些概念上的一些东西。
 1.屏幕移动设备与PC设备最大的差异在于屏幕，这主要体现在屏幕尺寸和屏幕分辨率两个方面。通常我们所指的屏幕尺，实际上指的是屏幕对角线的长度。
-而分辨率则一般用像素来度量，表示屏幕水平和垂直方向的像素数，例如1920*1080指的是屏幕垂直方向和水平方向分别有1920和1080个像素点而构成。">
+而分辨率则一般用像素来度量，表示屏幕水平和垂直方向的像素数，例如1920*1080指的是屏幕垂直方向和水平方向分别有1920和1080个像素点而构成。
+2.像素物理像素指的是屏幕渲染图像的最小单位">
 <meta property="og:type" content="article">
 <meta property="og:title" content="手机端开发">
 <meta property="og:url" content="http://yoursite.com/2015/10/04/手机端开发/index.html">
 <meta property="og:site_name" content="chenzq  FE">
 <meta property="og:description" content="手机端的开发对于手机端的开发首先来理解一些概念上的一些东西。
 1.屏幕移动设备与PC设备最大的差异在于屏幕，这主要体现在屏幕尺寸和屏幕分辨率两个方面。通常我们所指的屏幕尺，实际上指的是屏幕对角线的长度。
-而分辨率则一般用像素来度量，表示屏幕水平和垂直方向的像素数，例如1920*1080指的是屏幕垂直方向和水平方向分别有1920和1080个像素点而构成。">
-<meta property="og:updated_time" content="2016-10-04T03:13:02.691Z">
+而分辨率则一般用像素来度量，表示屏幕水平和垂直方向的像素数，例如1920*1080指的是屏幕垂直方向和水平方向分别有1920和1080个像素点而构成。
+2.像素物理像素指的是屏幕渲染图像的最小单位">
+<meta property="og:updated_time" content="2016-10-04T03:33:56.124Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="手机端开发">
 <meta name="twitter:description" content="手机端的开发对于手机端的开发首先来理解一些概念上的一些东西。
 1.屏幕移动设备与PC设备最大的差异在于屏幕，这主要体现在屏幕尺寸和屏幕分辨率两个方面。通常我们所指的屏幕尺，实际上指的是屏幕对角线的长度。
-而分辨率则一般用像素来度量，表示屏幕水平和垂直方向的像素数，例如1920*1080指的是屏幕垂直方向和水平方向分别有1920和1080个像素点而构成。">
+而分辨率则一般用像素来度量，表示屏幕水平和垂直方向的像素数，例如1920*1080指的是屏幕垂直方向和水平方向分别有1920和1080个像素点而构成。
+2.像素物理像素指的是屏幕渲染图像的最小单位">
 
 
 
@@ -180,7 +183,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -190,7 +193,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -253,7 +256,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2015-10-04T11:08:07+08:00" content="2015-10-04">
               2015-10-04
             </time>
@@ -285,6 +288,16 @@
         <h3 id="手机端的开发"><a href="#手机端的开发" class="headerlink" title="手机端的开发"></a>手机端的开发</h3><p>对于手机端的开发首先来理解一些概念上的一些东西。</p>
 <h4 id="1-屏幕"><a href="#1-屏幕" class="headerlink" title="1.屏幕"></a>1.屏幕</h4><p>移动设备与PC设备最大的差异在于<code>屏幕</code>，这主要体现在屏幕<code>尺寸</code>和<code>屏幕分辨率</code>两个方面。通常我们所指的屏幕尺，实际上指的是屏幕<code>对角线的长度</code>。</p>
 <p>而分辨率则一般用<code>像素</code>来度量，表示屏幕水平和垂直方向的像素数，例如1920*1080指的是屏幕垂直方向和水平方向分别有1920和1080个像素点而构成。</p>
+<h4 id="2-像素"><a href="#2-像素" class="headerlink" title="2.像素"></a>2.像素</h4><p><code>物理像素</code>指的是屏幕渲染图像的最小单位，不可人为进行改变，其值大小决定了屏幕渲染图像的品质，我们以上所讨论的都指的是物理像素。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// 获取屏幕的物理像素尺寸</div><div class="line">window.screen.width;</div><div class="line">window.screen.height;</div><div class="line">// 部分移动设备下获取会有错误</div></pre></td></tr></table></figure>
+<p><code>CSS像素</code>指的是通过CSS进行网页布局时用到的单位，其默认值(PC端)是和物理像素保持一致的（1个单位的CSS像素等于1个单位的物理像素），但是我们可通缩放来改变其大小。</p>
+<p><code>浏览器窗口</code>尺寸是CSS像素来度量的，部分浏览器存在兼容问题（IE低版本无此属性），但是可以忽略这些细节。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// 获取浏览器窗口尺寸</div><div class="line">window.innerWidth;</div><div class="line">window.innerHeight;</div><div class="line">// 此值大小包含滚动条的大小</div></pre></td></tr></table></figure>
+<p>我们需要理解的是物理像素和CSS像素的一个关系，1个物理像素并不总是等于一个CSS像素通过调整浏览器缩放比例，所以存在3种情况。</p>
+<h4 id="3-长度单位"><a href="#3-长度单位" class="headerlink" title="3.长度单位"></a>3.长度单位</h4><p>在Web开发中可以使用px（像素）、em、pt（点）、in（英寸）、cm（厘米）做为长度单位，我们最常用px（像素）做为长度单位。<br>我们可以将上述的几种长度单位划分成<code>相对长度单位</code>和<code>绝对长度单位</code>。</p>
+<p>iPhone3G/S和iPhone4/S的屏幕尺寸都为3.5英寸（in）但是屏幕分辨率却分别为480<em>320px、960</em>480px，<br>由此我们可以得出<code>英寸是一个绝对长度单位</code>，而<code>像素是一个相对长度单位</code>（像素并没有固定的长度)。</p>
+<h4 id="4-像素的密度"><a href="#4-像素的密度" class="headerlink" title="4.像素的密度"></a>4.像素的密度</h4><p><code>DPI（Dots Per Inch）</code>是印刷行业中用来表示打印机每英寸可以喷的墨汁点数，计算机显示设备从打印机中借鉴了DPI的概念。</p>
+<p>由于计算机显示设备中的最小单位不是墨汁点而是像素，所以用<code>PPI（Pixels Per Inch）</code>值来表示屏幕每英寸的像素数量，我们将<code>PPI、DPI</code>都称为<code>像素密度</code>，但PPI应用更广泛，DPI在Android设备比较常见。<br>利用 勾股定理 我们可以计算得出PPI：<code>如IPHONE 4 (960^2+640^2)/3.5</code>所以屏幕尺寸固定的话 PPI的值越大画面就更好，更清晰。</p>
 
       
     </div>
@@ -365,10 +378,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Inhaltsverzeichnis
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Übersicht
+            Overview
           </li>
         </ul>
       
@@ -385,7 +398,7 @@
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">2</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
@@ -416,7 +429,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#手机端的开发"><span class="nav-number">1.</span> <span class="nav-text">手机端的开发</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-屏幕"><span class="nav-number">1.1.</span> <span class="nav-text">1.屏幕</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#手机端的开发"><span class="nav-number">1.</span> <span class="nav-text">手机端的开发</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-屏幕"><span class="nav-number">1.1.</span> <span class="nav-text">1.屏幕</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-像素"><span class="nav-number">1.2.</span> <span class="nav-text">2.像素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-长度单位"><span class="nav-number">1.3.</span> <span class="nav-text">3.长度单位</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-像素的密度"><span class="nav-number">1.4.</span> <span class="nav-text">4.像素的密度</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
@@ -443,7 +456,7 @@
 </div>
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
