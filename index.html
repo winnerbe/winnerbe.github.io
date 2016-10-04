@@ -172,7 +172,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -182,7 +182,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -248,7 +248,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-10-03T11:29:29+08:00" content="2016-10-03">
               2016-10-03
             </time>
@@ -338,7 +338,7 @@
               
                 
                 <a class="post-title-link" href="/2015/10/04/手机端开发/" itemprop="url">
-                  手机端开发
+                  手机端开发系列之一
                 </a>
               
             
@@ -350,7 +350,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2015-10-04T11:08:07+08:00" content="2015-10-04">
               2015-10-04
             </time>
@@ -381,7 +381,10 @@
       
         
           
-            <h3 id="手机端的开发"><a href="#手机端的开发" class="headerlink" title="手机端的开发"></a>手机端的开发</h3><p>对于手机端的开发首先来理解一些概念上的一些东西。</p>
+            <h3 id="手机端开发基础1"><a href="#手机端开发基础1" class="headerlink" title="手机端开发基础1"></a>手机端开发基础1</h3><p>对于手机端的开发首先来理解一些概念上的一些东西。</p>
+<blockquote>
+<p>这就是一个故事。</p>
+</blockquote>
 <h4 id="1-屏幕"><a href="#1-屏幕" class="headerlink" title="1.屏幕"></a>1.屏幕</h4><p>移动设备与PC设备最大的差异在于<code>屏幕</code>，这主要体现在屏幕<code>尺寸</code>和<code>屏幕分辨率</code>两个方面。通常我们所指的屏幕尺，实际上指的是屏幕<code>对角线的长度</code>。</p>
 <p>而分辨率则一般用<code>像素</code>来度量，表示屏幕水平和垂直方向的像素数，例如1920*1080指的是屏幕垂直方向和水平方向分别有1920和1080个像素点而构成。</p>
 <h4 id="2-像素"><a href="#2-像素" class="headerlink" title="2.像素"></a>2.像素</h4><p><code>物理像素</code>指的是屏幕渲染图像的最小单位，不可人为进行改变，其值大小决定了屏幕渲染图像的品质，我们以上所讨论的都指的是物理像素。</p>
@@ -394,6 +397,11 @@
 <p>iPhone3G/S和iPhone4/S的屏幕尺寸都为3.5英寸（in）但是屏幕分辨率却分别为480<em>320px、960</em>480px，<br>由此我们可以得出<code>英寸是一个绝对长度单位</code>，而<code>像素是一个相对长度单位</code>（像素并没有固定的长度)。</p>
 <h4 id="4-像素的密度"><a href="#4-像素的密度" class="headerlink" title="4.像素的密度"></a>4.像素的密度</h4><p><code>DPI（Dots Per Inch）</code>是印刷行业中用来表示打印机每英寸可以喷的墨汁点数，计算机显示设备从打印机中借鉴了DPI的概念。</p>
 <p>由于计算机显示设备中的最小单位不是墨汁点而是像素，所以用<code>PPI（Pixels Per Inch）</code>值来表示屏幕每英寸的像素数量，我们将<code>PPI、DPI</code>都称为<code>像素密度</code>，但PPI应用更广泛，DPI在Android设备比较常见。<br>利用 勾股定理 我们可以计算得出PPI：<code>如IPHONE 4 (960^2+640^2)/3.5</code>所以屏幕尺寸固定的话 PPI的值越大画面就更好，更清晰。</p>
+<h4 id="5-独立像素"><a href="#5-独立像素" class="headerlink" title="5.独立像素"></a>5.独立像素</h4><p>随着技术发展，设备不断更新，出现了不同PPI的屏幕共存的状态（iPhone3G/S为163，iPhone4/S为326），这时像素不再是统一的度量单位，会造成同样尺寸的图像在不同PPI设备上的显示大小不一样。</p>
+<p>做为用户是不会关心这些细节的，他们只是希望在不同PPI的设备上看到的图像内容差不多大小，所以这时我们需要一个新的单位，这个新的单位能够保证图像内容在不同的PPI设备看上去大小应该差不多，这就是<code>独立像素</code>，<code>IOS设备上叫PT(Point)</code>，<code>Android设备上叫DIP(Device independent Pixel)或DP</code>。</p>
+<p>举例说明就是iPhone 3G（PPI为163）1dp = 1px，iPhone 4（PPI为326）1dp = 2px。</p>
+<p>这个对应（比例）关系是操作系统确定并处理，通过<code>window.devicePixelRatio</code>可以获得该比例值。</p>
+<h4 id="6-二倍图"><a href="#6-二倍图" class="headerlink" title="6.二倍图"></a>6.二倍图</h4><p>这个是开发的时候，为了解决在不同的设备上，因为像素的不同，小图在（iPhone3上用的图）高的PPI（在iPhone上用）是会被拉伸，就变得模糊，所以就要用一个大的图来</p>
 
           
         
@@ -464,7 +472,7 @@
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">2</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -511,7 +519,7 @@
 </div>
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
