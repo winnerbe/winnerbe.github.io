@@ -92,7 +92,7 @@
 <meta property="og:site_name" content="chenzq  FE">
 <meta property="og:description" content="手机端开发–视口什么是视口？视口（viewport）是用来约束你网站中最顶级块元素的，即它决定了的大小。pc视口和手机视口的区别：在于这个pc的视口受那个浏览器窗口的限制，手机的视口可以自己设置
 移动端浏览器移动端开发主要是针对IOS和Android两个操作系统平台的，除此之外还有Windows Phone。移动端主要可以分成三大类，系统自带浏览器、应用内置浏览器、第三方浏览器系统浏览器：指跟随移">
-<meta property="og:updated_time" content="2016-10-04T05:05:48.667Z">
+<meta property="og:updated_time" content="2016-10-04T05:09:06.091Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="手机端开发系列之二">
 <meta name="twitter:description" content="手机端开发–视口什么是视口？视口（viewport）是用来约束你网站中最顶级块元素的，即它决定了的大小。pc视口和手机视口的区别：在于这个pc的视口受那个浏览器窗口的限制，手机的视口可以自己设置
@@ -284,9 +284,9 @@
 <p><code>应用内置浏览器</code>：通常在移动设备上都会安装一些APP例如QQ、微信、微博、淘宝等，这些APP里往往会内置一个浏览器，我们称这个浏览器为应用内置浏览器（也叫WebView），这个内置的浏览器一般功能比较简单，并且客户端开发人员可以更改这个浏览器的某些设置，在我们理实的开发里这个浏览器很重要。</p>
 <p><code>第三方浏览器</code>：指安装在手机的浏览器如FireFox、Chrome、360等等。<br>在IOS和Android操作系统上自带浏览器、应用内置浏览器都是基础Webkit内核的。</p>
 <p><em>思考：移动端页面要达到什么效果才最合理？</em> </p>
-<p>我们知道移动设备屏幕普遍都是比较小的，但是大部分的网站又都是为PC设备来设计的，要想让移动设备也可以正常显示网页，移动设备不得不做一些处理，只要viewport足够大（块级元素html就会比较大），就能保证原本为PC设备设计的网页也能在移动设备上正常显示，移动设备厂商也的确是这样来处理的。</p>
+<h4 id="viewport"><a href="#viewport" class="headerlink" title="viewport"></a>viewport</h4><p>我们知道移动设备屏幕普遍都是比较小的，但是大部分的网站又都是为PC设备来设计的，要想让移动设备也可以正常显示网页，移动设备不得不做一些处理，只要viewport足够大（块级元素html就会比较大），就能保证原本为PC设备设计的网页也能在移动设备上正常显示，移动设备厂商也的确是这样来处理的。</p>
 <p>在移动设备上viewport不再受限于浏览器的窗口，而是允许开发人员自由设置viewport的大小，通常浏览器会设置一个默认大小的viewport，同时为了能够正常显示那些专为PC设计的网页，一般这个值的大小会大于屏幕的尺寸。 (这个值一般为980px)<br>这样的会我们网页设计的那些网页在移动端就不会错乱了。但是<br><strong>在iPhone5s和部分Android中我们发现页面内容（文字、图片）被缩放了（变的非常小），而在部分安卓设备中则出现了滚动条。</strong></p>
-<p><em>为什么呢？</em> 要解释上面的原因，需要进一步对移动设备的viewport进行分析，移动设备上有2个viewport，分别是layout viewport和ideal viewport。</p>
+<h4 id="layout-viewport-amp-ideal-viewport"><a href="#layout-viewport-amp-ideal-viewport" class="headerlink" title="layout viewport&amp;ideal viewport"></a>layout viewport&amp;ideal viewport</h4><p><em>为什么呢？</em> 要解释上面的原因，需要进一步对移动设备的viewport进行分析，移动设备上有2个viewport，分别是layout viewport和ideal viewport。</p>
 <ol>
 <li><code>layout viewport</code>（布局视口）指的是我们可以进行网页布局区域的大小，同样是以CSS像素做为计量单位，可以通过下面方式获取 :<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">// 获取layout viewport</div><div class="line">document.documentElement.clientWidth;</div><div class="line">document.documentElement.clientHeight;</div></pre></td></tr></table></figure>
 </li>
@@ -433,7 +433,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#手机端开发–视口"><span class="nav-number">1.</span> <span class="nav-text">手机端开发–视口</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#移动端浏览器"><span class="nav-number">1.1.</span> <span class="nav-text">移动端浏览器</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#手机端开发–视口"><span class="nav-number">1.</span> <span class="nav-text">手机端开发–视口</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#移动端浏览器"><span class="nav-number">1.1.</span> <span class="nav-text">移动端浏览器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#viewport"><span class="nav-number">1.2.</span> <span class="nav-text">viewport</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#layout-viewport-amp-ideal-viewport"><span class="nav-number">1.3.</span> <span class="nav-text">layout viewport&ideal viewport</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
