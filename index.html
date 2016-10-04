@@ -172,7 +172,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -182,7 +182,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -235,6 +235,216 @@
             
               
                 
+                <a class="post-title-link" href="/2015/10/04/手机端开发系列之九/" itemprop="url">
+                  手机端开发系列之九
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2015-10-04T17:22:52+08:00" content="2015-10-04">
+              2015-10-04
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="网页布局"><a href="#网页布局" class="headerlink" title="网页布局"></a>网页布局</h2><p>简单的提一下这个</p>
+<h3 id="各种布局"><a href="#各种布局" class="headerlink" title="各种布局"></a>各种布局</h3><p>1.固定宽度布局：为网页设置一个固定的宽度，通常以px做为长度单位，常见于PC端网页。<br>2.流式布局：为网页设置一个相对的宽度，通常以百分比做为长度单位。</p>
+<p>3.栅格化布局：将网页宽度人为的划分成均等的长度，然后排版布局时则以这些均等的长度做为度量单位，通常利用百分比做为长度单位来划分成均等的长度。</p>
+<p>4.响应式布局：通过检测设备信息，决定网页布局方式，即用户如果采用不同的设备访问同一个网页，有可能会看到不一样的内容，一般情况下是检测设备屏幕的宽度来实现。</p>
+<p><strong>注：以上几种布局方式并不是独立存在的，实际开发过程中往往是相互结合使和的。</strong></p>
+<h3 id="响应式布局"><a href="#响应式布局" class="headerlink" title="响应式布局"></a>响应式布局</h3><p>如上图所示，<code>屏幕尺寸不一样展示给用户的网页内容也不一样</code>，我们<code>利用媒体查询</code>可以检测到屏幕的尺寸（主要检测宽度），并<code>设置不同的CSS样式</code>，就可以实现响应式的布局。<br>我们利用响应式布局可以满足不同尺寸的终端设备非常完美的展现网页内容，使得用户体验得到了很大的提升，但是为了实现这一目的我们不得不利用媒体查询写很多冗余的代码，使整体网页的体积变大，应用在移动设备上就会带来严重的性能问题。<br>响应式布局常用于企业的官网、博客、新闻资讯类型网站，这些网站以浏览内容为主，没有复杂的交互。<br>常见的设置宽度：</p>
+<ul>
+<li>大屏幕：大于等于1200px</li>
+<li>默认：  大于等于980px</li>
+<li>平板：  大于等于768px</li>
+<li>手机到平板：小于等于767px</li>
+<li>手机：      小于等于480px<br>用来设置媒体查询。</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/10/04/手机端开发系列之八/" itemprop="url">
+                  手机端开发系列之八
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2015-10-04T16:56:14+08:00" content="2015-10-04">
+              2015-10-04
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="移动的类库"><a href="#移动的类库" class="headerlink" title="移动的类库"></a>移动的类库</h2><h2 id="swiper-js"><a href="#swiper-js" class="headerlink" title="swiper.js"></a>swiper.js</h2><p>1.<a href="https://github.com/nolimits4web/Swiper/" target="_blank" rel="external">下载swiper.js，</a><br>2.其<a href="http://www.swiper.com.cn/" target="_blank" rel="external">中文网站</a>非常详细介绍了其使用方法</p>
+<h2 id="swipe-js"><a href="#swipe-js" class="headerlink" title="swipe.js"></a>swipe.js</h2><p>1.<a href="https://github.com/thebird/Swipe" target="_blank" rel="external">下载swipe.js</a><br>2.html结构要求有三层结构，</p>
+<p><strong>注意结构的要求还有对应的CSS样式</strong></p>
+<h2 id="fastclick-js"><a href="#fastclick-js" class="headerlink" title="fastclick.js"></a>fastclick.js</h2><p>在移动设备上为了提升click的响应速度，我们选择了使用Zepto事件封装的tap来进行模拟，但是这会带来一个副作用，这个副作用就是<code>“点透”</code>，(自行查阅)<br>从上可以看出Zepto.js有不完善的地方，并且我们有时也希望我们的移动版页面在PC端上也可用，但是PC端是不支持touch事件的，这时我们面临的问题是即提升click在移动设备上的响应速度，又不能使用Zepto.js的tap事件，这时fastclick可以解决这个问题。</p>
+<ol>
+<li><a href="https://github.com/ftlabs/fastclick" target="_blank" rel="external">下载fastclick</a></li>
+<li>引入lib目录下的fastclick.js</li>
+<li>设用方法即可，</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">$(&apos;.demo&apos;).on(&apos;click&apos;, function () &#123;</div><div class="line">        alert(&apos;不会得到快速响应&apos;);</div><div class="line">    &#125;);</div><div class="line">    // 引入引插件可以解决click延时问题</div><div class="line">    // 代表的含义是body元素以内所有被添加了</div><div class="line">    // click事件元素，都会得到快速响应</div><div class="line">    // FastClick.attach(document.body);</div><div class="line">    // 代表的含义是只有在.box元素以内的click事件</div><div class="line">    // 会得到一个快速响应</div><div class="line">    FastClick.attach(document.querySelector(&apos;.box&apos;));</div></pre></td></tr></table></figure>
+<h2 id="isSroll-js"><a href="#isSroll-js" class="headerlink" title="isSroll.js"></a>isSroll.js</h2><p>一个可以实现客户端原生滚动效果的类库。<br>1.<a href="">下载iScroll</a><br>2.build目录下提供了不同版本的iScroll，可根据情况选择使用<br>3.html要求有3层结构<br><strong>注意：下来下来会有文档，直接查看文档就可以了</strong></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2015/10/04/手机端开发系列之七/" itemprop="url">
                   手机端开发系列之七
                 </a>
@@ -248,7 +458,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2015-10-04T16:24:22+08:00" content="2015-10-04">
               2015-10-04
             </time>
@@ -289,7 +499,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.box&#123;</div><div class="line">    .box-sizing;//调用函数；</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>3.嵌套可以非常方便的管理我们的CSS层级关系</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">.header&#123;</div><div class="line">    color:red;</div><div class="line">    .nav&#123;</div><div class="line">        .....</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="浏览器中使用"><a href="#浏览器中使用" class="headerlink" title="浏览器中使用"></a>浏览器中使用</h3><p>我们可以引入一个less.js文件，实现实时的解析，而不必每次修改都要编译，最后完成所有开发任务后，再通过编辑器编译成css文件。<br>1.下载然后引入less.js<br>2.引入xx.less文件，如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;link rel=&quot;stylesheet/less&quot; type=&quot;text/css&quot; href=&quot;styles.less&quot; /&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="浏览器中使用"><a href="#浏览器中使用" class="headerlink" title="浏览器中使用"></a>浏览器中使用</h3><p>我们可以引入一个less.js文件，实现实时的解析，而不必每次修改都要编译，最后完成所有开发任务后，再通过编辑器编译成css文件。<br>1.<a href="https://raw.githubusercontent.com/less/less.js/v2.5.3/dist/less.min.js" target="_blank" rel="external">下载</a> 然后引入less.js<br>2.引入xx.less文件，如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;link rel=&quot;stylesheet/less&quot; type=&quot;text/css&quot; href=&quot;styles.less&quot; /&gt;</div></pre></td></tr></table></figure></p>
 <p>注意：<code>rel属性必须指定成stylesheet/less</code>，并且<code>styles.less要先于less.js引入</code>。<br>必须以服务器方式访问，可以放到study目录下，或者webstrom自带服务器功能，或者我们的 ghostlab调试工具的服务器。</p>
 
           
@@ -353,7 +563,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2015-10-04T16:15:45+08:00" content="2015-10-04">
               2015-10-04
             </time>
@@ -456,7 +666,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2015-10-04T15:39:34+08:00" content="2015-10-04">
               2015-10-04
             </time>
@@ -570,7 +780,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2015-10-04T14:11:57+08:00" content="2015-10-04">
               2015-10-04
             </time>
@@ -683,7 +893,7 @@
               
                 
                 <a class="post-title-link" href="/2015/10/04/手机开发系列之三/" itemprop="url">
-                  手机开发系列之三
+                  手机端开发系列之三
                 </a>
               
             
@@ -695,7 +905,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2015-10-04T13:12:12+08:00" content="2015-10-04">
               2015-10-04
             </time>
@@ -819,7 +1029,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2015-10-04T12:54:22+08:00" content="2015-10-04">
               2015-10-04
             </time>
@@ -931,7 +1141,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2015-10-04T11:08:07+08:00" content="2015-10-04">
               2015-10-04
             </time>
@@ -1045,7 +1255,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2015-10-03T11:08:07+08:00" content="2015-10-03">
               2015-10-03
             </time>
@@ -1154,8 +1364,8 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">8</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
@@ -1202,7 +1412,7 @@
 </div>
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">

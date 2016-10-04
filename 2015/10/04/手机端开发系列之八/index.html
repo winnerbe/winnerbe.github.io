@@ -84,19 +84,25 @@
 
 
 
-<meta name="description" content="css预处理器–less介绍CSS 预处理器是一种语言，用来为 CSS 增加一些编程的的特性，无需考虑浏览器的兼容性问题，并且你可以在 CSS 中使用变量、简单的程序逻辑、函数等等在编程语言中的一些基本技巧，可以让你的 CSS 更简洁，适应性更强，代码更直观等诸多好处。常见的CSS预处理器有：LESS、SASS、Stylus等其使用方法大致相同，我们在这里以LESS为例进行学习
-less安装1.安">
+<meta name="description" content="移动的类库swiper.js1.下载swiper.js，2.其中文网站非常详细介绍了其使用方法
+swipe.js1.下载swipe.js2.html结构要求有三层结构，
+注意结构的要求还有对应的CSS样式
+fastclick.js在移动设备上为了提升click的响应速度，我们选择了使用Zepto事件封装的tap来进行模拟，但是这会带来一个副作用，这个副作用就是“点透”，(自行查阅)从上可以看出Ze">
 <meta property="og:type" content="article">
-<meta property="og:title" content="手机端开发系列之七">
-<meta property="og:url" content="http://yoursite.com/2015/10/04/手机端开发系列之七/index.html">
+<meta property="og:title" content="手机端开发系列之八">
+<meta property="og:url" content="http://yoursite.com/2015/10/04/手机端开发系列之八/index.html">
 <meta property="og:site_name" content="chenzq  FE">
-<meta property="og:description" content="css预处理器–less介绍CSS 预处理器是一种语言，用来为 CSS 增加一些编程的的特性，无需考虑浏览器的兼容性问题，并且你可以在 CSS 中使用变量、简单的程序逻辑、函数等等在编程语言中的一些基本技巧，可以让你的 CSS 更简洁，适应性更强，代码更直观等诸多好处。常见的CSS预处理器有：LESS、SASS、Stylus等其使用方法大致相同，我们在这里以LESS为例进行学习
-less安装1.安">
-<meta property="og:updated_time" content="2016-10-04T08:54:03.644Z">
+<meta property="og:description" content="移动的类库swiper.js1.下载swiper.js，2.其中文网站非常详细介绍了其使用方法
+swipe.js1.下载swipe.js2.html结构要求有三层结构，
+注意结构的要求还有对应的CSS样式
+fastclick.js在移动设备上为了提升click的响应速度，我们选择了使用Zepto事件封装的tap来进行模拟，但是这会带来一个副作用，这个副作用就是“点透”，(自行查阅)从上可以看出Ze">
+<meta property="og:updated_time" content="2016-10-04T09:22:02.860Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="手机端开发系列之七">
-<meta name="twitter:description" content="css预处理器–less介绍CSS 预处理器是一种语言，用来为 CSS 增加一些编程的的特性，无需考虑浏览器的兼容性问题，并且你可以在 CSS 中使用变量、简单的程序逻辑、函数等等在编程语言中的一些基本技巧，可以让你的 CSS 更简洁，适应性更强，代码更直观等诸多好处。常见的CSS预处理器有：LESS、SASS、Stylus等其使用方法大致相同，我们在这里以LESS为例进行学习
-less安装1.安">
+<meta name="twitter:title" content="手机端开发系列之八">
+<meta name="twitter:description" content="移动的类库swiper.js1.下载swiper.js，2.其中文网站非常详细介绍了其使用方法
+swipe.js1.下载swipe.js2.html结构要求有三层结构，
+注意结构的要求还有对应的CSS样式
+fastclick.js在移动设备上为了提升click的响应速度，我们选择了使用Zepto事件封装的tap来进行模拟，但是这会带来一个副作用，这个副作用就是“点透”，(自行查阅)从上可以看出Ze">
 
 
 
@@ -117,9 +123,9 @@ less安装1.安">
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2015/10/04/手机端开发系列之七/"/>
+  <link rel="canonical" href="http://yoursite.com/2015/10/04/手机端开发系列之八/"/>
 
-  <title> 手机端开发系列之七 | chenzq  FE </title>
+  <title> 手机端开发系列之八 | chenzq  FE </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -239,7 +245,7 @@ less安装1.安">
             
             
               
-                手机端开发系列之七
+                手机端开发系列之八
               
             
           </h1>
@@ -251,7 +257,7 @@ less安装1.安">
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2015-10-04T16:24:22+08:00" content="2015-10-04">
+            <time itemprop="dateCreated" datetime="2015-10-04T16:56:14+08:00" content="2015-10-04">
               2015-10-04
             </time>
           </span>
@@ -279,18 +285,17 @@ less安装1.安">
       
 
       
-        <h2 id="css预处理器–less"><a href="#css预处理器–less" class="headerlink" title="css预处理器–less"></a>css预处理器–less</h2><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>CSS 预处理器是一种语言，用来为 CSS 增加一些编程的的特性，无需考虑浏览器的兼容性问题，并且你可以在 CSS 中使用变量、简单的程序逻辑、函数等等在编程语言中的一些基本技巧，可以让你的 CSS 更简洁，适应性更强，代码更直观等诸多好处。<br>常见的CSS预处理器有：<code>LESS、SASS、Stylus</code>等<br>其使用方法大致相同，我们在这里以LESS为例进行学习</p>
-<h3 id="less"><a href="#less" class="headerlink" title="less"></a>less</h3><h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>1.安装Nodejs环境 Node Package Manager (验证 node -v  npm -v)<br>2.打开控制台（cmd），执行npm install -g less (验证 lessc -v)<br>3.执行 npm install -g less-plugin-clean-css<br>4.命令行编译 lessc path/xxx.less path/xxx.css</p>
-<h4 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h4><p>一般都会借助于编辑器插件来完成编译任务，以sublime_text为例<br>1.ctrl+shit+p打开命令面板<br>2.输入install package然后回车<br>3.安装 LESS、lessc、Less2Css三个插件<br>4.alt+s快捷键即可实现编译</p>
-<h4 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h4><p>1.变量</p>
-<p>格式：@变量名: 值，定义完成后可以重复使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">@color: red;//可以重复的使用</div><div class="line">    .nav&#123;</div><div class="line">        backgroundColor:@color;</div><div class="line">    &#125;</div><div class="line">    .header&#123;</div><div class="line">        background:@color;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
-<p>2.混合编程</p>
-<p>我们可以像使用函数一样来使用CSS、<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">.box-sizing()&#123;</div><div class="line">  -webkit-box-sizing: border-box;</div><div class="line">  -moz-box-sizing: border-box;</div><div class="line">  box-sizing: border-box;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.box&#123;</div><div class="line">    .box-sizing;//调用函数；</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>3.嵌套可以非常方便的管理我们的CSS层级关系</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">.header&#123;</div><div class="line">    color:red;</div><div class="line">    .nav&#123;</div><div class="line">        .....</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="浏览器中使用"><a href="#浏览器中使用" class="headerlink" title="浏览器中使用"></a>浏览器中使用</h3><p>我们可以引入一个less.js文件，实现实时的解析，而不必每次修改都要编译，最后完成所有开发任务后，再通过编辑器编译成css文件。<br>1.<a href="https://raw.githubusercontent.com/less/less.js/v2.5.3/dist/less.min.js" target="_blank" rel="external">下载</a> 然后引入less.js<br>2.引入xx.less文件，如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;link rel=&quot;stylesheet/less&quot; type=&quot;text/css&quot; href=&quot;styles.less&quot; /&gt;</div></pre></td></tr></table></figure></p>
-<p>注意：<code>rel属性必须指定成stylesheet/less</code>，并且<code>styles.less要先于less.js引入</code>。<br>必须以服务器方式访问，可以放到study目录下，或者webstrom自带服务器功能，或者我们的 ghostlab调试工具的服务器。</p>
+        <h2 id="移动的类库"><a href="#移动的类库" class="headerlink" title="移动的类库"></a>移动的类库</h2><h2 id="swiper-js"><a href="#swiper-js" class="headerlink" title="swiper.js"></a>swiper.js</h2><p>1.<a href="https://github.com/nolimits4web/Swiper/" target="_blank" rel="external">下载swiper.js，</a><br>2.其<a href="http://www.swiper.com.cn/" target="_blank" rel="external">中文网站</a>非常详细介绍了其使用方法</p>
+<h2 id="swipe-js"><a href="#swipe-js" class="headerlink" title="swipe.js"></a>swipe.js</h2><p>1.<a href="https://github.com/thebird/Swipe" target="_blank" rel="external">下载swipe.js</a><br>2.html结构要求有三层结构，</p>
+<p><strong>注意结构的要求还有对应的CSS样式</strong></p>
+<h2 id="fastclick-js"><a href="#fastclick-js" class="headerlink" title="fastclick.js"></a>fastclick.js</h2><p>在移动设备上为了提升click的响应速度，我们选择了使用Zepto事件封装的tap来进行模拟，但是这会带来一个副作用，这个副作用就是<code>“点透”</code>，(自行查阅)<br>从上可以看出Zepto.js有不完善的地方，并且我们有时也希望我们的移动版页面在PC端上也可用，但是PC端是不支持touch事件的，这时我们面临的问题是即提升click在移动设备上的响应速度，又不能使用Zepto.js的tap事件，这时fastclick可以解决这个问题。</p>
+<ol>
+<li><a href="https://github.com/ftlabs/fastclick" target="_blank" rel="external">下载fastclick</a></li>
+<li>引入lib目录下的fastclick.js</li>
+<li>设用方法即可，</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">$(&apos;.demo&apos;).on(&apos;click&apos;, function () &#123;</div><div class="line">        alert(&apos;不会得到快速响应&apos;);</div><div class="line">    &#125;);</div><div class="line">    // 引入引插件可以解决click延时问题</div><div class="line">    // 代表的含义是body元素以内所有被添加了</div><div class="line">    // click事件元素，都会得到快速响应</div><div class="line">    // FastClick.attach(document.body);</div><div class="line">    // 代表的含义是只有在.box元素以内的click事件</div><div class="line">    // 会得到一个快速响应</div><div class="line">    FastClick.attach(document.querySelector(&apos;.box&apos;));</div></pre></td></tr></table></figure>
+<h2 id="isSroll-js"><a href="#isSroll-js" class="headerlink" title="isSroll.js"></a>isSroll.js</h2><p>一个可以实现客户端原生滚动效果的类库。<br>1.<a href="">下载iScroll</a><br>2.build目录下提供了不同版本的iScroll，可根据情况选择使用<br>3.html要求有3层结构<br><strong>注意：下来下来会有文档，直接查看文档就可以了</strong></p>
 
       
     </div>
@@ -316,16 +321,16 @@ less安装1.安">
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/10/04/手机端开发系列之六/" rel="next" title="手机端开发系列之六">
-                <i class="fa fa-chevron-left"></i> 手机端开发系列之六
+              <a href="/2015/10/04/手机端开发系列之七/" rel="next" title="手机端开发系列之七">
+                <i class="fa fa-chevron-left"></i> 手机端开发系列之七
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/10/04/手机端开发系列之八/" rel="prev" title="手机端开发系列之八">
-                手机端开发系列之八 <i class="fa fa-chevron-right"></i>
+              <a href="/2015/10/04/手机端开发系列之九/" rel="prev" title="手机端开发系列之九">
+                手机端开发系列之九 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -426,7 +431,7 @@ less安装1.安">
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#css预处理器–less"><span class="nav-number">1.</span> <span class="nav-text">css预处理器–less</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#介绍"><span class="nav-number">1.1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#less"><span class="nav-number">1.2.</span> <span class="nav-text">less</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装"><span class="nav-number">1.2.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编译"><span class="nav-number">1.2.2.</span> <span class="nav-text">编译</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#语法"><span class="nav-number">1.2.3.</span> <span class="nav-text">语法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#浏览器中使用"><span class="nav-number">1.3.</span> <span class="nav-text">浏览器中使用</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#移动的类库"><span class="nav-number">1.</span> <span class="nav-text">移动的类库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#swiper-js"><span class="nav-number">2.</span> <span class="nav-text">swiper.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#swipe-js"><span class="nav-number">3.</span> <span class="nav-text">swipe.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fastclick-js"><span class="nav-number">4.</span> <span class="nav-text">fastclick.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#isSroll-js"><span class="nav-number">5.</span> <span class="nav-text">isSroll.js</span></a></li></ol></div>
             
           </div>
         </section>
