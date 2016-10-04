@@ -337,6 +337,129 @@
             
               
                 
+                <a class="post-title-link" href="/2015/10/04/手机开发系列之三/" itemprop="url">
+                  手机开发系列之三
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2015-10-04T13:12:12+08:00" content="2015-10-04">
+              2015-10-04
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="手机端开发–适配"><a href="#手机端开发–适配" class="headerlink" title="手机端开发–适配"></a>手机端开发–适配</h2><h3 id="屏幕适配"><a href="#屏幕适配" class="headerlink" title="屏幕适配"></a>屏幕适配</h3><p>经过分析我们得到，移动页面最理想的状态是，避免滚动条且不被默认缩放处理，我们可以通过设置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=&quot;viewport&quot; content=&quot;&quot;&gt;</div></pre></td></tr></table></figure></p>
+<p>来进行控制，并改变浏览器默认的layout viewport的宽度。</p>
+<h3 id="避免滚动"><a href="#避免滚动" class="headerlink" title="避免滚动"></a>避免滚动</h3><p>我们知道，滚动条是 layout viewport 相对于 ideal viewport 的，所以只要设置 layout viewport 小于或等于 ideal viewport，即<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width&quot;&gt;</div></pre></td></tr></table></figure></p>
+<p>经测试发现我们并没有完全的解决滚动条的问题，原因在于页面的宽度.box {width: 1024px;}设置了一个绝对的宽度造成的，要解决这个问题我们可以设置一个百分比（100%）的宽度，</p>
+<h3 id="避免缩放"><a href="#避免缩放" class="headerlink" title="避免缩放"></a>避免缩放</h3><p>1.设置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=&quot;viewport&quot; content=&quot;initial-scale=1&quot;&gt;</div></pre></td></tr></table></figure></p>
+<p>这时我们发现网页没有被浏览器设置缩放。<br>2.设置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width&quot;&gt;</div></pre></td></tr></table></figure></p>
+<p>这时我们发现网页也没有被浏览器设设置缩放。<br>当我们设置width=device-width，也达到了initial-scale=1的效果，得知其实 initial-scale = ideal viewport / layout viewport。<br>两种方式都可以控制缩放，开发中一般同时设置width=device-width和initial-scale=1.0<br>，<a href="http://www.cnblogs.com/2050/p/3877280.html" target="_blank" rel="external">移动前端开发之viewport深度理解</a><br>即mate标签：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="常见的适配"><a href="#常见的适配" class="headerlink" title="常见的适配"></a>常见的适配</h3><ol>
+<li><p>百分比适配</p>
+<ul>
+<li>设置<meta name="viewport" content="width=device-width, initial-scale=1"></li>
+<li>设置页面宽度为百分比</li>
+<li>关于百分比，我们需要重新认识CSS里百分比的使用。<br>// 测试下列属性设置为百分比<br>width参照父元素的宽度<br>height参照父元素的高度<br>padding参照父元素的宽度<br>border不支持百分比设置<br>margin参照父元素的宽度</li>
+</ul>
+</li>
+<li><p>rem 适配</p>
+<ul>
+<li>设置<meta name="viewport" content="width=device-width, initial-scale=1"></li>
+<li>设置页面元素宽度单位为 rem 或 em<br>注：此方案比较灵活，我们的案例将采用这种方案<br>关于em和rem<br><em>em</em> 相对长度单位，其参照当前元素字号大小，如果当前元素未设置字号则会继承其祖先元素字号大小 例如 .box {font-size: 16px;} 则 1em = 16px .box {font-size: 32px;} 则 1em = 32px，0.5em = 16px</li>
+</ul>
+</li>
+</ol>
+<p><em>rem</em> 相对长度单位，其参照根元素(html)字号大小 例如 html {font-size: 16px;} 则 1rem = 16px html {font-size: 32px;} 则 1rem = 32px，0.5rem = 16px;  <strong>注</strong>：所有浏览器默认字号都是16px（某些安卓手机可以调置系统字号后，浏览器默认字号会受影响）</p>
+<h4 id="原理：例子"><a href="#原理：例子" class="headerlink" title="原理：例子"></a>原理：例子</h4><p>假设有一个UI的稿件是640px的（一般来说是640和750的）其中有个小人是16px的，要把他放到不同的手机设备上显示，在不同的手机上的尺寸是不一样的。那么我们是怎么去实现的呢？怎么计算出这个UI的稿件在不同手机上的大小的呢？</p>
+<p>1.把UI妹子的稿件分成若干份（分成20份比较好算）每一份是32px，小人占的是比例是0.5</p>
+<ol>
+<li>如果这个手机iPhone3，它的分辨率是320，也分成20份，每一份是16px。那么这个小人要显示的大小就是 16*0.5=8px; 实际上就是一个按比例显示的。</li>
+</ol>
+<p>怎么做的呢？ 这里涉及媒体查询上的一点知识：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">@media only screen and (width: 320px) &#123;</div><div class="line">            /* 320 / 20 = 16px */</div><div class="line">            html &#123;</div><div class="line">                font-size: 16px;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        /* Some Android Device */</div><div class="line">        @media only screen and (width: 360px) &#123;</div><div class="line">            /* 360 / 20 = 18px */</div><div class="line">            html &#123;</div><div class="line">                font-size: 18px;</div><div class="line">            &#125;</div><div class="line">        &#125;</div></pre></td></tr></table></figure></p>
+<p><em>只要用上了这个你就可以随心所欲的用你的单位px了</em></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2015/10/04/手机端开发系列之二/" itemprop="url">
                   手机端开发系列之二
                 </a>
@@ -583,7 +706,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-count">4</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
