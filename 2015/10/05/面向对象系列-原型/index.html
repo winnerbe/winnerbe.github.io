@@ -1,0 +1,565 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="如何理解原型？不纠结任何术语，比如说：“人是人他妈生的，妖是妖他妈生的。”
+1.人和妖都是对象，而人他妈和妖他妈就是构造函数，人他爸和妖他爸就是原型。2.人他妈如何才能正确找到人他爸，而不会找错呢？答案就是prototype属性，人他妈可以通过这条线准确的找到自己的老公（人他爸）。同理，人他爸可以通过constructor属性准确的找到自己的老婆（人他妈）。3.人他妈可以生很多的宝宝，但是这些宝宝">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面向对象系列--原型">
+<meta property="og:url" content="http://yoursite.com/2015/10/05/面向对象系列-原型/index.html">
+<meta property="og:site_name" content="chenzq  FE">
+<meta property="og:description" content="如何理解原型？不纠结任何术语，比如说：“人是人他妈生的，妖是妖他妈生的。”
+1.人和妖都是对象，而人他妈和妖他妈就是构造函数，人他爸和妖他爸就是原型。2.人他妈如何才能正确找到人他爸，而不会找错呢？答案就是prototype属性，人他妈可以通过这条线准确的找到自己的老公（人他爸）。同理，人他爸可以通过constructor属性准确的找到自己的老婆（人他妈）。3.人他妈可以生很多的宝宝，但是这些宝宝">
+<meta property="og:image" content="https://github.com/winnerbe/Markdown.github.git">
+<meta property="og:image" content="http://yoursite.com/chou.jpg">
+<meta property="og:image" content="http://yoursite.com/huangmao.png">
+<meta property="og:image" content="http://yoursite.com/kill.png">
+<meta property="og:updated_time" content="2016-10-05T07:09:22.671Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="面向对象系列--原型">
+<meta name="twitter:description" content="如何理解原型？不纠结任何术语，比如说：“人是人他妈生的，妖是妖他妈生的。”
+1.人和妖都是对象，而人他妈和妖他妈就是构造函数，人他爸和妖他爸就是原型。2.人他妈如何才能正确找到人他爸，而不会找错呢？答案就是prototype属性，人他妈可以通过这条线准确的找到自己的老公（人他爸）。同理，人他爸可以通过constructor属性准确的找到自己的老婆（人他妈）。3.人他妈可以生很多的宝宝，但是这些宝宝">
+<meta name="twitter:image" content="https://github.com/winnerbe/Markdown.github.git">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2015/10/05/面向对象系列-原型/"/>
+
+  <title> 面向对象系列--原型 | chenzq  FE </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">chenzq  FE</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                面向对象系列--原型
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2015-10-05T15:07:50+08:00" content="2015-10-05">
+              2015-10-05
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="如何理解原型？"><a href="#如何理解原型？" class="headerlink" title="如何理解原型？"></a>如何理解原型？</h2><h3 id="不纠结任何术语，比如说：“人是人他妈生的，妖是妖他妈生的。”"><a href="#不纠结任何术语，比如说：“人是人他妈生的，妖是妖他妈生的。”" class="headerlink" title="不纠结任何术语，比如说：“人是人他妈生的，妖是妖他妈生的。”"></a>不纠结任何术语，比如说：“人是人他妈生的，妖是妖他妈生的。”</h3><p><img src="https://github.com/winnerbe/Markdown.github.git" alt=""></p>
+<h4 id="1-人和妖都是对象，而人他妈和妖他妈就是构造函数，人他爸和妖他爸就是原型。"><a href="#1-人和妖都是对象，而人他妈和妖他妈就是构造函数，人他爸和妖他爸就是原型。" class="headerlink" title="1.人和妖都是对象，而人他妈和妖他妈就是构造函数，人他爸和妖他爸就是原型。"></a>1.人和妖都是对象，而人他妈和妖他妈就是构造函数，人他爸和妖他爸就是原型。</h4><h4 id="2-人他妈如何才能正确找到人他爸，而不会找错呢？答案就是prototype属性，人他妈可以通过这条线准确的找到自己的老公（人他爸）。同理，人他爸可以通过constructor属性准确的找到自己的老婆（人他妈）。"><a href="#2-人他妈如何才能正确找到人他爸，而不会找错呢？答案就是prototype属性，人他妈可以通过这条线准确的找到自己的老公（人他爸）。同理，人他爸可以通过constructor属性准确的找到自己的老婆（人他妈）。" class="headerlink" title="2.人他妈如何才能正确找到人他爸，而不会找错呢？答案就是prototype属性，人他妈可以通过这条线准确的找到自己的老公（人他爸）。同理，人他爸可以通过constructor属性准确的找到自己的老婆（人他妈）。"></a>2.人他妈如何才能正确找到人他爸，而不会找错呢？答案就是prototype属性，人他妈可以通过这条线准确的找到自己的老公（人他爸）。同理，人他爸可以通过constructor属性准确的找到自己的老婆（人他妈）。</h4><h4 id="3-人他妈可以生很多的宝宝，但是这些宝宝只有一个粑粑。这就是原型的唯一性。"><a href="#3-人他妈可以生很多的宝宝，但是这些宝宝只有一个粑粑。这就是原型的唯一性。" class="headerlink" title="3.人他妈可以生很多的宝宝，但是这些宝宝只有一个粑粑。这就是原型的唯一性。"></a>3.人他妈可以生很多的宝宝，但是这些宝宝只有一个粑粑。这就是原型的唯一性。</h4><h4 id="4-通过人可以找到人他爸，在通过人他爸找到人他爸他爸，…，这样一条链就叫做原型链。"><a href="#4-通过人可以找到人他爸，在通过人他爸找到人他爸他爸，…，这样一条链就叫做原型链。" class="headerlink" title="4.通过人可以找到人他爸，在通过人他爸找到人他爸他爸，…，这样一条链就叫做原型链。"></a>4.通过人可以找到人他爸，在通过人他爸找到人他爸他爸，…，这样一条链就叫做原型链。</h4><h4 id="5-原型链并不是无限无尽的，最终人他爸他爸…他爸不是人，而是null，也就是说最终原型链最终指向null。"><a href="#5-原型链并不是无限无尽的，最终人他爸他爸…他爸不是人，而是null，也就是说最终原型链最终指向null。" class="headerlink" title="5.原型链并不是无限无尽的，最终人他爸他爸…他爸不是人，而是null，也就是说最终原型链最终指向null。"></a>5.原型链并不是无限无尽的，最终人他爸他爸…他爸不是人，而是null，也就是说最终原型链最终指向null。</h4><h4 id="6-人他妈生的人长的像人他爸的样子，妖他妈生的妖会像妖他爸那样丑陋，这就叫做继承。"><a href="#6-人他妈生的人长的像人他爸的样子，妖他妈生的妖会像妖他爸那样丑陋，这就叫做继承。" class="headerlink" title="6.人他妈生的人长的像人他爸的样子，妖他妈生的妖会像妖他爸那样丑陋，这就叫做继承。"></a>6.人他妈生的人长的像人他爸的样子，妖他妈生的妖会像妖他爸那样丑陋，这就叫做继承。</h4><p><img src="chou.jpg" alt="" title="人妖"></p>
+<h4 id="7-人继承了人他爸的一切，人他爸继承了人他爸他爸的一切，…，这就是原型链继承。"><a href="#7-人继承了人他爸的一切，人他爸继承了人他爸他爸的一切，…，这就是原型链继承。" class="headerlink" title="7.人继承了人他爸的一切，人他爸继承了人他爸他爸的一切，…，这就是原型链继承。"></a>7.人继承了人他爸的一切，人他爸继承了人他爸他爸的一切，…，这就是原型链继承。</h4><h4 id="8-人恋爱了，她妈让人拿着房产去提亲，人若没有，就问人他爸；人他爸没有，就会问人他爸他爸…，这就是属性搜索原型。"><a href="#8-人恋爱了，她妈让人拿着房产去提亲，人若没有，就问人他爸；人他爸没有，就会问人他爸他爸…，这就是属性搜索原型。" class="headerlink" title="8.人恋爱了，她妈让人拿着房产去提亲，人若没有，就问人他爸；人他爸没有，就会问人他爸他爸…，这就是属性搜索原型。"></a>8.人恋爱了，她妈让人拿着房产去提亲，人若没有，就问人他爸；人他爸没有，就会问人他爸他爸…，这就是属性搜索原型。</h4><h4 id="9-人继承了人他爸的发色，但是人可以来个洗剪吹。那么这就是说对象的属性可以自定义，会覆盖继承得到的属性。"><a href="#9-人继承了人他爸的发色，但是人可以来个洗剪吹。那么这就是说对象的属性可以自定义，会覆盖继承得到的属性。" class="headerlink" title="9.人继承了人他爸的发色，但是人可以来个洗剪吹。那么这就是说对象的属性可以自定义，会覆盖继承得到的属性。"></a>9.人继承了人他爸的发色，但是人可以来个洗剪吹。那么这就是说对象的属性可以自定义，会覆盖继承得到的属性。</h4><h4 id="10-即使人洗剪吹变成了黄毛怪，但也无法改变人他爸的发色。人他妈生的弟弟妹妹不会是黄毛怪，这就是说对象无法改变原型的属性。"><a href="#10-即使人洗剪吹变成了黄毛怪，但也无法改变人他爸的发色。人他妈生的弟弟妹妹不会是黄毛怪，这就是说对象无法改变原型的属性。" class="headerlink" title="10.即使人洗剪吹变成了黄毛怪，但也无法改变人他爸的发色。人他妈生的弟弟妹妹不会是黄毛怪，这就是说对象无法改变原型的属性。"></a>10.即使人洗剪吹变成了黄毛怪，但也无法改变人他爸的发色。人他妈生的弟弟妹妹不会是黄毛怪，这就是说对象无法改变原型的属性。</h4><p><img src="huangmao.png" alt="" title="人妖"></p>
+<h4 id="11-人他爸爱嘚瑟，去趟泰国动个小手术又去趟韩国整个形，虽然还是人他爸，但相比从前，已是回炉再造啦。这就是原型的重写。也是原型的置换。"><a href="#11-人他爸爱嘚瑟，去趟泰国动个小手术又去趟韩国整个形，虽然还是人他爸，但相比从前，已是回炉再造啦。这就是原型的重写。也是原型的置换。" class="headerlink" title="11.人他爸爱嘚瑟，去趟泰国动个小手术又去趟韩国整个形，虽然还是人他爸，但相比从前，已是回炉再造啦。这就是原型的重写。也是原型的置换。"></a>11.人他爸爱嘚瑟，去趟泰国动个小手术又去趟韩国整个形，虽然还是人他爸，但相比从前，已是回炉再造啦。这就是原型的重写。也是原型的置换。</h4><p><img src="kill.png" alt="" title="人妖"></p>
+<h2 id="Code-show-time"><a href="#Code-show-time" class="headerlink" title="!!Code: show time!!"></a>!!Code: show time!!</h2><p>###原型的特性</p>
+<p>####1、不可变性：对象无法修改其原型对象的任何成员</p>
+<p><code>function A() {}</code><br><code>A.prototype.color = &#39;black&#39;;</code><br><code>var a = new A;</code><br><code>a.color = &#39;goldyellow&#39;;</code><br><code>var ad = new A;</code><br><code>console.log(ad.color); // black</code><br><code>console.log(A.prototype.color); // black</code><br><code>console.log(a.color); // goldyellow</code></p>
+<p>####2、唯一性：由同一函数创建出来的所有对象共享一个原型对象</p>
+<p><code>function A() {}</code><br><code>A.prototype.color = &#39;black&#39;;</code><br><code>var a = new A;</code><br><code>var ad = new A;</code><br><code>console.log(a.__proto__ === ad.__proto__); // true</code><br><code>console.log(ad.color); // black</code><br><code>console.log(a.color); // black</code></p>
+<p>####3、动态性</p>
+<p>#####&lt;1</p>
+<p><code>function A() {}</code><br><code>A.prototype.color = &#39;black&#39;;</code><br><code>var a = new A;</code><br><code>var ad = new A;</code><br><code>A.prototype.makefood = function (){ console.log(&#39;做饭饭.&#39;)}</code><br><code>a.makefood(); // 做饭饭</code><br><code>ad.makefood(); // 做饭饭</code></p>
+<p>#####&lt;2</p>
+<p><code>function A() {}</code><br><code>A.prototype.color = &#39;black&#39;;</code><br><code>var a = new A;</code><br><code>A.prototype = {</code><br><code>constructor: A,</code><br><code>makeup: function() {</code><br><code>console.log(&#39;我会化妆.&#39;);</code><br>    <code>}</code><br>    <code>};</code><br><code>var na = new A;</code><br><code>console.log(a.color); // black</code><br><code>a.makeup();// 报错</code><br><code>na.makeup(); // 我会化妆.</code><br><code>console.log(na.color); // undefined</code></p>
+<p>####4、继承性：每一个对象都继承自它的原型对象</p>
+<p><code>function A() {}</code><br><code>A.prototype.color = &#39;black&#39;;</code><br><code>var a = new A;</code><br><code>var na = new A;</code><br><code>console.log(a.color); // black</code><br><code>console.log(na.color);// black</code></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/10/04/手机端开发系列之十/" rel="next" title="手机端开发系列之十--css框架">
+                <i class="fa fa-chevron-left"></i> 手机端开发系列之十--css框架
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="chenzq" />
+          <p class="site-author-name" itemprop="name">chenzq</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#如何理解原型？"><span class="nav-number">1.</span> <span class="nav-text">如何理解原型？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#不纠结任何术语，比如说：“人是人他妈生的，妖是妖他妈生的。”"><span class="nav-number">1.1.</span> <span class="nav-text">不纠结任何术语，比如说：“人是人他妈生的，妖是妖他妈生的。”</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-人和妖都是对象，而人他妈和妖他妈就是构造函数，人他爸和妖他爸就是原型。"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.人和妖都是对象，而人他妈和妖他妈就是构造函数，人他爸和妖他爸就是原型。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-人他妈如何才能正确找到人他爸，而不会找错呢？答案就是prototype属性，人他妈可以通过这条线准确的找到自己的老公（人他爸）。同理，人他爸可以通过constructor属性准确的找到自己的老婆（人他妈）。"><span class="nav-number">1.1.2.</span> <span class="nav-text">2.人他妈如何才能正确找到人他爸，而不会找错呢？答案就是prototype属性，人他妈可以通过这条线准确的找到自己的老公（人他爸）。同理，人他爸可以通过constructor属性准确的找到自己的老婆（人他妈）。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-人他妈可以生很多的宝宝，但是这些宝宝只有一个粑粑。这就是原型的唯一性。"><span class="nav-number">1.1.3.</span> <span class="nav-text">3.人他妈可以生很多的宝宝，但是这些宝宝只有一个粑粑。这就是原型的唯一性。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-通过人可以找到人他爸，在通过人他爸找到人他爸他爸，…，这样一条链就叫做原型链。"><span class="nav-number">1.1.4.</span> <span class="nav-text">4.通过人可以找到人他爸，在通过人他爸找到人他爸他爸，…，这样一条链就叫做原型链。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-原型链并不是无限无尽的，最终人他爸他爸…他爸不是人，而是null，也就是说最终原型链最终指向null。"><span class="nav-number">1.1.5.</span> <span class="nav-text">5.原型链并不是无限无尽的，最终人他爸他爸…他爸不是人，而是null，也就是说最终原型链最终指向null。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-人他妈生的人长的像人他爸的样子，妖他妈生的妖会像妖他爸那样丑陋，这就叫做继承。"><span class="nav-number">1.1.6.</span> <span class="nav-text">6.人他妈生的人长的像人他爸的样子，妖他妈生的妖会像妖他爸那样丑陋，这就叫做继承。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-人继承了人他爸的一切，人他爸继承了人他爸他爸的一切，…，这就是原型链继承。"><span class="nav-number">1.1.7.</span> <span class="nav-text">7.人继承了人他爸的一切，人他爸继承了人他爸他爸的一切，…，这就是原型链继承。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-人恋爱了，她妈让人拿着房产去提亲，人若没有，就问人他爸；人他爸没有，就会问人他爸他爸…，这就是属性搜索原型。"><span class="nav-number">1.1.8.</span> <span class="nav-text">8.人恋爱了，她妈让人拿着房产去提亲，人若没有，就问人他爸；人他爸没有，就会问人他爸他爸…，这就是属性搜索原型。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-人继承了人他爸的发色，但是人可以来个洗剪吹。那么这就是说对象的属性可以自定义，会覆盖继承得到的属性。"><span class="nav-number">1.1.9.</span> <span class="nav-text">9.人继承了人他爸的发色，但是人可以来个洗剪吹。那么这就是说对象的属性可以自定义，会覆盖继承得到的属性。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-即使人洗剪吹变成了黄毛怪，但也无法改变人他爸的发色。人他妈生的弟弟妹妹不会是黄毛怪，这就是说对象无法改变原型的属性。"><span class="nav-number">1.1.10.</span> <span class="nav-text">10.即使人洗剪吹变成了黄毛怪，但也无法改变人他爸的发色。人他妈生的弟弟妹妹不会是黄毛怪，这就是说对象无法改变原型的属性。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#11-人他爸爱嘚瑟，去趟泰国动个小手术又去趟韩国整个形，虽然还是人他爸，但相比从前，已是回炉再造啦。这就是原型的重写。也是原型的置换。"><span class="nav-number">1.1.11.</span> <span class="nav-text">11.人他爸爱嘚瑟，去趟泰国动个小手术又去趟韩国整个形，虽然还是人他爸，但相比从前，已是回炉再造啦。这就是原型的重写。也是原型的置换。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code-show-time"><span class="nav-number">2.</span> <span class="nav-text">!!Code: show time!!</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">chenzq</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

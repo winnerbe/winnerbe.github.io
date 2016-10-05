@@ -235,6 +235,115 @@
             
               
                 
+                <a class="post-title-link" href="/2015/10/05/面向对象系列-原型/" itemprop="url">
+                  面向对象系列--原型
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2015-10-05T15:07:50+08:00" content="2015-10-05">
+              2015-10-05
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="如何理解原型？"><a href="#如何理解原型？" class="headerlink" title="如何理解原型？"></a>如何理解原型？</h2><h3 id="不纠结任何术语，比如说：“人是人他妈生的，妖是妖他妈生的。”"><a href="#不纠结任何术语，比如说：“人是人他妈生的，妖是妖他妈生的。”" class="headerlink" title="不纠结任何术语，比如说：“人是人他妈生的，妖是妖他妈生的。”"></a>不纠结任何术语，比如说：“人是人他妈生的，妖是妖他妈生的。”</h3><p><img src="https://github.com/winnerbe/Markdown.github.git" alt=""></p>
+<h4 id="1-人和妖都是对象，而人他妈和妖他妈就是构造函数，人他爸和妖他爸就是原型。"><a href="#1-人和妖都是对象，而人他妈和妖他妈就是构造函数，人他爸和妖他爸就是原型。" class="headerlink" title="1.人和妖都是对象，而人他妈和妖他妈就是构造函数，人他爸和妖他爸就是原型。"></a>1.人和妖都是对象，而人他妈和妖他妈就是构造函数，人他爸和妖他爸就是原型。</h4><h4 id="2-人他妈如何才能正确找到人他爸，而不会找错呢？答案就是prototype属性，人他妈可以通过这条线准确的找到自己的老公（人他爸）。同理，人他爸可以通过constructor属性准确的找到自己的老婆（人他妈）。"><a href="#2-人他妈如何才能正确找到人他爸，而不会找错呢？答案就是prototype属性，人他妈可以通过这条线准确的找到自己的老公（人他爸）。同理，人他爸可以通过constructor属性准确的找到自己的老婆（人他妈）。" class="headerlink" title="2.人他妈如何才能正确找到人他爸，而不会找错呢？答案就是prototype属性，人他妈可以通过这条线准确的找到自己的老公（人他爸）。同理，人他爸可以通过constructor属性准确的找到自己的老婆（人他妈）。"></a>2.人他妈如何才能正确找到人他爸，而不会找错呢？答案就是prototype属性，人他妈可以通过这条线准确的找到自己的老公（人他爸）。同理，人他爸可以通过constructor属性准确的找到自己的老婆（人他妈）。</h4><h4 id="3-人他妈可以生很多的宝宝，但是这些宝宝只有一个粑粑。这就是原型的唯一性。"><a href="#3-人他妈可以生很多的宝宝，但是这些宝宝只有一个粑粑。这就是原型的唯一性。" class="headerlink" title="3.人他妈可以生很多的宝宝，但是这些宝宝只有一个粑粑。这就是原型的唯一性。"></a>3.人他妈可以生很多的宝宝，但是这些宝宝只有一个粑粑。这就是原型的唯一性。</h4><h4 id="4-通过人可以找到人他爸，在通过人他爸找到人他爸他爸，…，这样一条链就叫做原型链。"><a href="#4-通过人可以找到人他爸，在通过人他爸找到人他爸他爸，…，这样一条链就叫做原型链。" class="headerlink" title="4.通过人可以找到人他爸，在通过人他爸找到人他爸他爸，…，这样一条链就叫做原型链。"></a>4.通过人可以找到人他爸，在通过人他爸找到人他爸他爸，…，这样一条链就叫做原型链。</h4><h4 id="5-原型链并不是无限无尽的，最终人他爸他爸…他爸不是人，而是null，也就是说最终原型链最终指向null。"><a href="#5-原型链并不是无限无尽的，最终人他爸他爸…他爸不是人，而是null，也就是说最终原型链最终指向null。" class="headerlink" title="5.原型链并不是无限无尽的，最终人他爸他爸…他爸不是人，而是null，也就是说最终原型链最终指向null。"></a>5.原型链并不是无限无尽的，最终人他爸他爸…他爸不是人，而是null，也就是说最终原型链最终指向null。</h4><h4 id="6-人他妈生的人长的像人他爸的样子，妖他妈生的妖会像妖他爸那样丑陋，这就叫做继承。"><a href="#6-人他妈生的人长的像人他爸的样子，妖他妈生的妖会像妖他爸那样丑陋，这就叫做继承。" class="headerlink" title="6.人他妈生的人长的像人他爸的样子，妖他妈生的妖会像妖他爸那样丑陋，这就叫做继承。"></a>6.人他妈生的人长的像人他爸的样子，妖他妈生的妖会像妖他爸那样丑陋，这就叫做继承。</h4><p><img src="chou.jpg" alt="" title="人妖"></p>
+<h4 id="7-人继承了人他爸的一切，人他爸继承了人他爸他爸的一切，…，这就是原型链继承。"><a href="#7-人继承了人他爸的一切，人他爸继承了人他爸他爸的一切，…，这就是原型链继承。" class="headerlink" title="7.人继承了人他爸的一切，人他爸继承了人他爸他爸的一切，…，这就是原型链继承。"></a>7.人继承了人他爸的一切，人他爸继承了人他爸他爸的一切，…，这就是原型链继承。</h4><h4 id="8-人恋爱了，她妈让人拿着房产去提亲，人若没有，就问人他爸；人他爸没有，就会问人他爸他爸…，这就是属性搜索原型。"><a href="#8-人恋爱了，她妈让人拿着房产去提亲，人若没有，就问人他爸；人他爸没有，就会问人他爸他爸…，这就是属性搜索原型。" class="headerlink" title="8.人恋爱了，她妈让人拿着房产去提亲，人若没有，就问人他爸；人他爸没有，就会问人他爸他爸…，这就是属性搜索原型。"></a>8.人恋爱了，她妈让人拿着房产去提亲，人若没有，就问人他爸；人他爸没有，就会问人他爸他爸…，这就是属性搜索原型。</h4><h4 id="9-人继承了人他爸的发色，但是人可以来个洗剪吹。那么这就是说对象的属性可以自定义，会覆盖继承得到的属性。"><a href="#9-人继承了人他爸的发色，但是人可以来个洗剪吹。那么这就是说对象的属性可以自定义，会覆盖继承得到的属性。" class="headerlink" title="9.人继承了人他爸的发色，但是人可以来个洗剪吹。那么这就是说对象的属性可以自定义，会覆盖继承得到的属性。"></a>9.人继承了人他爸的发色，但是人可以来个洗剪吹。那么这就是说对象的属性可以自定义，会覆盖继承得到的属性。</h4><h4 id="10-即使人洗剪吹变成了黄毛怪，但也无法改变人他爸的发色。人他妈生的弟弟妹妹不会是黄毛怪，这就是说对象无法改变原型的属性。"><a href="#10-即使人洗剪吹变成了黄毛怪，但也无法改变人他爸的发色。人他妈生的弟弟妹妹不会是黄毛怪，这就是说对象无法改变原型的属性。" class="headerlink" title="10.即使人洗剪吹变成了黄毛怪，但也无法改变人他爸的发色。人他妈生的弟弟妹妹不会是黄毛怪，这就是说对象无法改变原型的属性。"></a>10.即使人洗剪吹变成了黄毛怪，但也无法改变人他爸的发色。人他妈生的弟弟妹妹不会是黄毛怪，这就是说对象无法改变原型的属性。</h4><p><img src="huangmao.png" alt="" title="人妖"></p>
+<h4 id="11-人他爸爱嘚瑟，去趟泰国动个小手术又去趟韩国整个形，虽然还是人他爸，但相比从前，已是回炉再造啦。这就是原型的重写。也是原型的置换。"><a href="#11-人他爸爱嘚瑟，去趟泰国动个小手术又去趟韩国整个形，虽然还是人他爸，但相比从前，已是回炉再造啦。这就是原型的重写。也是原型的置换。" class="headerlink" title="11.人他爸爱嘚瑟，去趟泰国动个小手术又去趟韩国整个形，虽然还是人他爸，但相比从前，已是回炉再造啦。这就是原型的重写。也是原型的置换。"></a>11.人他爸爱嘚瑟，去趟泰国动个小手术又去趟韩国整个形，虽然还是人他爸，但相比从前，已是回炉再造啦。这就是原型的重写。也是原型的置换。</h4><p><img src="kill.png" alt="" title="人妖"></p>
+<h2 id="Code-show-time"><a href="#Code-show-time" class="headerlink" title="!!Code: show time!!"></a>!!Code: show time!!</h2><p>###原型的特性</p>
+<p>####1、不可变性：对象无法修改其原型对象的任何成员</p>
+<p><code>function A() {}</code><br><code>A.prototype.color = &#39;black&#39;;</code><br><code>var a = new A;</code><br><code>a.color = &#39;goldyellow&#39;;</code><br><code>var ad = new A;</code><br><code>console.log(ad.color); // black</code><br><code>console.log(A.prototype.color); // black</code><br><code>console.log(a.color); // goldyellow</code></p>
+<p>####2、唯一性：由同一函数创建出来的所有对象共享一个原型对象</p>
+<p><code>function A() {}</code><br><code>A.prototype.color = &#39;black&#39;;</code><br><code>var a = new A;</code><br><code>var ad = new A;</code><br><code>console.log(a.__proto__ === ad.__proto__); // true</code><br><code>console.log(ad.color); // black</code><br><code>console.log(a.color); // black</code></p>
+<p>####3、动态性</p>
+<p>#####&lt;1</p>
+<p><code>function A() {}</code><br><code>A.prototype.color = &#39;black&#39;;</code><br><code>var a = new A;</code><br><code>var ad = new A;</code><br><code>A.prototype.makefood = function (){ console.log(&#39;做饭饭.&#39;)}</code><br><code>a.makefood(); // 做饭饭</code><br><code>ad.makefood(); // 做饭饭</code></p>
+<p>#####&lt;2</p>
+<p><code>function A() {}</code><br><code>A.prototype.color = &#39;black&#39;;</code><br><code>var a = new A;</code><br><code>A.prototype = {</code><br><code>constructor: A,</code><br><code>makeup: function() {</code><br><code>console.log(&#39;我会化妆.&#39;);</code><br>    <code>}</code><br>    <code>};</code><br><code>var na = new A;</code><br><code>console.log(a.color); // black</code><br><code>a.makeup();// 报错</code><br><code>na.makeup(); // 我会化妆.</code><br><code>console.log(na.color); // undefined</code></p>
+<p>####4、继承性：每一个对象都继承自它的原型对象</p>
+<p><code>function A() {}</code><br><code>A.prototype.color = &#39;black&#39;;</code><br><code>var a = new A;</code><br><code>var na = new A;</code><br><code>console.log(a.color); // black</code><br><code>console.log(na.color);// black</code></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2015/10/04/手机端开发系列之十/" itemprop="url">
                   手机端开发系列之十--css框架
                 </a>
@@ -1208,120 +1317,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/10/04/手机端开发/" itemprop="url">
-                  手机端开发系列之一-基础的概念解析
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2015-10-04T11:08:07+08:00" content="2015-10-04">
-              2015-10-04
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="手机端开发基础"><a href="#手机端开发基础" class="headerlink" title="手机端开发基础"></a>手机端开发基础</h3><p>对于手机端的开发首先来理解一些概念上的一些东西。</p>
-<blockquote>
-<p>这就是一个故事。</p>
-</blockquote>
-<h4 id="1-屏幕"><a href="#1-屏幕" class="headerlink" title="1.屏幕"></a>1.屏幕</h4><p>移动设备与PC设备最大的差异在于<code>屏幕</code>，这主要体现在屏幕<code>尺寸</code>和<code>屏幕分辨率</code>两个方面。通常我们所指的屏幕尺，实际上指的是屏幕<code>对角线的长度</code>。</p>
-<p>而分辨率则一般用<code>像素</code>来度量，表示屏幕水平和垂直方向的像素数，例如1920*1080指的是屏幕垂直方向和水平方向分别有1920和1080个像素点而构成。</p>
-<h4 id="2-像素"><a href="#2-像素" class="headerlink" title="2.像素"></a>2.像素</h4><p><code>物理像素</code>指的是屏幕渲染图像的最小单位，不可人为进行改变，其值大小决定了屏幕渲染图像的品质，我们以上所讨论的都指的是物理像素。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// 获取屏幕的物理像素尺寸</div><div class="line">window.screen.width;</div><div class="line">window.screen.height;</div><div class="line">// 部分移动设备下获取会有错误</div></pre></td></tr></table></figure>
-<p><code>CSS像素</code>指的是通过CSS进行网页布局时用到的单位，其默认值(PC端)是和物理像素保持一致的（1个单位的CSS像素等于1个单位的物理像素），但是我们可通缩放来改变其大小。</p>
-<p><code>浏览器窗口</code>尺寸是CSS像素来度量的，部分浏览器存在兼容问题（IE低版本无此属性），但是可以忽略这些细节。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// 获取浏览器窗口尺寸</div><div class="line">window.innerWidth;</div><div class="line">window.innerHeight;</div><div class="line">// 此值大小包含滚动条的大小</div></pre></td></tr></table></figure>
-<p>我们需要理解的是物理像素和CSS像素的一个关系，1个物理像素并不总是等于一个CSS像素通过调整浏览器缩放比例，所以存在3种情况。</p>
-<h4 id="3-长度单位"><a href="#3-长度单位" class="headerlink" title="3.长度单位"></a>3.长度单位</h4><p>在Web开发中可以使用px（像素）、em、pt（点）、in（英寸）、cm（厘米）做为长度单位，我们最常用px（像素）做为长度单位。<br>我们可以将上述的几种长度单位划分成<code>相对长度单位</code>和<code>绝对长度单位</code>。</p>
-<p>iPhone3G/S和iPhone4/S的屏幕尺寸都为3.5英寸（in）但是屏幕分辨率却分别为480<em>320px、960</em>480px，<br>由此我们可以得出<code>英寸是一个绝对长度单位</code>，而<code>像素是一个相对长度单位</code>（像素并没有固定的长度)。</p>
-<h4 id="4-像素的密度"><a href="#4-像素的密度" class="headerlink" title="4.像素的密度"></a>4.像素的密度</h4><p><code>DPI（Dots Per Inch）</code>是印刷行业中用来表示打印机每英寸可以喷的墨汁点数，计算机显示设备从打印机中借鉴了DPI的概念。</p>
-<p>由于计算机显示设备中的最小单位不是墨汁点而是像素，所以用<code>PPI（Pixels Per Inch）</code>值来表示屏幕每英寸的像素数量，我们将<code>PPI、DPI</code>都称为<code>像素密度</code>，但PPI应用更广泛，DPI在Android设备比较常见。<br>利用 勾股定理 我们可以计算得出PPI：<code>如IPHONE 4 (960^2+640^2)/3.5</code>所以屏幕尺寸固定的话 PPI的值越大画面就更好，更清晰。</p>
-<h4 id="5-独立像素"><a href="#5-独立像素" class="headerlink" title="5.独立像素"></a>5.独立像素</h4><p>随着技术发展，设备不断更新，出现了不同PPI的屏幕共存的状态（iPhone3G/S为163，iPhone4/S为326），这时像素不再是统一的度量单位，会造成同样尺寸的图像在不同PPI设备上的显示大小不一样。</p>
-<p>做为用户是不会关心这些细节的，他们只是希望在不同PPI的设备上看到的图像内容差不多大小，所以这时我们需要一个新的单位，这个新的单位能够保证图像内容在不同的PPI设备看上去大小应该差不多，这就是<code>独立像素</code>，<code>IOS设备上叫PT(Point)</code>，<code>Android设备上叫DIP(Device independent Pixel)或DP</code>。</p>
-<p>举例说明就是iPhone 3G（PPI为163）1dp = 1px，iPhone 4（PPI为326）1dp = 2px。</p>
-<p>这个对应（比例）关系是操作系统确定并处理，通过<code>window.devicePixelRatio</code>可以获得该比例值。</p>
-<h4 id="6-二倍图"><a href="#6-二倍图" class="headerlink" title="6.二倍图"></a>6.二倍图</h4><p>这个是开发的时候，为了解决在不同的设备上，因为像素的不同，小图在（iPhone3上用的图）高的PPI（在iPhone上用）是会被拉伸，就变得模糊，所以就要用一个大的图来</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1367,7 +1362,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
