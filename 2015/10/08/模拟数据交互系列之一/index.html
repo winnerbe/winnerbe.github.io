@@ -1,0 +1,603 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="了解基础部分的相关概念软件的基本架构
+C/S： Client Server，如：FoxMail  qq ,  263 即时通讯需要去下载一个安装包，客户端程序需要自己去编写。
+B/S： BrowserServer(需要打开浏览器，通过浏览器访问的软件)天猫 ，世纪佳缘网等一些网站。
+
+bs 架构与cs 架构的区别:CS 架构：
+    - 升级麻烦
+    - 开发成本高
+    - 性能快
+BS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="模拟数据交互系列之一--基础的相关概念">
+<meta property="og:url" content="http://yoursite.com/2015/10/08/模拟数据交互系列之一/index.html">
+<meta property="og:site_name" content="chenzq  FE">
+<meta property="og:description" content="了解基础部分的相关概念软件的基本架构
+C/S： Client Server，如：FoxMail  qq ,  263 即时通讯需要去下载一个安装包，客户端程序需要自己去编写。
+B/S： BrowserServer(需要打开浏览器，通过浏览器访问的软件)天猫 ，世纪佳缘网等一些网站。
+
+bs 架构与cs 架构的区别:CS 架构：
+    - 升级麻烦
+    - 开发成本高
+    - 性能快
+BS">
+<meta property="og:updated_time" content="2016-10-08T05:32:50.103Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="模拟数据交互系列之一--基础的相关概念">
+<meta name="twitter:description" content="了解基础部分的相关概念软件的基本架构
+C/S： Client Server，如：FoxMail  qq ,  263 即时通讯需要去下载一个安装包，客户端程序需要自己去编写。
+B/S： BrowserServer(需要打开浏览器，通过浏览器访问的软件)天猫 ，世纪佳缘网等一些网站。
+
+bs 架构与cs 架构的区别:CS 架构：
+    - 升级麻烦
+    - 开发成本高
+    - 性能快
+BS">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2015/10/08/模拟数据交互系列之一/"/>
+
+  <title> 模拟数据交互系列之一--基础的相关概念 | chenzq  FE </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">chenzq  FE</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                模拟数据交互系列之一--基础的相关概念
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2015-10-08T13:04:08+08:00" content="2015-10-08">
+              2015-10-08
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="了解基础部分的相关概念"><a href="#了解基础部分的相关概念" class="headerlink" title="了解基础部分的相关概念"></a>了解基础部分的相关概念</h2><h3 id="软件的基本架构"><a href="#软件的基本架构" class="headerlink" title="软件的基本架构"></a>软件的基本架构</h3><ol>
+<li><strong>C/S</strong>： Client Server，如：FoxMail  qq ,  263 即时通讯需要去下载一个安装包，客户端程序需要自己去编写。</li>
+<li><strong>B/S</strong>： BrowserServer(需要打开浏览器，通过浏览器访问的软件)<br>天猫 ，世纪佳缘网等一些网站。</li>
+</ol>
+<h4 id="bs-架构与cs-架构的区别"><a href="#bs-架构与cs-架构的区别" class="headerlink" title="bs 架构与cs 架构的区别:"></a>bs 架构与cs 架构的区别:</h4><pre><code>CS 架构：
+    - 升级麻烦
+    - 开发成本高
+    - 性能快
+BS 架构
+    - 升级方便
+    - 开发成本低
+    -  性能要慢一点
+</code></pre><h3 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h3><p>具有向服务器 <em>索取服务能力的终端</em>，如比如手机、电脑等，通过安装不同的客户端软件，可以获取不同的服务，比如通过QQ获得即时通讯服务、通过迅雷获得下载服务等。<br>常见的客户端软件： <em>浏览器</em>、QQ、迅雷、Foxmail等。<br>以浏览器为宿主环境，结合 HTML、CSS、Javascript等技术，而进行的一系列开发，通常称之为 <em>前端开发</em>。</p>
+<h3 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h3><blockquote>
+<pre><code>服务器就是一个软件装在一台计算机里头
+</code></pre><h4 id="1-服务器类型"><a href="#1-服务器类型" class="headerlink" title="1. 服务器类型"></a>1. 服务器类型</h4></blockquote>
+<p>按照不同的划分标准，服务可划分为以下类型：</p>
+<ol>
+<li>按 <strong>服务类型</strong>可分为：文件服务器、数据库服务器、邮件服务器，Web 服务器等；</li>
+<li>按 <strong>操作系统</strong>可分为：Linux服务器、Windows服务器等；</li>
+<li>按 <strong>应用软件</strong>可分为 Apache服务器、Nginx 服务器、IIS服务器、Tomcat服务器、Node服务器等。</li>
+</ol>
+<h4 id="2-服务器软件"><a href="#2-服务器软件" class="headerlink" title="2. 服务器软件"></a>2. 服务器软件</h4><p>使计算机具备提供  <em>某种服务能力的应用软件</em>，称为服务器软件，通过安装相应的服务软件，然后进行配置后就可以使计算具备了提供某种服务的能力。<br>常见的服务器web 服务器软件有：</p>
+<ul>
+<li>web 服务器：Apache、Nginx、IIS、Tomcat、NodeJS等；<br>Apache 使用量最大的一个服务器。</li>
+<li>HTTP服务器<br>即网站服务器，主要提供文档(文本、图片、视频、音频)浏览服务，一般安装Apache、Nginx服务器软件。</li>
+</ul>
+<h3 id="网络的基础"><a href="#网络的基础" class="headerlink" title="网络的基础"></a>网络的基础</h3><h4 id="1-IP地址"><a href="#1-IP地址" class="headerlink" title="1 IP地址"></a>1 IP地址</h4><p>所谓IP地址就是给每个连接在互联网上的主机分配的一个32位地址。(就像每部手机能正常通话需要一个号码一样)<br>查看本机IP地址 ping、ipconfig、ifconfig</p>
+<h4 id="2-域名"><a href="#2-域名" class="headerlink" title="2 域名"></a>2 域名</h4><p>由于IP地址基于数字，不方便记忆，于是便用域名来代替IP地址，域名是一个IP地址的“面具”<br>查看域名对应的IP地址 ping</p>
+<h4 id="3-DNS服务-Domain-Name-System"><a href="#3-DNS服务-Domain-Name-System" class="headerlink" title="3 DNS服务 Domain Name System"></a>3 DNS服务 Domain Name System</h4><p><strong>DNS记录了 IP 地址和域名的映射（对应）关系</strong>；<br>查找优先级本机hosts文件、DNS服务器<br><em>访问过程</em><br>比如我们访问<a href="http://www.baidu.com" target="_blank" rel="external">http://www.baidu.com</a> ，首先会到本机的hosts文件当中进行相应的查找，没有找到，然后去dns 服务器上面去找.找到对应的ip 地址，根据ip 地址定位到互联网上面的主机，根据端口定位到服务。然后由主机完成响应，一般我们都是响应一个html 页面，浏览器得到这个页面，解析这个页面，然后一张网页就出现在我们的面前了。</p>
+<h4 id="4-端口"><a href="#4-端口" class="headerlink" title="4 端口"></a>4 端口</h4><p>端口号是计算机与外界通讯交流的出口，每个端口对应不同的服务。<br>现实生活中，银行不同的窗口办理不同的业务。<br>查看端口占用情况 netstat -an<br>常见端口号 80、8080、3306、21、22</p>
+<h3 id="静态资源与动态资源"><a href="#静态资源与动态资源" class="headerlink" title="静态资源与动态资源"></a>静态资源与动态资源</h3><p>我们可以把服务器上面存放的文件都理解为资源。一种是静态资源，一种是动态资源。我们可以通过浏览器去访问我们的资源，那什么是静态资源，什么是动态资源勒。</p>
+<p><strong>静态资源</strong>：可以直接通过浏览器打开。比如我们的css，js ，html,image<br><strong>动态资源</strong>：php，jsp，asp。比如我们去访问一个服务器上面的动态资源php</p>
+<p>服务器需要把动态资源转换成静态资源然后响应给客户端浏览器。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/10/08/面向对象系列之三/" rel="next" title="面向对象系列之三">
+                <i class="fa fa-chevron-left"></i> 面向对象系列之三
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/10/08/模拟数据交互系列之二-搭建wamp工具/" rel="prev" title="模拟数据交互系列之二--搭建wamp工具">
+                模拟数据交互系列之二--搭建wamp工具 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="chenzq" />
+          <p class="site-author-name" itemprop="name">chenzq</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-name">Artikel</span>
+            </a>
+          </div>
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#了解基础部分的相关概念"><span class="nav-number">1.</span> <span class="nav-text">了解基础部分的相关概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#软件的基本架构"><span class="nav-number">1.1.</span> <span class="nav-text">软件的基本架构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#bs-架构与cs-架构的区别"><span class="nav-number">1.1.1.</span> <span class="nav-text">bs 架构与cs 架构的区别:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#客户端"><span class="nav-number">1.2.</span> <span class="nav-text">客户端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务器"><span class="nav-number">1.3.</span> <span class="nav-text">服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-服务器类型"><span class="nav-number">1.3.1.</span> <span class="nav-text">1. 服务器类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-服务器软件"><span class="nav-number">1.3.2.</span> <span class="nav-text">2. 服务器软件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络的基础"><span class="nav-number">1.4.</span> <span class="nav-text">网络的基础</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-IP地址"><span class="nav-number">1.4.1.</span> <span class="nav-text">1 IP地址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-域名"><span class="nav-number">1.4.2.</span> <span class="nav-text">2 域名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-DNS服务-Domain-Name-System"><span class="nav-number">1.4.3.</span> <span class="nav-text">3 DNS服务 Domain Name System</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-端口"><span class="nav-number">1.4.4.</span> <span class="nav-text">4 端口</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#静态资源与动态资源"><span class="nav-number">1.5.</span> <span class="nav-text">静态资源与动态资源</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">chenzq</span>
+</div>
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

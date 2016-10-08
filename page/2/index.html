@@ -235,6 +235,348 @@
             
               
                 
+                <a class="post-title-link" href="/2015/10/04/手机端开发系列之六/" itemprop="url">
+                  手机端开发系列之六--调试工具
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2015-10-04T16:15:45+08:00" content="2015-10-04">
+              2015-10-04
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="调试工具"><a href="#调试工具" class="headerlink" title="调试工具"></a>调试工具</h2><ol>
+<li>模拟测试<br>现代主流浏览器均支持移动开发模拟调试，通常按F12可以调起，其使用也比较简单，可以帮我们方便快捷定位问题。</li>
+<li>测试工具<br>模拟调试可以满足大部分的开发调试任务，但是由于移动设备种类繁多，环境也十分复杂模拟调试容易出现差错，所以真机调试变的非常必要。</li>
+</ol>
+<p>有两种方法可以实现真机调试：</p>
+<ul>
+<li>将做好的网页上传至服务器或者本地搭建服务器，然后移动设备通过网络来访问。</li>
+<li>借助第三方的调试工具，如<code>weinre、debuggap、ghostlab</code>等<br>真机调试必须保证移动设备同服务器间的网络是相通的。</li>
+</ul>
+<p>这个就是直接打开ghostlab然后扫码就可以了，，只要你用的是那个软件就看的懂这句话</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/10/04/手机端开发系列之五/" itemprop="url">
+                  手机端开发系列之五--手机事件
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2015-10-04T15:39:34+08:00" content="2015-10-04">
+              2015-10-04
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="手机触屏的事件"><a href="#手机触屏的事件" class="headerlink" title="手机触屏的事件"></a>手机触屏的事件</h2><blockquote>
+<p><strong>事件驱动着页面的变化</strong></p>
+</blockquote>
+<h3 id="事件的类型"><a href="#事件的类型" class="headerlink" title="事件的类型"></a>事件的类型</h3><p>1.touchstart: 手指触摸屏幕时触发<br>2.touchmove: 手指在屏幕上移动时触发<br>3.touchend: 手指离开屏幕时触发</p>
+<h3 id="事件的对象"><a href="#事件的对象" class="headerlink" title="事件的对象"></a>事件的对象</h3><ul>
+<li>touches: 位于屏幕上的所有手指的列表</li>
+<li>targetTouches: 位于该元素上的所有手指的列表 </li>
+<li>changedTouches：touchstart时包含刚与触摸屏接触的触点，touchend时包含离开触摸屏的触点<br><code>注：没有对比出touches同targetTouches的差异，推荐使用targetTouches</code></li>
+</ul>
+<h3 id="touch-的对象"><a href="#touch-的对象" class="headerlink" title="touch 的对象"></a>touch 的对象</h3><ul>
+<li>clientX/Y手指相对 layout viewport的水平/垂直像素距离</li>
+<li>pageX/Y手指相对于layout viewport的水平/垂直像素距离（包含滚动）</li>
+<li>screenX/Y手指相对于layout viewport的水平/垂直像素距离（包含滚动）</li>
+</ul>
+<p>target手指最初与屏幕接触时的元素<br>移动开发通常会设置<meta name="viewport" content="width=device-width, initial-scale=1">，这时这三对坐标值是完全一样的。</p>
+<h3 id="click延时"><a href="#click延时" class="headerlink" title="click延时"></a>click延时</h3><p>早期移动设备浏览器网页时内容非常小，为了增强用户体验，苹果公司专门为移动设备设计了双击放大的功能，确保用户可以非常方便的放大网页内容，但是当用户单击一个按钮时，移动设备会延时（约300ms）执行，判断是单击还是双击。用触屏事件可以解决这个问题。</p>
+<h3 id="手势的分装-–zepto-js"><a href="#手势的分装-–zepto-js" class="headerlink" title="手势的分装 –zepto.js"></a>手势的分装 –zepto.js</h3><blockquote>
+<p>手机上的jq</p>
+</blockquote>
+<p>zeptojs为我们封装了常的触屏事件，需要touch模块支持，默认没有构建此模，我们可以自定义构建。<br>1.安装Nodejs环境<br>2.下载zepto.js<br>3.解压缩<br>4.cmd命令行进入解压缩后的目录<br>5.执行npm install 命令<br>这个make是在我们的这个源代码的目录下的一个文件。<br>6.编辑make文件，添加自定义模块（只要把我们想要的这个模块名字加进去就可以了）并保存<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">modules = (env[&apos;MODULES&apos;]||&apos;zepto event ajax form &apos;).split(&apos; &apos;)</div></pre></td></tr></table></figure></p>
+<p>7.然后执行命令 npm run-script dist<br>这个时候在我们的这个源码的目录之下就会出现一个目录这个目录就是dist.<br>8查看目录dist即构建好的zepto.js<br>注：关于命令行的使用<br>cd 切换目录<br>dir 查看当前目录<br>e:  切换到e盘<br>f:  切换到f盘<br>先切换盘符再使用cd目录</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/10/04/手机端开发系列之四/" itemprop="url">
+                  手机端开发系列之四--媒体查询
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2015-10-04T14:11:57+08:00" content="2015-10-04">
+              2015-10-04
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="媒体查询"><a href="#媒体查询" class="headerlink" title="媒体查询"></a>媒体查询</h2><blockquote>
+<p>针对不同的手机设备做出不同的CSS样式</p>
+</blockquote>
+<h3 id="媒体类型"><a href="#媒体类型" class="headerlink" title="媒体类型"></a>媒体类型</h3><p>可以通过媒体类型对不同的设备指定不同的样式，一般我们使用screen。</p>
+<ol>
+<li>all–用于所有的设备。</li>
+<li>print–用于打印机或打印机预览</li>
+<li>screen–用于电脑屏幕，平板电脑，只能手机等。</li>
+</ol>
+<h3 id="媒体的特性"><a href="#媒体的特性" class="headerlink" title="媒体的特性"></a>媒体的特性</h3><blockquote>
+<p>判断的条件和依据。</p>
+</blockquote>
+<ol>
+<li>width–定义输出设备中的页面可见区域的宽度。</li>
+<li>heigh–定义输出设备中的页面可见区域的高度。</li>
+<li>min-width–定义输出设备中的页面最小可见区域的宽度。</li>
+<li>min-height–定义输出设备中的页面最小可见区域的高度。</li>
+<li>max-width–定义输出设备中的页面最大可见区域的宽度。</li>
+<li>max-height–定义输出设备中的页面最大可见区域的高度。</li>
+<li>device-width–定义输出设备屏幕可见的宽度。</li>
+<li>device-height–定义输出设备屏幕可见的高度。</li>
+<li>aspect-ratio–定义输出设备中的页面可是区域的宽度和高度的比率。</li>
+<li>device-aspect-ratio–定义设备中的屏幕可是宽度和高度的比率。</li>
+</ol>
+<h3 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h3><p>1.<code>and</code> 可以将多个媒体特性连接到一起，相当于“且”的意思。<br>2.<code>not</code> 排除某个媒体类型，相当于“非”的意思，可以省略。<br>3.<code>only</code>指定某个特定的媒体类型，可以省略。</p>
+<h3 id="引入的方式"><a href="#引入的方式" class="headerlink" title="引入的方式"></a>引入的方式</h3><p>1.link方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;link href=&quot;./6-1.css&quot; media=&quot;only screen and (max-width: 320px)&quot;&gt;</div></pre></td></tr></table></figure></p>
+<p>2.@media方法（写在CSS里）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">@media only screen and (width: 360px) &#123;</div><div class="line">    html &#123;</div><div class="line">        font-size: 18px;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>基本上就这句话，符合就执行这句话。</p>
+<h3 id="常用的特性"><a href="#常用的特性" class="headerlink" title="常用的特性"></a>常用的特性</h3><p>1、width / height 完全等于layout viewport。<br>2、max-width / max-height 小于等于layout viewport。<br>3、min-width / min-height 大于等于layout viewport。<br>4、device-width / device-height 完全等于ideal viewport。<br>5、orientation: portrait | landscape 肖像/全景模式。<br>…..<a href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Media_queries" target="_blank" rel="external">还有其它</a></p>
+<h3 id="window-resize"><a href="#window-resize" class="headerlink" title="window.resize"></a>window.resize</h3><p>定义和用法</p>
+<p>当调整浏览器窗口的大小时，发生 resize 事件。<br>resize() 方法触发 resize 事件，或规定当发生 resize 事件时运行的函数。<br>当改变了那个浏览的宽度或者是高度的时候。</p>
+<p>在做每个手机不同分辨率的时候改变手机的类型很经常用这个</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2015/10/04/手机开发系列之三/" itemprop="url">
                   手机端开发系列之三--适配
                 </a>
@@ -712,7 +1054,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
