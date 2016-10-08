@@ -235,6 +235,217 @@
             
               
                 
+                <a class="post-title-link" href="/2015/10/04/手机端开发系列之八/" itemprop="url">
+                  手机端开发系列之八--移动类库
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2015-10-04T16:56:14+08:00" content="2015-10-04">
+              2015-10-04
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="移动的类库"><a href="#移动的类库" class="headerlink" title="移动的类库"></a>移动的类库</h2><h2 id="swiper-js"><a href="#swiper-js" class="headerlink" title="swiper.js"></a>swiper.js</h2><p>1.<a href="https://github.com/nolimits4web/Swiper/" target="_blank" rel="external">下载swiper.js，</a><br>2.其<a href="http://www.swiper.com.cn/" target="_blank" rel="external">中文网站</a>非常详细介绍了其使用方法</p>
+<h2 id="swipe-js"><a href="#swipe-js" class="headerlink" title="swipe.js"></a>swipe.js</h2><p>1.<a href="https://github.com/thebird/Swipe" target="_blank" rel="external">下载swipe.js</a><br>2.html结构要求有三层结构，</p>
+<p><strong>注意结构的要求还有对应的CSS样式</strong></p>
+<h2 id="fastclick-js"><a href="#fastclick-js" class="headerlink" title="fastclick.js"></a>fastclick.js</h2><p>在移动设备上为了提升click的响应速度，我们选择了使用Zepto事件封装的tap来进行模拟，但是这会带来一个副作用，这个副作用就是<code>“点透”</code>，(自行查阅)<br>从上可以看出Zepto.js有不完善的地方，并且我们有时也希望我们的移动版页面在PC端上也可用，但是PC端是不支持touch事件的，这时我们面临的问题是即提升click在移动设备上的响应速度，又不能使用Zepto.js的tap事件，这时fastclick可以解决这个问题。</p>
+<ol>
+<li><a href="https://github.com/ftlabs/fastclick" target="_blank" rel="external">下载fastclick</a></li>
+<li>引入lib目录下的fastclick.js</li>
+<li>设用方法即可，</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">$(&apos;.demo&apos;).on(&apos;click&apos;, function () &#123;</div><div class="line">        alert(&apos;不会得到快速响应&apos;);</div><div class="line">    &#125;);</div><div class="line">    // 引入引插件可以解决click延时问题</div><div class="line">    // 代表的含义是body元素以内所有被添加了</div><div class="line">    // click事件元素，都会得到快速响应</div><div class="line">    // FastClick.attach(document.body);</div><div class="line">    // 代表的含义是只有在.box元素以内的click事件</div><div class="line">    // 会得到一个快速响应</div><div class="line">    FastClick.attach(document.querySelector(&apos;.box&apos;));</div></pre></td></tr></table></figure>
+<h2 id="isSroll-js"><a href="#isSroll-js" class="headerlink" title="isSroll.js"></a>isSroll.js</h2><p>一个可以实现客户端原生滚动效果的类库。</p>
+<p>1.<a href="https://github.com/cubiq/iscroll" target="_blank" rel="external">下载iScroll</a><br>2.build目录下提供了不同版本的iScroll，可根据情况选择使用<br>3.html要求有3层结构</p>
+<p><strong>注意：下载下来会有文档，直接查看文档就可以了</strong></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/10/04/手机端开发系列之七/" itemprop="url">
+                  手机端开发系列之七--less
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2015-10-04T16:24:22+08:00" content="2015-10-04">
+              2015-10-04
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="css预处理器–less"><a href="#css预处理器–less" class="headerlink" title="css预处理器–less"></a>css预处理器–less</h2><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>CSS 预处理器是一种语言，用来为 CSS 增加一些编程的的特性，无需考虑浏览器的兼容性问题，并且你可以在 CSS 中使用变量、简单的程序逻辑、函数等等在编程语言中的一些基本技巧，可以让你的 CSS 更简洁，适应性更强，代码更直观等诸多好处。<br>常见的CSS预处理器有：<code>LESS、SASS、Stylus</code>等<br>其使用方法大致相同，我们在这里以LESS为例进行学习</p>
+<h3 id="less"><a href="#less" class="headerlink" title="less"></a>less</h3><h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>1.安装Nodejs环境 Node Package Manager (验证 node -v  npm -v)<br>2.打开控制台（cmd），执行npm install -g less (验证 lessc -v)<br>3.执行 npm install -g less-plugin-clean-css<br>4.命令行编译 lessc path/xxx.less path/xxx.css</p>
+<h4 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h4><p>一般都会借助于编辑器插件来完成编译任务，以sublime_text为例<br>1.ctrl+shit+p打开命令面板<br>2.输入install package然后回车<br>3.安装 LESS、lessc、Less2Css三个插件<br>4.alt+s快捷键即可实现编译</p>
+<h4 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h4><p>1.变量</p>
+<p>格式：@变量名: 值，定义完成后可以重复使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">@color: red;//可以重复的使用</div><div class="line">    .nav&#123;</div><div class="line">        backgroundColor:@color;</div><div class="line">    &#125;</div><div class="line">    .header&#123;</div><div class="line">        background:@color;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>2.混合编程</p>
+<p>我们可以像使用函数一样来使用CSS、<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">.box-sizing()&#123;</div><div class="line">  -webkit-box-sizing: border-box;</div><div class="line">  -moz-box-sizing: border-box;</div><div class="line">  box-sizing: border-box;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.box&#123;</div><div class="line">    .box-sizing;//调用函数；</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>3.嵌套可以非常方便的管理我们的CSS层级关系</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">.header&#123;</div><div class="line">    color:red;</div><div class="line">    .nav&#123;</div><div class="line">        .....</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="浏览器中使用"><a href="#浏览器中使用" class="headerlink" title="浏览器中使用"></a>浏览器中使用</h3><p>我们可以引入一个less.js文件，实现实时的解析，而不必每次修改都要编译，最后完成所有开发任务后，再通过编辑器编译成css文件。<br>1.<a href="https://raw.githubusercontent.com/less/less.js/v2.5.3/dist/less.min.js" target="_blank" rel="external">下载</a> 然后引入less.js<br>2.引入xx.less文件，如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;link rel=&quot;stylesheet/less&quot; type=&quot;text/css&quot; href=&quot;styles.less&quot; /&gt;</div></pre></td></tr></table></figure></p>
+<p>注意：<code>rel属性必须指定成stylesheet/less</code>，并且<code>styles.less要先于less.js引入</code>。<br>必须以服务器方式访问，可以放到study目录下，或者webstrom自带服务器功能，或者我们的 ghostlab调试工具的服务器。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2015/10/04/手机端开发系列之六/" itemprop="url">
                   手机端开发系列之六--调试工具
                 </a>
@@ -1054,7 +1265,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
