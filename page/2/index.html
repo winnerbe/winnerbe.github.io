@@ -235,6 +235,243 @@
             
               
                 
+                <a class="post-title-link" href="/2015/10/04/手机开发系列之三/" itemprop="url">
+                  手机端开发系列之三--适配
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2015-10-04T13:12:12+08:00" content="2015-10-04">
+              2015-10-04
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="手机端开发–适配"><a href="#手机端开发–适配" class="headerlink" title="手机端开发–适配"></a>手机端开发–适配</h2><h3 id="屏幕适配"><a href="#屏幕适配" class="headerlink" title="屏幕适配"></a>屏幕适配</h3><p>经过分析我们得到，移动页面最理想的状态是，避免滚动条且不被默认缩放处理，我们可以通过设置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=&quot;viewport&quot; content=&quot;&quot;&gt;</div></pre></td></tr></table></figure></p>
+<p>来进行控制，并改变浏览器默认的layout viewport的宽度。</p>
+<h3 id="避免滚动"><a href="#避免滚动" class="headerlink" title="避免滚动"></a>避免滚动</h3><p>我们知道，滚动条是 layout viewport 相对于 ideal viewport 的，所以只要设置 layout viewport 小于或等于 ideal viewport，即<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width&quot;&gt;</div></pre></td></tr></table></figure></p>
+<p>经测试发现我们并没有完全的解决滚动条的问题，原因在于页面的宽度.box {width: 1024px;}设置了一个绝对的宽度造成的，要解决这个问题我们可以设置一个百分比（100%）的宽度，</p>
+<h3 id="避免缩放"><a href="#避免缩放" class="headerlink" title="避免缩放"></a>避免缩放</h3><p>1.设置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=&quot;viewport&quot; content=&quot;initial-scale=1&quot;&gt;</div></pre></td></tr></table></figure></p>
+<p>这时我们发现网页没有被浏览器设置缩放。<br>2.设置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width&quot;&gt;</div></pre></td></tr></table></figure></p>
+<p>这时我们发现网页也没有被浏览器设设置缩放。<br>当我们设置width=device-width，也达到了initial-scale=1的效果，得知其实 initial-scale = ideal viewport / layout viewport。</p>
+<p>两种方式都可以控制缩放，开发中一般同时设置width=device-width和initial-scale=1.0<a href="http://www.cnblogs.com/2050/p/3877280.html" target="_blank" rel="external">移动前端开发之viewport深度理解</a><br>即mate标签：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="常见的适配"><a href="#常见的适配" class="headerlink" title="常见的适配"></a>常见的适配</h3><ol>
+<li><p>百分比适配</p>
+<ul>
+<li>设置<meta name="viewport" content="width=device-width, initial-scale=1"></li>
+<li>设置页面宽度为百分比</li>
+<li>关于百分比，我们需要重新认识CSS里百分比的使用。<br>// 测试下列属性设置为百分比<br>width参照父元素的宽度<br>height参照父元素的高度<br>padding参照父元素的宽度<br>border不支持百分比设置<br>margin参照父元素的宽度</li>
+</ul>
+</li>
+<li><p>rem 适配</p>
+<ul>
+<li>设置<meta name="viewport" content="width=device-width, initial-scale=1"></li>
+<li>设置页面元素宽度单位为 rem 或 em<br>注：此方案比较灵活，我们的案例将采用这种方案<br>关于em和rem<br><em>em</em> 相对长度单位，其参照当前元素字号大小，如果当前元素未设置字号则会继承其祖先元素字号大小 例如 .box {font-size: 16px;} 则 1em = 16px .box {font-size: 32px;} 则 1em = 32px，0.5em = 16px</li>
+</ul>
+</li>
+</ol>
+<p><em>rem</em> 相对长度单位，其参照根元素(html)字号大小 例如 html {font-size: 16px;} 则 1rem = 16px html {font-size: 32px;} 则 1rem = 32px，0.5rem = 16px;  <strong>注</strong>：所有浏览器默认字号都是16px（某些安卓手机可以调置系统字号后，浏览器默认字号会受影响）</p>
+<h4 id="原理：例子"><a href="#原理：例子" class="headerlink" title="原理：例子"></a>原理：例子</h4><p>假设有一个UI的稿件是640px的（一般来说是640和750的）其中有个小人是16px的，要把他放到不同的手机设备上显示，在不同的手机上的尺寸是不一样的。那么我们是怎么去实现的呢？怎么计算出这个UI的稿件在不同手机上的大小的呢？</p>
+<p>1.把UI妹子的稿件分成若干份（分成20份比较好算）每一份是32px，小人占的是比例是0.5</p>
+<ol>
+<li>如果这个手机iPhone3，它的分辨率是320，也分成20份，每一份是16px。那么这个小人要显示的大小就是 16*0.5=8px; 实际上就是一个按比例显示的。</li>
+</ol>
+<p>怎么做的呢？ 这里涉及媒体查询上的一点知识：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">@media only screen and (width: 320px) &#123;</div><div class="line">    /* 320 / 20 = 16px */</div><div class="line">    html &#123;</div><div class="line">        font-size: 16px;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@media only screen and (width: 360px) &#123;</div><div class="line">    /* 360 / 20 = 18px */</div><div class="line">    html &#123;</div><div class="line">        font-size: 18px;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><em>只要用上了这个你就可以随心所欲的用你的单位px了</em></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/10/04/手机端开发系列之二/" itemprop="url">
+                  手机端开发系列之二--视口
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2015-10-04T12:54:22+08:00" content="2015-10-04">
+              2015-10-04
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="手机端开发–视口"><a href="#手机端开发–视口" class="headerlink" title="手机端开发–视口"></a>手机端开发–视口</h3><p>什么是视口？视口（viewport）是用来约束你网站中最顶级块元素<html>的，即它决定了<html>的大小。<br>pc视口和手机视口的区别：在于这个pc的视口受那个浏览器窗口的限制，手机的视口可以自己设置</html></html></p>
+<h4 id="移动端浏览器"><a href="#移动端浏览器" class="headerlink" title="移动端浏览器"></a>移动端浏览器</h4><p>移动端开发主要是针对IOS和Android两个操作系统平台的，除此之外还有Windows Phone。<br>移动端主要可以分成三大类，系统自带浏览器、应用内置浏览器、第三方浏览器<br><code>系统浏览器</code>：指跟随移动设备操作系统一起安装的浏览器。</p>
+<p><code>应用内置浏览器</code>：通常在移动设备上都会安装一些APP例如QQ、微信、微博、淘宝等，这些APP里往往会内置一个浏览器，我们称这个浏览器为应用内置浏览器（也叫WebView），这个内置的浏览器一般功能比较简单，并且客户端开发人员可以更改这个浏览器的某些设置，在我们理实的开发里这个浏览器很重要。</p>
+<p><code>第三方浏览器</code>：指安装在手机的浏览器如FireFox、Chrome、360等等。<br>在IOS和Android操作系统上自带浏览器、应用内置浏览器都是基础Webkit内核的。</p>
+<p><em>思考：移动端页面要达到什么效果才最合理？</em> </p>
+<h4 id="viewport"><a href="#viewport" class="headerlink" title="viewport"></a>viewport</h4><p>我们知道移动设备屏幕普遍都是比较小的，但是大部分的网站又都是为PC设备来设计的，要想让移动设备也可以正常显示网页，移动设备不得不做一些处理，只要viewport足够大（块级元素html就会比较大），就能保证原本为PC设备设计的网页也能在移动设备上正常显示，移动设备厂商也的确是这样来处理的。</p>
+<p>在移动设备上viewport不再受限于浏览器的窗口，而是允许开发人员自由设置viewport的大小，通常浏览器会设置一个默认大小的viewport，同时为了能够正常显示那些专为PC设计的网页，一般这个值的大小会大于屏幕的尺寸。 (这个值一般为980px)<br>这样的会我们网页设计的那些网页在移动端就不会错乱了。但是</p>
+<p><strong>在iPhone5s和部分Android中我们发现页面内容（文字、图片）被缩放了（变的非常小），而在部分安卓设备中则出现了滚动条。</strong></p>
+<h4 id="layout-viewport-amp-ideal-viewport"><a href="#layout-viewport-amp-ideal-viewport" class="headerlink" title="layout viewport&amp;ideal viewport"></a>layout viewport&amp;ideal viewport</h4><p><em>为什么呢？</em> 要解释上面的原因，需要进一步对移动设备的viewport进行分析，移动设备上有2个viewport，分别是layout viewport和ideal viewport。</p>
+<ol>
+<li><code>layout viewport</code>（布局视口）指的是我们可以进行网页布局区域的大小，同样是以CSS像素做为计量单位，可以通过下面方式获取 :<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">// 获取layout viewport</div><div class="line">document.documentElement.clientWidth;</div><div class="line">document.documentElement.clientHeight;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>通过前面介绍我们知道，如果要保证为PC设计的网页在移动设备上布局不发生错乱，移动设备会默认设置一个较大的viewport（如IOS为980px），这个viewport实际指的是layout viewport，我们也可改变这个默认值，后面将会介绍。</p>
+<ol>
+<li><code>ideal viewport</code>（理想视口）设备屏幕区域，以dp（或pt、px）做为计量单位，不同的设备具有不同大小的理想视口，其大小是不可能被改变的，通过下面方式可以获取。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// 获取ideal viewport有两种情形</div><div class="line">// 新设备</div><div class="line">window.screen.width;</div><div class="line">window.screen.height;</div><div class="line">// 老设备</div><div class="line">window.screen.width / window.devicePixelRatio;</div><div class="line">window.screen.height / window.devicePixelRatio;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><strong>并不总是正确的，然而在实际开发我们一般无需获取这个值具体大小。</strong></p>
+<p>在理解了上述三个viewport后我们来解释为什么网页会被缩放或出现水平滚动条，其原因在于移动设备浏览器会默认设置一个layout viewport，并且这个值会大于ideal viewport，那么我们也知道ideal viewport就是屏幕区域，layout viewport是我们布局网页的区域，那么最终layout viewport最终是要显示在ideal viewport里的，而layout viewport大于ideal viewport时，于是就出现滚动条了，那么为什么有的移动设备网页内容被缩放了呢？移动设备厂商认为将网页完整显示给用户才最合理，而不该出现滚动条，所以就将layout viewport进行了缩放，使其恰好完整显示在ideal viewport（屏幕）里，其缩放比例为ideal viewport / layout viewport。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2015/10/04/手机端开发/" itemprop="url">
                   手机端开发系列之一-基础的概念解析
                 </a>
@@ -475,7 +712,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-count">14</span>
               <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
