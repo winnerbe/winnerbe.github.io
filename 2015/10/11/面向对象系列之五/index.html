@@ -1,0 +1,614 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="函数的四种调用模式1、普通函数执行
+this -&amp;gt; window
+声明一个函数后，就直接调用12345function foo() &amp;#123;   console.log(1);   console.log(this === window);//true &amp;#125; foo();
+
+
+2. 方法调用模式
+this —&amp;gt; 该方法的调用者
+通过一个对象来调用方法1234567var o">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面向对象系列之五">
+<meta property="og:url" content="http://yoursite.com/2015/10/11/面向对象系列之五/index.html">
+<meta property="og:site_name" content="chenzq  FE">
+<meta property="og:description" content="函数的四种调用模式1、普通函数执行
+this -&amp;gt; window
+声明一个函数后，就直接调用12345function foo() &amp;#123;   console.log(1);   console.log(this === window);//true &amp;#125; foo();
+
+
+2. 方法调用模式
+this —&amp;gt; 该方法的调用者
+通过一个对象来调用方法1234567var o">
+<meta property="og:updated_time" content="2016-10-11T03:02:47.591Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="面向对象系列之五">
+<meta name="twitter:description" content="函数的四种调用模式1、普通函数执行
+this -&amp;gt; window
+声明一个函数后，就直接调用12345function foo() &amp;#123;   console.log(1);   console.log(this === window);//true &amp;#125; foo();
+
+
+2. 方法调用模式
+this —&amp;gt; 该方法的调用者
+通过一个对象来调用方法1234567var o">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2015/10/11/面向对象系列之五/"/>
+
+  <title> 面向对象系列之五 | chenzq  FE </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">chenzq  FE</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                面向对象系列之五
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2015-10-11T11:01:12+08:00" content="2015-10-11">
+              2015-10-11
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="函数的四种调用模式"><a href="#函数的四种调用模式" class="headerlink" title="函数的四种调用模式"></a>函数的四种调用模式</h2><h3 id="1、普通函数执行"><a href="#1、普通函数执行" class="headerlink" title="1、普通函数执行"></a>1、普通函数执行</h3><ul>
+<li>this -&gt; window</li>
+<li>声明一个函数后，就直接调用<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function foo() &#123;</div><div class="line">   console.log(1);</div><div class="line">   console.log(this === window);//true</div><div class="line"> &#125;</div><div class="line"> foo();</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="2-方法调用模式"><a href="#2-方法调用模式" class="headerlink" title="2. 方法调用模式"></a>2. 方法调用模式</h3><ul>
+<li>this —&gt; 该方法的调用者</li>
+<li>通过一个对象来调用方法<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var obj = &#123;</div><div class="line">   sayHi: function() &#123;</div><div class="line">     console.log(&quot;hello, girl.&quot;);</div><div class="line">     console.log(this === obj);//true</div><div class="line">   &#125;</div><div class="line"> &#125;;</div><div class="line"> obj.sayHi();</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="3-构造函数模式"><a href="#3-构造函数模式" class="headerlink" title="3. 构造函数模式"></a>3. 构造函数模式</h3><ul>
+<li>this -&gt; 当前创建出来的对象</li>
+<li>配合new操作符 来 调用函数<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function fn(name, age, gender) &#123;</div><div class="line">  this.name = name;</div><div class="line">  this.age = age;</div><div class="line">  this.gender = gender;</div><div class="line">  console.log(this);</div><div class="line">&#125;</div><div class="line">var f = new fn(&apos;f&apos;);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="4-call-apply-上下文-模式"><a href="#4-call-apply-上下文-模式" class="headerlink" title="4. call/apply(上下文)模式"></a>4. call/apply(上下文)模式</h3><ul>
+<li>this -&gt; 用户动态指定的    <ul>
+<li>指定call or apply 方法的第一个参数</li>
+</ul>
+</li>
+<li>区别：<ul>
+<li><fn>.call(thisObj, arg1, arg2, …,argN)：thisObj为 this的指向。之后为形参列表，就是fn在执行时的实参列表</fn></li>
+<li><fn>.apply(thisObj, [实参]): thisObj 为 this的指向，数组参数为 fn在执行时的实参</fn></li>
+</ul>
+</li>
+<li>注意：在非严格模式下，如果thisObj 赋值为 null 或者不传实参，此时this -&gt; window 对象，就相当于 普通函数执行模式。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var o = &#123;&#125;;</div><div class="line"> fn.call(o, &apos;o&apos;, 18, &apos;man&apos;);</div><div class="line"> fn.apply( o, [&apos;o&apos;, 18, &apos;man&apos;] );</div><div class="line"> console.log(o);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="5-上下文模式的应用"><a href="#5-上下文模式的应用" class="headerlink" title="5. 上下文模式的应用"></a>5. 上下文模式的应用</h3><pre><code>+ 1 数组的合并
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var arr1 = [1, 2, 3];</div><div class="line">var arr2 = [4, 5 ,6];</div><div class="line">Array.prototype.push.apply(arr1, arr2);</div><div class="line">console.log(arr1);</div></pre></td></tr></table></figure>
+<pre><code>+ 2 借调方法（函数）
+- 借用原生方法
+      + 求数组中的最大值
+      + 获取内置对象类型
+      + 将伪数组变成真数组
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">// a:借用构造函数</div><div class="line">  function child(name, age, gender, address) &#123;</div><div class="line">    parent.call(this, name, age, gender);</div><div class="line">    this.address = address; </div><div class="line">  &#125;</div><div class="line">  var c = new child(&apos;c&apos;, 19, &apos;nicai&apos;, &apos;yueqiu&apos;);</div><div class="line">  console.log(c);</div><div class="line"></div><div class="line">  // b: 借调原生方法</div><div class="line">  var data = [67, 89, 190, 23, 10, 100];</div><div class="line">  // 求data中的最大值</div><div class="line">  var max = Math.max.apply(null, data);</div><div class="line">  console.log(max); // 100</div><div class="line"></div><div class="line">  // c: 获取内置对象类型</div><div class="line">  console.log(typeof 1);</div><div class="line">  console.log(typeof []); // &quot;array&quot;</div><div class="line">  console.log(typeof new Date); //&quot;date&quot;</div><div class="line">  // 功能：如果是内置对象，返回其类型名；eg. [] -&gt; &quot;array&quot;, 1 -&gt; &quot;number&quot;</div><div class="line">  //     如果是自定义对象，就返回&quot;object&quot;.</div><div class="line">  function getType(obj) &#123;</div><div class="line">    // return Object.prototype.toString.call(obj).slice(8, -1).toLowerCase();</div><div class="line">    // var patt = /^\[\w+ (\w+)\]$/;</div><div class="line">    var patt = /^\[object (\w+)\]$/;</div><div class="line">    var str = Object.prototype.toString.call(obj);</div><div class="line">    var match = patt.exec(str);</div><div class="line">    return match[1].toLowerCase();</div><div class="line">  &#125;</div><div class="line">  console.log(getType(/a/));</div></pre></td></tr></table></figure>
+<pre><code>- 借用原生方法
+  + 求数组中的最大值
+  + 获取内置对象类型
+  + 将伪数组变成真数组
+</code></pre><h3 id="6-数组去重"><a href="#6-数组去重" class="headerlink" title="6. 数组去重"></a>6. 数组去重</h3><ul>
+<li>实现思路：<ul>
+<li>声明一个函数实现数组去重，取名为unique；</li>
+<li>判断浏览器是否支持数组的indexOf方法</li>
+<li>如果不支持，就自己实现数组的indexOf方法，并且将其扩展到数组的原型对象上。</li>
+<li>遍历数组，首先判断结果数组ret中是否含有当前遍历到的元素，</li>
+<li>如果没有，就将当前元素添加到ret中。</li>
+<li>循环结束，将ret返回。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">var arr = [1, 2, 2 , &apos;1&apos;];</div><div class="line">    // indexOf</div><div class="line">    function unique(a) &#123;      </div><div class="line">      var ret = [];</div><div class="line">      // 如果不支持indexOf方法</div><div class="line">      // 自己实现数组的indexOf方法，并添加到数组的原型对象上。</div><div class="line">      if( !ret.indexOf )&#123;</div><div class="line">        Array.prototype.indexOf = function(val) &#123;</div><div class="line">          // this指向的就是 indexOf的调用者 （数组对象）</div><div class="line">          // 如果循环顺利执行完，就表示没有val值，返回-1；</div><div class="line">          // 否则返回val在当前数组中的下标值。</div><div class="line">          for(var i = 0,l = this.length; i &lt; l; i++)&#123;</div><div class="line">            if(this[i] === val) return i;</div><div class="line">          &#125;                   </div><div class="line">          return -1;</div><div class="line">        &#125;;</div><div class="line">      &#125;</div><div class="line">      for(var i = 0,l = a.length;i &lt; l; i++)&#123;</div><div class="line">        // 如果ret中不存在当前遍历到的元素，就添加到ret中</div><div class="line">        // 否则就不要添加</div><div class="line">        if( ret.indexOf(a[i]) === -1 )&#123;</div><div class="line">          ret.push(a[i]);</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">      return ret;</div><div class="line">    &#125;</div><div class="line">    console.log(unique(arr));</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/10/11/面向对象系列之四/" rel="next" title="面向对象系列之四">
+                <i class="fa fa-chevron-left"></i> 面向对象系列之四
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="chenzq" />
+          <p class="site-author-name" itemprop="name">chenzq</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-name">Artikel</span>
+            </a>
+          </div>
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#函数的四种调用模式"><span class="nav-number">1.</span> <span class="nav-text">函数的四种调用模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、普通函数执行"><span class="nav-number">1.1.</span> <span class="nav-text">1、普通函数执行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-方法调用模式"><span class="nav-number">1.2.</span> <span class="nav-text">2. 方法调用模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-构造函数模式"><span class="nav-number">1.3.</span> <span class="nav-text">3. 构造函数模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-call-apply-上下文-模式"><span class="nav-number">1.4.</span> <span class="nav-text">4. call/apply(上下文)模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-上下文模式的应用"><span class="nav-number">1.5.</span> <span class="nav-text">5. 上下文模式的应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-数组去重"><span class="nav-number">1.6.</span> <span class="nav-text">6. 数组去重</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">chenzq</span>
+</div>
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
