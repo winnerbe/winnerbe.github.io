@@ -100,7 +100,7 @@ code show time:123456var date = new Date;console.l">
 多态性： 体现在子对象和父对象之间： 在父对象上的同一个行为，在各个子对象中的具体实现不同。
 
 code show time:123456var date = new Date;console.l">
-<meta property="og:updated_time" content="2016-10-08T02:10:10.673Z">
+<meta property="og:updated_time" content="2016-10-11T07:11:38.210Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面向对象系列之二">
 <meta name="twitter:description" content="面向对象系列1. 面向对象的三大特性
@@ -189,7 +189,7 @@ code show time:123456var date = new Date;console.l">
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -199,7 +199,7 @@ code show time:123456var date = new Date;console.l">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -262,7 +262,7 @@ code show time:123456var date = new Date;console.l">
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2015-10-08T09:59:01+08:00" content="2015-10-08">
               2015-10-08
             </time>
@@ -335,21 +335,44 @@ code show time:123456var date = new Date;console.l">
 <li>概念：从当前对象到Object.prototype之间，存在一条层次分明，逐级递进的体现继承关系的链式结构<br>== 这个结构被称为原型链。==</li>
 </ol>
 <h3 id="6-属性搜索原型：-当访问对象成员时"><a href="#6-属性搜索原型：-当访问对象成员时" class="headerlink" title="6. 属性搜索原型： 当访问对象成员时"></a>6. 属性搜索原型： 当访问对象成员时</h3><ol>
+<li><ul>
 <li>首先，在当前对象上查找，如果找到就直接返回（调用），停止查找;</li>
+</ul>
+</li>
+<li><ul>
 <li>如果没有找到，就向其原型对象上查找；如果找到就直接返回（调用），停止查找;</li>
+</ul>
+</li>
+<li><ul>
 <li>如果没有找到，就继续向原型对象的原型对象上查找，直到Object.prototype；</li>
+</ul>
+</li>
+<li><ul>
 <li>如果找到，那么就直接返回（调用），并停止查找；否则返回undefined（报错：xxx is not a function）</li>
+</ul>
+</li>
 </ol>
 <p><em>*注意</em></p>
 <pre><code>- 如果访问对象的某个属性不存在的话，会搜索整个原型链。会导致js性能降低。
 - 在实际开发中，尽量保持一个适度的原型链长度。
 - 兼顾js性能以及代码的可读性可扩展性。
-</code></pre><h3 id="7-Object-prototype介绍"><a href="#7-Object-prototype介绍" class="headerlink" title="7. Object.prototype介绍"></a>7. Object.prototype介绍</h3><pre><code>1》 hasOwnProperty：判断当前对象的指定属性是否为自身的，而不是继承过来的；如果是本身的返回true；否则返回false。
-2》isPrototypeOf：判断当前对象是否为指定对象的原型对象。如果是返回true；否则返回false。
-    如果当前对象出现在指定对象的原型链上就返回true；否则返回false。
-3》propertyIsEnumerable：即判断指定属性是否为自身的，并且该属性也是可枚举的
-    只有这两个条件都满足才返回true；否则返回false。
-</code></pre><h3 id="8-构造函数的执行过程"><a href="#8-构造函数的执行过程" class="headerlink" title="8. 构造函数的执行过程"></a>8. 构造函数的执行过程</h3><ol>
+</code></pre><h3 id="7-Object-prototype介绍"><a href="#7-Object-prototype介绍" class="headerlink" title="7. Object.prototype介绍"></a>7. Object.prototype介绍</h3><ol>
+<li><p>hasOwnProperty：判断当前对象的指定属性是否为自身的，而不是继承过来的；如果是本身的返回true；否则返回false。</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">语法：&lt;object&gt;.hasOwnProperty(&apos;propName&apos;)</div><div class="line">  has: 有</div><div class="line">  own：自己</div><div class="line">  Property ： 属性</div><div class="line"> var o = &#123;name: &apos;tom&apos;&#125;;</div><div class="line"> console.log(o.hasOwnProperty(&apos;name&apos;)); // true</div><div class="line"> console.log(o.hasOwnProperty(&apos;toString&apos;)); // false</div></pre></td></tr></table></figure>
+</li>
+<li><p>isPrototypeOf：判断当前对象是否为指定对象的原型对象。如果是返回true；否则返回false。</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">语法；&lt;a&gt;.isPrototypeOf(&lt;b&gt;);</div><div class="line">&lt;!-- 只要对象a出现在b对象的原型链上就返回true；否则返回false。 --&gt;</div><div class="line">function A() &#123;</div><div class="line">&#125;</div><div class="line">function B() &#123;      </div><div class="line">&#125;</div><div class="line">var a = new A;</div><div class="line">B.prototype = a;</div><div class="line">var b = new B;      </div><div class="line">console.log(a.isPrototypeOf(b)); // false;</div><div class="line">console.log( A.prototype.isPrototypeOf(b));</div><div class="line">// b -&gt; a -&gt; A.prototype -&gt; Object.prototype -&gt; null</div><div class="line">console.log(Object.prototype.isPrototypeOf(a));</div><div class="line">console.log(Object.prototype.isPrototypeOf(b));</div></pre></td></tr></table></figure>
+<p>  如果当前对象出现在指定对象的原型链上就返回true；否则返回false。</p>
+</li>
+<li><p>propertyIsEnumerable：即判断指定属性是否为自身的，并且该属性也是可枚举的</p>
+<pre><code>只有这两个条件都满足才返回true；否则返回false。
+</code></pre><ul>
+<li>// 可枚举？for in遍历出来的属性都是可枚举的。</li>
+<li>// 默认：手动添加属性都是可枚举的，js解析器自动添加的都是不可枚举。</li>
+</ul>
+</li>
+</ol>
+<h3 id="8-构造函数的执行过程"><a href="#8-构造函数的执行过程" class="headerlink" title="8. 构造函数的执行过程"></a>8. 构造函数的执行过程</h3><ol>
 <li>创建了一个空对象obj；</li>
 <li>将obj赋值给this（让this指向obj）</li>
 <li>将当前作用域交给this</li>
@@ -449,10 +472,10 @@ code show time:123456var date = new Date;console.l">
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
+            Übersicht
           </li>
         </ul>
       
@@ -469,7 +492,7 @@ code show time:123456var date = new Date;console.l">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">21</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -527,7 +550,7 @@ code show time:123456var date = new Date;console.l">
 </div>
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">

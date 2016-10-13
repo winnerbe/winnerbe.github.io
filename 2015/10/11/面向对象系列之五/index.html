@@ -104,7 +104,7 @@ this -&amp;gt; window
 2. 方法调用模式
 this —&amp;gt; 该方法的调用者
 通过一个对象来调用方法1234567var o">
-<meta property="og:updated_time" content="2016-10-11T03:02:47.591Z">
+<meta property="og:updated_time" content="2016-10-11T06:20:17.395Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面向对象系列之五">
 <meta name="twitter:description" content="函数的四种调用模式1、普通函数执行
@@ -195,7 +195,7 @@ this —&amp;gt; 该方法的调用者
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -205,7 +205,7 @@ this —&amp;gt; 该方法的调用者
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -268,7 +268,7 @@ this —&amp;gt; 该方法的调用者
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2015-10-11T11:01:12+08:00" content="2015-10-11">
               2015-10-11
             </time>
@@ -332,7 +332,7 @@ this —&amp;gt; 该方法的调用者
       + 求数组中的最大值
       + 获取内置对象类型
       + 将伪数组变成真数组
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">// a:借用构造函数</div><div class="line">  function child(name, age, gender, address) &#123;</div><div class="line">    parent.call(this, name, age, gender);</div><div class="line">    this.address = address; </div><div class="line">  &#125;</div><div class="line">  var c = new child(&apos;c&apos;, 19, &apos;nicai&apos;, &apos;yueqiu&apos;);</div><div class="line">  console.log(c);</div><div class="line"></div><div class="line">  // b: 借调原生方法</div><div class="line">  var data = [67, 89, 190, 23, 10, 100];</div><div class="line">  // 求data中的最大值</div><div class="line">  var max = Math.max.apply(null, data);</div><div class="line">  console.log(max); // 100</div><div class="line"></div><div class="line">  // c: 获取内置对象类型</div><div class="line">  console.log(typeof 1);</div><div class="line">  console.log(typeof []); // &quot;array&quot;</div><div class="line">  console.log(typeof new Date); //&quot;date&quot;</div><div class="line">  // 功能：如果是内置对象，返回其类型名；eg. [] -&gt; &quot;array&quot;, 1 -&gt; &quot;number&quot;</div><div class="line">  //     如果是自定义对象，就返回&quot;object&quot;.</div><div class="line">  function getType(obj) &#123;</div><div class="line">    // return Object.prototype.toString.call(obj).slice(8, -1).toLowerCase();</div><div class="line">    // var patt = /^\[\w+ (\w+)\]$/;</div><div class="line">    var patt = /^\[object (\w+)\]$/;</div><div class="line">    var str = Object.prototype.toString.call(obj);</div><div class="line">    var match = patt.exec(str);</div><div class="line">    return match[1].toLowerCase();</div><div class="line">  &#125;</div><div class="line">  console.log(getType(/a/));</div></pre></td></tr></table></figure>
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">// a:借用构造函数</div><div class="line">  function parent(name,age,gender)&#123;</div><div class="line">    this.name=name;</div><div class="line">    this.age=age;</div><div class="line">    this.gender=gender;</div><div class="line">  &#125;</div><div class="line">  function child(name, age, gender, address) &#123;</div><div class="line">    parent.call(this, name, age, gender);</div><div class="line">    this.address = address; </div><div class="line">  &#125;</div><div class="line">  var c = new child(&apos;c&apos;, 19, &apos;nicai&apos;, &apos;yueqiu&apos;);</div><div class="line">  console.log(c);</div><div class="line"></div><div class="line">  // b: 借调原生方法</div><div class="line">  var data = [67, 89, 190, 23, 10, 100];</div><div class="line">  // 求data中的最大值</div><div class="line">  var max = Math.max.apply(null, data);</div><div class="line">  console.log(max); // 100</div><div class="line"></div><div class="line">  // c: 获取内置对象类型</div><div class="line">  console.log(typeof 1);</div><div class="line">  console.log(typeof []); // &quot;array&quot;</div><div class="line">  console.log(typeof new Date); //&quot;date&quot;</div><div class="line">  // 功能：如果是内置对象，返回其类型名；eg. [] -&gt; &quot;array&quot;, 1 -&gt; &quot;number&quot;</div><div class="line">  //     如果是自定义对象，就返回&quot;object&quot;.</div><div class="line">  function getType(obj) &#123;</div><div class="line">    // return Object.prototype.toString.call(obj).slice(8, -1).toLowerCase();</div><div class="line">    // var patt = /^\[\w+ (\w+)\]$/;</div><div class="line">    var patt = /^\[object (\w+)\]$/;</div><div class="line">    var str = Object.prototype.toString.call(obj);</div><div class="line">    var match = patt.exec(str);</div><div class="line">    return match[1].toLowerCase();</div><div class="line">  &#125;</div><div class="line">  console.log(getType(/a/));</div></pre></td></tr></table></figure>
 <pre><code>- 借用原生方法
   + 求数组中的最大值
   + 获取内置对象类型
@@ -429,10 +429,10 @@ this —&amp;gt; 该方法的调用者
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
+            Übersicht
           </li>
         </ul>
       
@@ -449,7 +449,7 @@ this —&amp;gt; 该方法的调用者
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">21</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -507,7 +507,7 @@ this —&amp;gt; 该方法的调用者
 </div>
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
