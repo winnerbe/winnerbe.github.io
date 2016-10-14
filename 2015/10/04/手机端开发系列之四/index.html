@@ -85,7 +85,7 @@
 
 
 <meta name="description" content="媒体查询
-针对不同的手机设备做出不同的CSS样式
+针对不同的手机设备做出不同的CSS样式code block:
 
 媒体类型可以通过媒体类型对不同的设备指定不同的样式，一般我们使用screen。
 
@@ -98,14 +98,13 @@ screen–用于电脑屏幕，平板电脑，只能手机等。
 
 
 width–定义输出设备中的页面可见区域的宽度。
-heigh–定义输出设备中的页面可见区域的高度。
-min-wid">
+heigh–定义输出设备中的页面可见区域的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="手机端开发系列之四--媒体查询">
 <meta property="og:url" content="http://yoursite.com/2015/10/04/手机端开发系列之四/index.html">
 <meta property="og:site_name" content="chenzq  FE">
 <meta property="og:description" content="媒体查询
-针对不同的手机设备做出不同的CSS样式
+针对不同的手机设备做出不同的CSS样式code block:
 
 媒体类型可以通过媒体类型对不同的设备指定不同的样式，一般我们使用screen。
 
@@ -118,13 +117,12 @@ screen–用于电脑屏幕，平板电脑，只能手机等。
 
 
 width–定义输出设备中的页面可见区域的宽度。
-heigh–定义输出设备中的页面可见区域的高度。
-min-wid">
-<meta property="og:updated_time" content="2016-10-14T07:52:28.362Z">
+heigh–定义输出设备中的页面可见区域的">
+<meta property="og:updated_time" content="2016-10-14T10:31:20.070Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="手机端开发系列之四--媒体查询">
 <meta name="twitter:description" content="媒体查询
-针对不同的手机设备做出不同的CSS样式
+针对不同的手机设备做出不同的CSS样式code block:
 
 媒体类型可以通过媒体类型对不同的设备指定不同的样式，一般我们使用screen。
 
@@ -137,8 +135,7 @@ screen–用于电脑屏幕，平板电脑，只能手机等。
 
 
 width–定义输出设备中的页面可见区域的宽度。
-heigh–定义输出设备中的页面可见区域的高度。
-min-wid">
+heigh–定义输出设备中的页面可见区域的">
 
 
 
@@ -220,7 +217,7 @@ min-wid">
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -230,7 +227,7 @@ min-wid">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -293,7 +290,7 @@ min-wid">
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2015-10-04T14:11:57+08:00" content="2015-10-04">
               2015-10-04
             </time>
@@ -323,7 +320,7 @@ min-wid">
 
       
         <h2 id="媒体查询"><a href="#媒体查询" class="headerlink" title="媒体查询"></a>媒体查询</h2><blockquote>
-<p>针对不同的手机设备做出不同的CSS样式</p>
+<p>针对不同的手机设备做出不同的CSS样式<br>code block:</p>
 </blockquote>
 <h3 id="媒体类型"><a href="#媒体类型" class="headerlink" title="媒体类型"></a>媒体类型</h3><p>可以通过媒体类型对不同的设备指定不同的样式，一般我们使用screen。</p>
 <ol>
@@ -347,8 +344,8 @@ min-wid">
 <li>device-aspect-ratio–定义设备中的屏幕可是宽度和高度的比率。</li>
 </ol>
 <h3 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h3><p>1.<code>and</code> 可以将多个媒体特性连接到一起，相当于“且”的意思。<br>2.<code>not</code> 排除某个媒体类型，相当于“非”的意思，可以省略。<br>3.<code>only</code>指定某个特定的媒体类型，可以省略。</p>
-<h3 id="引入的方式"><a href="#引入的方式" class="headerlink" title="引入的方式"></a>引入的方式</h3><p>1.link方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;link href=&quot;./6-1.css&quot; media=&quot;only screen and (max-width: 320px)&quot;&gt;</div></pre></td></tr></table></figure></p>
-<p>2.@media方法（写在CSS里）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">@media only screen and (width: 360px) &#123;</div><div class="line">    html &#123;</div><div class="line">        font-size: 18px;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="引入的方式"><a href="#引入的方式" class="headerlink" title="引入的方式"></a>引入的方式</h3><p>1.link方法：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"./6-1.css"</span> <span class="attr">media</span>=<span class="string">"only screen and (max-width: 320px)"</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>2.@media方法（写在CSS里）<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">media</span> only screen and (width: <span class="number">360px</span>) &#123;</div><div class="line">    <span class="selector-tag">html</span> &#123;</div><div class="line">        <span class="attribute">font-size</span>: <span class="number">18px</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>基本上就这句话，符合就执行这句话。</p>
 <h3 id="常用的特性"><a href="#常用的特性" class="headerlink" title="常用的特性"></a>常用的特性</h3><p>1、width / height 完全等于layout viewport。<br>2、max-width / max-height 小于等于layout viewport。<br>3、min-width / min-height 大于等于layout viewport。<br>4、device-width / device-height 完全等于ideal viewport。<br>5、orientation: portrait | landscape 肖像/全景模式。<br>…..<a href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Media_queries" target="_blank" rel="external">还有其它</a></p>
 <h3 id="window-resize"><a href="#window-resize" class="headerlink" title="window.resize"></a>window.resize</h3><p>定义和用法</p>
@@ -444,10 +441,10 @@ min-wid">
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
+            Übersicht
           </li>
         </ul>
       
@@ -464,7 +461,7 @@ min-wid">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">22</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -474,7 +471,7 @@ min-wid">
             <div class="site-state-item site-state-tags">
               <a href="/tags">
                 <span class="site-state-item-count">4</span>
-                <span class="site-state-item-name">tags</span>
+                <span class="site-state-item-name">Tags</span>
               </a>
             </div>
           
@@ -529,7 +526,7 @@ min-wid">
 </div>
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">

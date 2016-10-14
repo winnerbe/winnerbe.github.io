@@ -84,22 +84,22 @@
 
 
 
-<meta name="description" content="手机端开发–适配屏幕适配经过分析我们得到，移动页面最理想的状态是，避免滚动条且不被默认缩放处理，我们可以通过设置1&amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;&amp;quot;&amp;gt;
+<meta name="description" content="手机端开发–适配屏幕适配经过分析我们得到，移动页面最理想的状态是，避免滚动条且不被默认缩放处理，我们可以通过设置code block:1&amp;lt;meta name=&quot;viewport&quot; content=&quot;&quot;&amp;gt;
 来进行控制，并改变浏览器默认的layout viewport的宽度。
-避免滚动我们知道，滚动条是 layout viewport 相对于 ideal viewport">
+避免滚动我们知道，滚动条是 layout viewport 相对于 ideal viewport 的，所以只要设置">
 <meta property="og:type" content="article">
 <meta property="og:title" content="手机端开发系列之三--适配">
 <meta property="og:url" content="http://yoursite.com/2015/10/04/手机开发系列之三/index.html">
 <meta property="og:site_name" content="chenzq  FE">
-<meta property="og:description" content="手机端开发–适配屏幕适配经过分析我们得到，移动页面最理想的状态是，避免滚动条且不被默认缩放处理，我们可以通过设置1&amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;&amp;quot;&amp;gt;
+<meta property="og:description" content="手机端开发–适配屏幕适配经过分析我们得到，移动页面最理想的状态是，避免滚动条且不被默认缩放处理，我们可以通过设置code block:1&amp;lt;meta name=&quot;viewport&quot; content=&quot;&quot;&amp;gt;
 来进行控制，并改变浏览器默认的layout viewport的宽度。
-避免滚动我们知道，滚动条是 layout viewport 相对于 ideal viewport">
-<meta property="og:updated_time" content="2016-10-14T07:52:03.958Z">
+避免滚动我们知道，滚动条是 layout viewport 相对于 ideal viewport 的，所以只要设置">
+<meta property="og:updated_time" content="2016-10-14T10:30:40.271Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="手机端开发系列之三--适配">
-<meta name="twitter:description" content="手机端开发–适配屏幕适配经过分析我们得到，移动页面最理想的状态是，避免滚动条且不被默认缩放处理，我们可以通过设置1&amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;&amp;quot;&amp;gt;
+<meta name="twitter:description" content="手机端开发–适配屏幕适配经过分析我们得到，移动页面最理想的状态是，避免滚动条且不被默认缩放处理，我们可以通过设置code block:1&amp;lt;meta name=&quot;viewport&quot; content=&quot;&quot;&amp;gt;
 来进行控制，并改变浏览器默认的layout viewport的宽度。
-避免滚动我们知道，滚动条是 layout viewport 相对于 ideal viewport">
+避免滚动我们知道，滚动条是 layout viewport 相对于 ideal viewport 的，所以只要设置">
 
 
 
@@ -181,7 +181,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -191,7 +191,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -254,7 +254,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2015-10-04T13:12:12+08:00" content="2015-10-04">
               2015-10-04
             </time>
@@ -283,14 +283,14 @@
       
 
       
-        <h2 id="手机端开发–适配"><a href="#手机端开发–适配" class="headerlink" title="手机端开发–适配"></a>手机端开发–适配</h2><h3 id="屏幕适配"><a href="#屏幕适配" class="headerlink" title="屏幕适配"></a>屏幕适配</h3><p>经过分析我们得到，移动页面最理想的状态是，避免滚动条且不被默认缩放处理，我们可以通过设置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=&quot;viewport&quot; content=&quot;&quot;&gt;</div></pre></td></tr></table></figure></p>
+        <h2 id="手机端开发–适配"><a href="#手机端开发–适配" class="headerlink" title="手机端开发–适配"></a>手机端开发–适配</h2><h3 id="屏幕适配"><a href="#屏幕适配" class="headerlink" title="屏幕适配"></a>屏幕适配</h3><p>经过分析我们得到，移动页面最理想的状态是，避免滚动条且不被默认缩放处理，我们可以通过设置<br>code block:<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta <span class="built_in">name</span>=<span class="string">"viewport"</span> content=<span class="string">""</span>&gt;</div></pre></td></tr></table></figure></p>
 <p>来进行控制，并改变浏览器默认的layout viewport的宽度。</p>
-<h3 id="避免滚动"><a href="#避免滚动" class="headerlink" title="避免滚动"></a>避免滚动</h3><p>我们知道，滚动条是 layout viewport 相对于 ideal viewport 的，所以只要设置 layout viewport 小于或等于 ideal viewport，即<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width&quot;&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="避免滚动"><a href="#避免滚动" class="headerlink" title="避免滚动"></a>避免滚动</h3><p>我们知道，滚动条是 layout viewport 相对于 ideal viewport 的，所以只要设置 layout viewport 小于或等于 ideal viewport，即<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta <span class="built_in">name</span>=<span class="string">"viewport"</span> content=<span class="string">"width=device-width"</span>&gt;</div></pre></td></tr></table></figure></p>
 <p>经测试发现我们并没有完全的解决滚动条的问题，原因在于页面的宽度.box {width: 1024px;}设置了一个绝对的宽度造成的，要解决这个问题我们可以设置一个百分比（100%）的宽度，</p>
-<h3 id="避免缩放"><a href="#避免缩放" class="headerlink" title="避免缩放"></a>避免缩放</h3><p>1.设置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=&quot;viewport&quot; content=&quot;initial-scale=1&quot;&gt;</div></pre></td></tr></table></figure></p>
-<p>这时我们发现网页没有被浏览器设置缩放。<br>2.设置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width&quot;&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="避免缩放"><a href="#避免缩放" class="headerlink" title="避免缩放"></a>避免缩放</h3><p>1.设置<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta <span class="built_in">name</span>=<span class="string">"viewport"</span> content=<span class="string">"initial-scale=1"</span>&gt;</div></pre></td></tr></table></figure></p>
+<p>这时我们发现网页没有被浏览器设置缩放。<br>2.设置<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta <span class="built_in">name</span>=<span class="string">"viewport"</span> content=<span class="string">"width=device-width"</span>&gt;</div></pre></td></tr></table></figure></p>
 <p>这时我们发现网页也没有被浏览器设设置缩放。<br>当我们设置width=device-width，也达到了initial-scale=1的效果，得知其实 initial-scale = ideal viewport / layout viewport。</p>
-<p>两种方式都可以控制缩放，开发中一般同时设置width=device-width和initial-scale=1.0<a href="http://www.cnblogs.com/2050/p/3877280.html" target="_blank" rel="external">移动前端开发之viewport深度理解</a><br>即mate标签：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</div></pre></td></tr></table></figure></p>
+<p>两种方式都可以控制缩放，开发中一般同时设置width=device-width和initial-scale=1.0<a href="http://www.cnblogs.com/2050/p/3877280.html" target="_blank" rel="external">移动前端开发之viewport深度理解</a><br>即mate标签：<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta <span class="built_in">name</span>=<span class="string">"viewport"</span> content=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</div></pre></td></tr></table></figure></p>
 <h3 id="常见的适配"><a href="#常见的适配" class="headerlink" title="常见的适配"></a>常见的适配</h3><ol>
 <li><p>百分比适配</p>
 <ul>
@@ -312,7 +312,7 @@
 <ol>
 <li>如果这个手机iPhone3，它的分辨率是320，也分成20份，每一份是16px。那么这个小人要显示的大小就是 16*0.5=8px; 实际上就是一个按比例显示的。</li>
 </ol>
-<p>怎么做的呢？ 这里涉及媒体查询上的一点知识：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">@media only screen and (width: 320px) &#123;</div><div class="line">    /* 320 / 20 = 16px */</div><div class="line">    html &#123;</div><div class="line">        font-size: 16px;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@media only screen and (width: 360px) &#123;</div><div class="line">    /* 360 / 20 = 18px */</div><div class="line">    html &#123;</div><div class="line">        font-size: 18px;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>怎么做的呢？ 这里涉及媒体查询上的一点知识：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">media</span> only screen and (width: <span class="number">320px</span>) &#123;</div><div class="line">    <span class="comment">/* 320 / 20 = 16px */</span></div><div class="line">    <span class="selector-tag">html</span> &#123;</div><div class="line">        <span class="attribute">font-size</span>: <span class="number">16px</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@<span class="keyword">media</span> only screen and (width: <span class="number">360px</span>) &#123;</div><div class="line">    <span class="comment">/* 360 / 20 = 18px */</span></div><div class="line">    <span class="selector-tag">html</span> &#123;</div><div class="line">        <span class="attribute">font-size</span>: <span class="number">18px</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p><em>只要用上了这个你就可以随心所欲的用你的单位px了</em></p>
 
       
@@ -404,10 +404,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
+            Übersicht
           </li>
         </ul>
       
@@ -424,7 +424,7 @@
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">22</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -434,7 +434,7 @@
             <div class="site-state-item site-state-tags">
               <a href="/tags">
                 <span class="site-state-item-count">4</span>
-                <span class="site-state-item-name">tags</span>
+                <span class="site-state-item-name">Tags</span>
               </a>
             </div>
           
@@ -489,7 +489,7 @@
 </div>
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">

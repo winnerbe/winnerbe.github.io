@@ -92,7 +92,7 @@
 <meta property="og:site_name" content="chenzq  FE">
 <meta property="og:description" content="手机端开发–视口什么是视口？视口（viewport）是用来约束你网站中最顶级块元素的，即它决定了的大小。pc视口和手机视口的区别：在于这个pc的视口受那个浏览器窗口的限制，手机的视口可以自己设置
 移动端浏览器移动端开发主要是针对IOS和Android两个操作系统平台的，除此之外还有Windows Phone。移动端主要可以分成三大类，系统自带浏览器、应用内置浏览器、第三方浏览器系统浏览器：指跟随移">
-<meta property="og:updated_time" content="2016-10-14T07:52:06.499Z">
+<meta property="og:updated_time" content="2016-10-14T10:30:37.048Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="手机端开发系列之二--视口">
 <meta name="twitter:description" content="手机端开发–视口什么是视口？视口（viewport）是用来约束你网站中最顶级块元素的，即它决定了的大小。pc视口和手机视口的区别：在于这个pc的视口受那个浏览器窗口的限制，手机的视口可以自己设置
@@ -178,7 +178,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -188,7 +188,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -251,7 +251,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2015-10-04T12:54:22+08:00" content="2015-10-04">
               2015-10-04
             </time>
@@ -290,12 +290,12 @@
 <p><strong>在iPhone5s和部分Android中我们发现页面内容（文字、图片）被缩放了（变的非常小），而在部分安卓设备中则出现了滚动条。</strong></p>
 <h4 id="layout-viewport-amp-ideal-viewport"><a href="#layout-viewport-amp-ideal-viewport" class="headerlink" title="layout viewport&amp;ideal viewport"></a>layout viewport&amp;ideal viewport</h4><p><em>为什么呢？</em> 要解释上面的原因，需要进一步对移动设备的viewport进行分析，移动设备上有2个viewport，分别是layout viewport和ideal viewport。</p>
 <ol>
-<li><code>layout viewport</code>（布局视口）指的是我们可以进行网页布局区域的大小，同样是以CSS像素做为计量单位，可以通过下面方式获取 :<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">// 获取layout viewport</div><div class="line">document.documentElement.clientWidth;</div><div class="line">document.documentElement.clientHeight;</div></pre></td></tr></table></figure>
+<li><code>layout viewport</code>（布局视口）指的是我们可以进行网页布局区域的大小，同样是以CSS像素做为计量单位，可以通过下面方式获取 :<br>code block:<figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 获取layout viewport</span></div><div class="line"><span class="built_in">document</span>.documentElement.clientWidth;</div><div class="line"><span class="built_in">document</span>.documentElement.clientHeight;</div></pre></td></tr></table></figure>
 </li>
 </ol>
 <p>通过前面介绍我们知道，如果要保证为PC设计的网页在移动设备上布局不发生错乱，移动设备会默认设置一个较大的viewport（如IOS为980px），这个viewport实际指的是layout viewport，我们也可改变这个默认值，后面将会介绍。</p>
 <ol>
-<li><code>ideal viewport</code>（理想视口）设备屏幕区域，以dp（或pt、px）做为计量单位，不同的设备具有不同大小的理想视口，其大小是不可能被改变的，通过下面方式可以获取。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// 获取ideal viewport有两种情形</div><div class="line">// 新设备</div><div class="line">window.screen.width;</div><div class="line">window.screen.height;</div><div class="line">// 老设备</div><div class="line">window.screen.width / window.devicePixelRatio;</div><div class="line">window.screen.height / window.devicePixelRatio;</div></pre></td></tr></table></figure>
+<li><code>ideal viewport</code>（理想视口）设备屏幕区域，以dp（或pt、px）做为计量单位，不同的设备具有不同大小的理想视口，其大小是不可能被改变的，通过下面方式可以获取。<figure class="highlight gauss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 获取ideal viewport有两种情形</span></div><div class="line"><span class="comment">// 新设备</span></div><div class="line"><span class="built_in">window</span>.<span class="keyword">screen</span>.width;</div><div class="line"><span class="built_in">window</span>.<span class="keyword">screen</span>.height;</div><div class="line"><span class="comment">// 老设备</span></div><div class="line"><span class="built_in">window</span>.<span class="keyword">screen</span>.width / <span class="built_in">window</span>.devicePixelRatio;</div><div class="line"><span class="built_in">window</span>.<span class="keyword">screen</span>.height / <span class="built_in">window</span>.devicePixelRatio;</div></pre></td></tr></table></figure>
 </li>
 </ol>
 <p><strong>并不总是正确的，然而在实际开发我们一般无需获取这个值具体大小。</strong></p>
@@ -390,10 +390,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
+            Übersicht
           </li>
         </ul>
       
@@ -410,7 +410,7 @@
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">22</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -420,7 +420,7 @@
             <div class="site-state-item site-state-tags">
               <a href="/tags">
                 <span class="site-state-item-count">4</span>
-                <span class="site-state-item-name">tags</span>
+                <span class="site-state-item-name">Tags</span>
               </a>
             </div>
           
@@ -475,7 +475,7 @@
 </div>
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
