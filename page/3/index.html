@@ -236,6 +236,374 @@
             
               
                 
+                <a class="post-title-link" href="/2015/10/08/面向对象系列之三/" itemprop="url">
+                  面向对象系列之三
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2015-10-08T10:00:40+08:00" content="2015-10-08">
+              2015-10-08
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="1-Function的介绍"><a href="#1-Function的介绍" class="headerlink" title="1. Function的介绍"></a>1. Function的介绍</h3><ol>
+<li><p>创建函数的方式</p>
+<pre><code>+ :  声明式
+       function foo() {
+       console.log(arguments);
+        }
+       foo(1, 2, &quot;3&quot;, {name:&apos;jerry&apos;});
+
++ :  表达式
+        var foo = function() {
+        console.log(arguments);
+        };
+        foo(1, 2, &quot;3&quot;, {name:&apos;jerry&apos;}, true);
+
++ :  构造函数：
+Function（arg1, arg2, ...,argN ，body）所有的参数类型均为 字符串；
+arg1, arg2, ...,argN 为可选的参数列表，表示 为 生成函数的形参列表；
+body 为必选参数，表示为 生成函数的 函数体部分。
+var  foo = new Function(&apos;val1&apos;, &apos;val2&apos;, &apos;return val1 + val2;&apos;);
+</code></pre></li>
+<li>由于函数也可以通过Function构造函数来创建，那么函数也是对象；具有<strong>proto</strong>属性</li>
+</ol>
+<h3 id="2-相关结论："><a href="#2-相关结论：" class="headerlink" title="2. 相关结论："></a>2. 相关结论：</h3><pre><code>1.  所有的函数都是Function实例。
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// Object函数的构造函数为 Function</div><div class="line">    console.log(Object.constructor);</div><div class="line">    console.log(Array.constructor);</div><div class="line">    console.log(Date.constructor);</div><div class="line">    console.log(RegExp.constructor);</div><div class="line">    var foo = function() &#123;&#125;;</div><div class="line">    console.log(foo.constructor);</div></pre></td></tr></table></figure>
+
+2. 所有的函数的构造函数为Function;
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">console.log(foo.__proto__ === Function.prototype);</div><div class="line">console.log(Object.__proto__ === Function.prototype);</div><div class="line">console.log(Array.__proto__ === Function.prototype);</div><div class="line">console.log(Date.__proto__ === Function.prototype);</div><div class="line">console.log(RegExp.__proto__ === Function.prototype);</div></pre></td></tr></table></figure>
+
+3.  所有的函数的原型对象 为 Function.prototype.
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">console.log( Function.prototype.__proto__ === Object.prototype );</div><div class="line">console.log( typeof Function.prototype );</div><div class="line">console.log(Function.prototype.prototype);</div><div class="line">// Array -&gt; Function.prototype -&gt; Object.prototype -&gt; null</div></pre></td></tr></table></figure>
+<h3 id="3-小结"><a href="#3-小结" class="headerlink" title="3. 小结"></a>3. 小结</h3><pre><code>将函数    称为 函数对象
+其他对象  称为 普通对象
+</code></pre><h3 id="4-绘制函数的原型链"><a href="#4-绘制函数的原型链" class="headerlink" title="4.  绘制函数的原型链"></a>4.  绘制函数的原型链</h3><h3 id="5-arguments对象属性-这是一个类数组，保存着的是这个"><a href="#5-arguments对象属性-这是一个类数组，保存着的是这个" class="headerlink" title="5. arguments对象属性(这是一个类数组，保存着的是这个)"></a>5. arguments对象属性(这是一个类数组，保存着的是这个)</h3><pre><code>1&gt;  : length 实参的个数
+2&gt;：callee 返回正在执行的函数; 应用在匿名函数递归调用
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var v = (function (n) &#123;</div><div class="line">            if (n &lt; 1) &#123;</div><div class="line">                return undefined;</div><div class="line">            &#125; else if (n === 1 || n === 2) &#123;</div><div class="line">                return 1;</div><div class="line">            &#125; else &#123;</div><div class="line">                return arguments.callee(n - 1) + arguments.callee(n - 2);</div><div class="line">            &#125;</div><div class="line">        &#125;(8));</div><div class="line">        console.log(v);</div></pre></td></tr></table></figure>
+<h3 id="6-函数相关属性"><a href="#6-函数相关属性" class="headerlink" title="6. 函数相关属性"></a>6. 函数相关属性</h3><pre><code>1&gt;：caller 返回调用当前函数的函数
+2&gt;: length 形参的个数
+3&gt;: name   存储函数的名字
+</code></pre><h3 id="7-模拟函数重载"><a href="#7-模拟函数重载" class="headerlink" title="7. 模拟函数重载"></a>7. 模拟函数重载</h3><pre><code>在js中，没有函数重载，只能通过arguments对象进行模拟
+            // 如果函数没有传递实参，就直接打印false；
+    // 如果传递一个实参，就将其直接打印出来；
+    // 如果传递两个实参，就将两个实参拼接起来，在打印出来；
+    // 如果传递一个实参并且类型为 数字的话，就加1，在打印。
+    function foo() {
+        if(arguments.length === 0){
+            console.log(false);
+        } else if(arguments.length === 1){
+            if(typeof arguments[0] === &apos;number&apos;){
+                console.log(arguments[0] + 1);
+            } else {
+                console.log(arguments[0]);
+            }
+        } else if(arguments.length === 2){
+            console.log(arguments[0] + &apos;&apos; + arguments[1]);
+        }
+    }
+    foo();
+    foo(1);
+    foo(&quot;JQK&quot;);
+    foo(&apos;A&apos;, &apos;2&apos;);
+</code></pre><h3 id="8-函数递归："><a href="#8-函数递归：" class="headerlink" title="8. 函数递归："></a>8. 函数递归：</h3><pre><code>1&gt;  概念：函数调用自身
+2&gt; 经典递归案例
+    a:  等差数列第n项值
+    b: fibonacci数列第n项值
+var v = (function (n) {
+        if (n &lt; 1) {
+            return undefined;
+        } else if (n === 1 || n === 2) {
+            return 1;
+        } else {
+            return arguments.callee(n - 1) + arguments.callee(n - 2);
+        }
+    }(8));
+    console.log(v);
+</code></pre><h3 id="9-词法作用域：-规定变量的作用域是由变量声明的位置决定，而不是由使用变量的位置决定。"><a href="#9-词法作用域：-规定变量的作用域是由变量声明的位置决定，而不是由使用变量的位置决定。" class="headerlink" title="9. 词法作用域： 规定变量的作用域是由变量声明的位置决定，而不是由使用变量的位置决定。"></a>9. 词法作用域： 规定变量的作用域是由变量声明的位置决定，而不是由使用变量的位置决定。</h3><pre><code>在词法作用域中，只有函数可以分割作用域。在函数内部是一个完整作用域。与外界隔离
+也就是，在函数内部可以访问函数外部的数据；但是函数外部无法访问内部的数据。
+</code></pre><h3 id="10-变量名（函数名）提升"><a href="#10-变量名（函数名）提升" class="headerlink" title="10. 变量名（函数名）提升"></a>10. 变量名（函数名）提升</h3><pre><code>在js预解析阶段执行的操作。
+js本身是边解析边执行的。
+</code></pre><h3 id="11-在预解析阶段："><a href="#11-在预解析阶段：" class="headerlink" title="11. 在预解析阶段："></a>11. 在预解析阶段：</h3><pre><code>首先，分析代码语法，如果有语法错误，就直接抛出异常。
+其次，将变量名以及函数声明提升 到当前作用域最顶端。
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">// 1: 全局变量是window对象的属性</div><div class="line">    // 2：变量名提升</div><div class="line">    var a;</div><div class="line">    if( &apos;a&apos; in window )&#123;</div><div class="line">    a = 10;</div><div class="line">    &#125; else &#123;</div><div class="line">    a = 20;</div><div class="line">    &#125;</div><div class="line">    console.log(a);//  10     </div><div class="line">    var a = 10;</div><div class="line">    if( a in window )&#123;</div><div class="line">        a = 10;</div><div class="line">    &#125; else &#123;</div><div class="line">        a = 20;</div><div class="line">    &#125;</div><div class="line">    console.log(a);//  10</div></pre></td></tr></table></figure>
+<h3 id="12-in运算符"><a href="#12-in运算符" class="headerlink" title="12. in运算符"></a>12. in运算符</h3><pre><code>1》 规则：前面的属性名字，要用字符串来表示；如果为变量，那么会将变量的值隐式转换成字符串，然后去判断变量的值是否为指定对象的属性（可以为继承过来的属性）。
+2》注意： 后面的参数必须为对象；否则报错。
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/10/08/面向对象系列之二/" itemprop="url">
+                  面向对象系列之二
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2015-10-08T09:59:01+08:00" content="2015-10-08">
+              2015-10-08
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="面向对象系列"><a href="#面向对象系列" class="headerlink" title="面向对象系列"></a>面向对象系列</h2><h3 id="1-面向对象的三大特性"><a href="#1-面向对象的三大特性" class="headerlink" title="1. 面向对象的三大特性"></a>1. 面向对象的三大特性</h3><ol>
+<li>封装性： 将复杂的实现过程包装、隐藏起来，给用户提供使用接口。</li>
+<li>继承性： 在js中，继承是体现在对象与对象之间的关系，继承就是指一个对象有权去访问别的对象上的成员。</li>
+<li>多态性： 体现在子对象和父对象之间： 在父对象上的同一个行为，在各个子对象中的具体实现不同。</li>
+</ol>
+<h4 id="code-show-time"><a href="#code-show-time" class="headerlink" title="code show time:"></a>code show time:</h4><pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var date = new Date;</div><div class="line">console.log(date.toString());</div><div class="line">var arr = [1, 3, 5];</div><div class="line">console.log(arr.toString());</div><div class="line">var o = &#123;name: &apos;shelly&apos;&#125;;</div><div class="line">console.log(o.toString());</div></pre></td></tr></table></figure>
+</code></pre><p><strong> 在这个里头你就可以看出相同的一个函数，在不同的调用结果就是不一样的，所以在js之中，多态就是 函数的重载和重写 </strong></p>
+<h3 id="2-继承的实现方式："><a href="#2-继承的实现方式：" class="headerlink" title="2. 继承的实现方式："></a>2. 继承的实现方式：</h3><ul>
+<li>基于原型</li>
+</ul>
+<ol>
+<li><p>a: 扩展原型 ： 在原有的原型上进行相应的扩展，实现继承。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">// 1&gt;基于原型</div><div class="line">a: 基于原型: 扩展原型</div><div class="line">function A() &#123;</div><div class="line">    </div><div class="line">&#125;</div><div class="line">var a = new A;</div><div class="line">A.prototype.printA = function() &#123;</div><div class="line">    console.log(&apos;a&apos;);</div><div class="line">&#125;;</div><div class="line">a.printA();// a</div><div class="line">a -&gt; A.prototype</div></pre></td></tr></table></figure>
+</li>
+<li><p>b: 置换原型：将要被继承的对象，直接替换掉原有的原型，实现继承</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">// b: 基于原型: 置换原型</div><div class="line">        function parent() &#123;</div><div class="line">            this.name = &apos;tom&apos;;</div><div class="line">        &#125;</div><div class="line">        parent.prototype.printC = function() &#123;</div><div class="line">            console.log(&apos;c&apos;);</div><div class="line">            console.log(this.name);</div><div class="line">        &#125;;</div><div class="line">        function child() &#123;  </div><div class="line">        &#125;</div><div class="line">        child.prototype = new parent;</div><div class="line">        var c = new child;</div><div class="line">        c.printC(); // c</div><div class="line">        // c -&gt; parent实例 -&gt; parent.prototype</div><div class="line">        var name = new child;</div><div class="line">        var name = [1, 2, 3];</div><div class="line">        console.log(typeof name);</div><div class="line">        // 全局变量都是window对象的属性</div><div class="line">        // window的name属性只能为字符串</div></pre></td></tr></table></figure>
+<ul>
+<li>拷贝继承：<br>将指定对象上的所有成员拷贝一份，并添加到当前对象上。这种继承方式成为拷贝继承。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">// 2&gt; 拷贝继承：将别的对象上的所有成员拷贝一份，添加到当前对象本身。</div><div class="line">    var parent = &#123;</div><div class="line">        print: function() &#123;</div><div class="line">            console.log(&apos;i am &apos; + this.name);</div><div class="line">        &#125;,</div><div class="line">        name: &apos;parent&apos;</div><div class="line">    &#125;;</div><div class="line">    var child = &#123;</div><div class="line">        name: &apos;child&apos;</div><div class="line">    &#125;;</div><div class="line">    // 1: 遍历parent</div><div class="line">    for (var k in parent) &#123;</div><div class="line">        // 2: 将parent对象上的成员添加到child上。</div><div class="line">        child[k] = parent[k];</div><div class="line">    &#125;</div><div class="line">    child.print();</div><div class="line">    var parent1 = &#123;</div><div class="line">        print1: function() &#123;</div><div class="line">            console.log(&apos;print1&apos;);</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line">    for (var k in parent1) &#123;</div><div class="line">        // 2: 将parent对象上的成员添加到child上。</div><div class="line">        child[k] = parent1[k];</div><div class="line">    &#125;</div><div class="line">    // 封装</div><div class="line">    // 封装为child对象一个方法extend，谁调用extend方法就是给谁实现继承。</div><div class="line">    child.print1();</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><em>非常的麻烦所以就有了extend</em></p>
+<ul>
+<li>对象冒充： 在一个构造函数中，可以动态的添加一个parent方法，指向已有的构造函数，然后掉用parent方法去实例化当前对象的<pre><code>一部分成员（或全部成员）。此时这种方式被称为对象冒充。
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">    function parent(name, age, gender) &#123;</div><div class="line">    this.name = name;</div><div class="line">    this.age = age;</div><div class="line">    this.gender = gender;</div><div class="line">&#125;</div><div class="line">function child(name, age, gender, address) &#123;</div><div class="line">    this.parent = parent;</div><div class="line">    this.parent(name, age, gender);</div><div class="line">    delete this.parent;</div><div class="line">    this.address = address;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var  c = new child(&apos;xiaoming&apos;, 20, &apos;girl&apos;, &apos;china&apos;);</div><div class="line">console.log(c);</div></pre></td></tr></table></figure>
+</code></pre></li>
+</ul>
+<p><strong>注意 ：利用完parent属性之后，记得删除该属性。<br>    在实际开发中，两种继承方式可以组合起来应用。</strong></p>
+<h3 id="3-extend方法的实现：-为了方便去实现拷贝继承。"><a href="#3-extend方法的实现：-为了方便去实现拷贝继承。" class="headerlink" title="3. extend方法的实现： 为了方便去实现拷贝继承。"></a>3. extend方法的实现： 为了方便去实现拷贝继承。</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">1: 一次只能继承一个对象</div><div class="line">var child = &#123;&#125;;</div><div class="line">child.extend = function(parent) &#123;</div><div class="line">    var k;</div><div class="line">    for( k in parent )&#123;</div><div class="line">        this[k] = parent[k];</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">child.extend(&#123;</div><div class="line">    name: &apos;child&apos;,</div><div class="line">    print: function() &#123;</div><div class="line">        console.log(this.name);</div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line">child.print();</div><div class="line">2: 一次实现继承多个对象</div><div class="line">child.extend = function() &#123;</div><div class="line">    var args = arguments,</div><div class="line">        obj;</div><div class="line">    // 遍历arguments上的所有对象，依次将遍历的每个对象的成员添加到child。</div><div class="line">    for( var i = 0, l = args.length;i &lt; l; i++)&#123;</div><div class="line">        obj = args[i];</div><div class="line">        if( typeof obj === &apos;object&apos;)&#123; // 判断传入的是否为对象，不是对象就不执行下面代码</div><div class="line">            for( var k in obj )&#123;</div><div class="line">                this[k] = obj[k];</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line">child.extend(&#123;</div><div class="line">    name: &apos;child&apos;</div><div class="line">&#125;, &#123; </div><div class="line">    print: function() &#123;</div><div class="line">        console.log(&apos;i am &apos; + this.name);</div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line">child.print();</div></pre></td></tr></table></figure>
+<h3 id="4-ES5-Object-create-通过置换原型的方式来实现继承。"><a href="#4-ES5-Object-create-通过置换原型的方式来实现继承。" class="headerlink" title="4. ES5 Object.create :  通过置换原型的方式来实现继承。"></a>4. ES5 Object.create :  通过置换原型的方式来实现继承。</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Object.create（parent）：//返回值为一个新的对象，并且该对象继承自parent对象。</div><div class="line">var newObject = Object.create（parent）;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">// 兼容问题：</div><div class="line">    if( !Object.create )&#123;</div><div class="line">        Object.create = function(parent) &#123;</div><div class="line">            function F() &#123;&#125;</div><div class="line">            F.prototype = parent;</div><div class="line">            return new F;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    var newobj = Object.create(&#123;</div><div class="line">        name: &apos;tom&apos;,</div><div class="line">        print: function() &#123;</div><div class="line">            console.log(this.name);</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">    newobj.print();</div></pre></td></tr></table></figure>
+<h3 id="5-原型链的概念"><a href="#5-原型链的概念" class="headerlink" title="5. 原型链的概念"></a>5. 原型链的概念</h3><ol>
+<li>几个默认</li>
+</ol>
+<ul>
+<li>a:  所有对象都有<strong>proto</strong>属性，这个属性引用它的原型对象。</li>
+<li>b:  原型对象继承自Object.prototype，具有constructor属性；如果置换了原型，记得要添加constructor属性。</li>
+<li>c:  只有函数具有prototype属性（除了Function.prototype）。</li>
+</ul>
+<ol>
+<li>概念：从当前对象到Object.prototype之间，存在一条层次分明，逐级递进的体现继承关系的链式结构<br>== 这个结构被称为原型链。==</li>
+</ol>
+<h3 id="6-属性搜索原型：-当访问对象成员时"><a href="#6-属性搜索原型：-当访问对象成员时" class="headerlink" title="6. 属性搜索原型： 当访问对象成员时"></a>6. 属性搜索原型： 当访问对象成员时</h3><ol>
+<li><ul>
+<li>首先，在当前对象上查找，如果找到就直接返回（调用），停止查找;</li>
+</ul>
+</li>
+<li><ul>
+<li>如果没有找到，就向其原型对象上查找；如果找到就直接返回（调用），停止查找;</li>
+</ul>
+</li>
+<li><ul>
+<li>如果没有找到，就继续向原型对象的原型对象上查找，直到Object.prototype；</li>
+</ul>
+</li>
+<li><ul>
+<li>如果找到，那么就直接返回（调用），并停止查找；否则返回undefined（报错：xxx is not a function）</li>
+</ul>
+</li>
+</ol>
+<p><em>*注意</em></p>
+<pre><code>- 如果访问对象的某个属性不存在的话，会搜索整个原型链。会导致js性能降低。
+- 在实际开发中，尽量保持一个适度的原型链长度。
+- 兼顾js性能以及代码的可读性可扩展性。
+</code></pre><h3 id="7-Object-prototype介绍"><a href="#7-Object-prototype介绍" class="headerlink" title="7. Object.prototype介绍"></a>7. Object.prototype介绍</h3><ol>
+<li><p>hasOwnProperty：判断当前对象的指定属性是否为自身的，而不是继承过来的；如果是本身的返回true；否则返回false。</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">语法：&lt;object&gt;.hasOwnProperty(&apos;propName&apos;)</div><div class="line">  has: 有</div><div class="line">  own：自己</div><div class="line">  Property ： 属性</div><div class="line"> var o = &#123;name: &apos;tom&apos;&#125;;</div><div class="line"> console.log(o.hasOwnProperty(&apos;name&apos;)); // true</div><div class="line"> console.log(o.hasOwnProperty(&apos;toString&apos;)); // false</div></pre></td></tr></table></figure>
+</li>
+<li><p>isPrototypeOf：判断当前对象是否为指定对象的原型对象。如果是返回true；否则返回false。</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">语法；&lt;a&gt;.isPrototypeOf(&lt;b&gt;);</div><div class="line">&lt;!-- 只要对象a出现在b对象的原型链上就返回true；否则返回false。 --&gt;</div><div class="line">function A() &#123;</div><div class="line">&#125;</div><div class="line">function B() &#123;      </div><div class="line">&#125;</div><div class="line">var a = new A;</div><div class="line">B.prototype = a;</div><div class="line">var b = new B;      </div><div class="line">console.log(a.isPrototypeOf(b)); // false;</div><div class="line">console.log( A.prototype.isPrototypeOf(b));</div><div class="line">// b -&gt; a -&gt; A.prototype -&gt; Object.prototype -&gt; null</div><div class="line">console.log(Object.prototype.isPrototypeOf(a));</div><div class="line">console.log(Object.prototype.isPrototypeOf(b));</div></pre></td></tr></table></figure>
+<p>  如果当前对象出现在指定对象的原型链上就返回true；否则返回false。</p>
+</li>
+<li><p>propertyIsEnumerable：即判断指定属性是否为自身的，并且该属性也是可枚举的</p>
+<pre><code>只有这两个条件都满足才返回true；否则返回false。
+</code></pre><ul>
+<li>// 可枚举？for in遍历出来的属性都是可枚举的。</li>
+<li>// 默认：手动添加属性都是可枚举的，js解析器自动添加的都是不可枚举。</li>
+</ul>
+</li>
+</ol>
+<h3 id="8-构造函数的执行过程"><a href="#8-构造函数的执行过程" class="headerlink" title="8. 构造函数的执行过程"></a>8. 构造函数的执行过程</h3><ol>
+<li>创建了一个空对象obj；</li>
+<li>将obj赋值给this（让this指向obj）</li>
+<li>将当前作用域交给this</li>
+<li>执行构造函数内部的代码</li>
+<li>将 this 返回。（return this;）</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">function Fn(name, age) &#123;</div><div class="line">            this.name = name;</div><div class="line">            this.age = age;         </div><div class="line">        &#125;</div><div class="line">        var fn = new Fn(&apos;tom&apos;, 18);</div><div class="line">        console.log(fn);</div><div class="line">        function Fn(name, age) &#123;</div><div class="line">            var obj = &#123;&#125;;</div><div class="line">            this = obj;</div><div class="line">        //  Fn.call(this, name, age);(这个可以替代上面的两句话)</div><div class="line">            return this;</div><div class="line">        &#125;</div></pre></td></tr></table></figure>
+<h3 id="9-绘制对象的原型链"><a href="#9-绘制对象的原型链" class="headerlink" title="9. 绘制对象的原型链"></a>9. 绘制对象的原型链</h3><p> 绘制规则：</p>
+<ol>
+<li>绘制出简化的原型链</li>
+<li>先将上述简化的原型链上的每一个对象绘制在图形上。</li>
+<li>将每一个对象的默认属性添加上。</li>
+<li>给每一个对象的属性添加指向。</li>
+<li>如果每一个对象的属性都有了指向，说明原型链绘制完成。</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2015/10/05/面向对象系列-原型/" itemprop="url">
                   面向对象系列之一--原型
                 </a>
@@ -411,328 +779,11 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/10/04/手机端开发系列之九/" itemprop="url">
-                  手机端开发系列之九--网页布局
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2015-10-04T17:22:52+08:00" content="2015-10-04">
-              2015-10-04
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="网页布局"><a href="#网页布局" class="headerlink" title="网页布局"></a>网页布局</h2><p>简单的提一下这个</p>
-<h3 id="各种布局"><a href="#各种布局" class="headerlink" title="各种布局"></a>各种布局</h3><p>1.固定宽度布局：为网页设置一个固定的宽度，通常以px做为长度单位，常见于PC端网页。<br>2.流式布局：为网页设置一个相对的宽度，通常以百分比做为长度单位。</p>
-<p>3.栅格化布局：将网页宽度人为的划分成均等的长度，然后排版布局时则以这些均等的长度做为度量单位，通常利用百分比做为长度单位来划分成均等的长度。</p>
-<p>4.响应式布局：通过检测设备信息，决定网页布局方式，即用户如果采用不同的设备访问同一个网页，有可能会看到不一样的内容，一般情况下是检测设备屏幕的宽度来实现。</p>
-<p><strong>注：以上几种布局方式并不是独立存在的，实际开发过程中往往是相互结合使和的。</strong></p>
-<h3 id="响应式布局"><a href="#响应式布局" class="headerlink" title="响应式布局"></a>响应式布局</h3><p>如上图所示，<code>屏幕尺寸不一样展示给用户的网页内容也不一样</code>，我们<code>利用媒体查询</code>可以检测到屏幕的尺寸（主要检测宽度），并<code>设置不同的CSS样式</code>，就可以实现响应式的布局。<br>我们利用响应式布局可以满足不同尺寸的终端设备非常完美的展现网页内容，使得用户体验得到了很大的提升，但是为了实现这一目的我们不得不利用媒体查询写很多冗余的代码，使整体网页的体积变大，应用在移动设备上就会带来严重的性能问题。<br>响应式布局常用于企业的官网、博客、新闻资讯类型网站，这些网站以浏览内容为主，没有复杂的交互。<br>常见的设置宽度：</p>
-<ul>
-<li>大屏幕：大于等于1200px</li>
-<li>默认：  大于等于980px</li>
-<li>平板：  大于等于768px</li>
-<li>手机到平板：小于等于767px</li>
-<li>手机：      小于等于480px<br>用来设置媒体查询。</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/10/04/手机端开发系列之八/" itemprop="url">
-                  手机端开发系列之八--移动类库
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2015-10-04T16:56:14+08:00" content="2015-10-04">
-              2015-10-04
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="移动的类库"><a href="#移动的类库" class="headerlink" title="移动的类库"></a>移动的类库</h2><h2 id="swiper-js"><a href="#swiper-js" class="headerlink" title="swiper.js"></a>swiper.js</h2><p>1.<a href="https://github.com/nolimits4web/Swiper/" target="_blank" rel="external">下载swiper.js，</a><br>2.其<a href="http://www.swiper.com.cn/" target="_blank" rel="external">中文网站</a>非常详细介绍了其使用方法</p>
-<h2 id="swipe-js"><a href="#swipe-js" class="headerlink" title="swipe.js"></a>swipe.js</h2><p>1.<a href="https://github.com/thebird/Swipe" target="_blank" rel="external">下载swipe.js</a><br>2.html结构要求有三层结构，</p>
-<p><strong>注意结构的要求还有对应的CSS样式</strong></p>
-<h2 id="fastclick-js"><a href="#fastclick-js" class="headerlink" title="fastclick.js"></a>fastclick.js</h2><p>在移动设备上为了提升click的响应速度，我们选择了使用Zepto事件封装的tap来进行模拟，但是这会带来一个副作用，这个副作用就是<code>“点透”</code>，(自行查阅)<br>从上可以看出Zepto.js有不完善的地方，并且我们有时也希望我们的移动版页面在PC端上也可用，但是PC端是不支持touch事件的，这时我们面临的问题是即提升click在移动设备上的响应速度，又不能使用Zepto.js的tap事件，这时fastclick可以解决这个问题。</p>
-<ol>
-<li><a href="https://github.com/ftlabs/fastclick" target="_blank" rel="external">下载fastclick</a></li>
-<li>引入lib目录下的fastclick.js</li>
-<li>设用方法即可，</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">$(&apos;.demo&apos;).on(&apos;click&apos;, function () &#123;</div><div class="line">        alert(&apos;不会得到快速响应&apos;);</div><div class="line">    &#125;);</div><div class="line">    // 引入引插件可以解决click延时问题</div><div class="line">    // 代表的含义是body元素以内所有被添加了</div><div class="line">    // click事件元素，都会得到快速响应</div><div class="line">    // FastClick.attach(document.body);</div><div class="line">    // 代表的含义是只有在.box元素以内的click事件</div><div class="line">    // 会得到一个快速响应</div><div class="line">    FastClick.attach(document.querySelector(&apos;.box&apos;));</div></pre></td></tr></table></figure>
-<h2 id="isSroll-js"><a href="#isSroll-js" class="headerlink" title="isSroll.js"></a>isSroll.js</h2><p>一个可以实现客户端原生滚动效果的类库。</p>
-<p>1.<a href="https://github.com/cubiq/iscroll" target="_blank" rel="external">下载iScroll</a><br>2.build目录下提供了不同版本的iScroll，可根据情况选择使用<br>3.html要求有3层结构</p>
-<p><strong>注意：下载下来会有文档，直接查看文档就可以了</strong></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/10/04/手机端开发系列之七/" itemprop="url">
-                  手机端开发系列之七--less
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2015-10-04T16:24:22+08:00" content="2015-10-04">
-              2015-10-04
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="css预处理器–less"><a href="#css预处理器–less" class="headerlink" title="css预处理器–less"></a>css预处理器–less</h2><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>CSS 预处理器是一种语言，用来为 CSS 增加一些编程的的特性，无需考虑浏览器的兼容性问题，并且你可以在 CSS 中使用变量、简单的程序逻辑、函数等等在编程语言中的一些基本技巧，可以让你的 CSS 更简洁，适应性更强，代码更直观等诸多好处。<br>常见的CSS预处理器有：<code>LESS、SASS、Stylus</code>等<br>其使用方法大致相同，我们在这里以LESS为例进行学习</p>
-<h3 id="less"><a href="#less" class="headerlink" title="less"></a>less</h3><h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>1.安装Nodejs环境 Node Package Manager (验证 node -v  npm -v)<br>2.打开控制台（cmd），执行npm install -g less (验证 lessc -v)<br>3.执行 npm install -g less-plugin-clean-css<br>4.命令行编译 lessc path/xxx.less path/xxx.css</p>
-<h4 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h4><p>一般都会借助于编辑器插件来完成编译任务，以sublime_text为例<br>1.ctrl+shit+p打开命令面板<br>2.输入install package然后回车<br>3.安装 LESS、lessc、Less2Css三个插件<br>4.alt+s快捷键即可实现编译</p>
-<h4 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h4><p>1.变量</p>
-<p>格式：@变量名: 值，定义完成后可以重复使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">@color: red;//可以重复的使用</div><div class="line">    .nav&#123;</div><div class="line">        backgroundColor:@color;</div><div class="line">    &#125;</div><div class="line">    .header&#123;</div><div class="line">        background:@color;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
-<p>2.混合编程</p>
-<p>我们可以像使用函数一样来使用CSS、<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">.box-sizing()&#123;</div><div class="line">  -webkit-box-sizing: border-box;</div><div class="line">  -moz-box-sizing: border-box;</div><div class="line">  box-sizing: border-box;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.box&#123;</div><div class="line">    .box-sizing;//调用函数；</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>3.嵌套可以非常方便的管理我们的CSS层级关系</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">.header&#123;</div><div class="line">    color:red;</div><div class="line">    .nav&#123;</div><div class="line">        .....</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="浏览器中使用"><a href="#浏览器中使用" class="headerlink" title="浏览器中使用"></a>浏览器中使用</h3><p>我们可以引入一个less.js文件，实现实时的解析，而不必每次修改都要编译，最后完成所有开发任务后，再通过编辑器编译成css文件。<br>1.<a href="https://raw.githubusercontent.com/less/less.js/v2.5.3/dist/less.min.js" target="_blank" rel="external">下载</a> 然后引入less.js<br>2.引入xx.less文件，如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;link rel=&quot;stylesheet/less&quot; type=&quot;text/css&quot; href=&quot;styles.less&quot; /&gt;</div></pre></td></tr></table></figure></p>
-<p>注意：<code>rel属性必须指定成stylesheet/less</code>，并且<code>styles.less要先于less.js引入</code>。<br>必须以服务器方式访问，可以放到study目录下，或者webstrom自带服务器功能，或者我们的 ghostlab调试工具的服务器。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
