@@ -84,19 +84,16 @@
 
 
 
-<meta name="description" content="1. instanceof运算规则：如果运算符后面的函数 的prototype属性所引用的对象，出现在 运算符前面的对象 的原型链上的话，就返回true；否则就返回false,(只要是在原型链上就输出true)。
-12345var f = new foo;console.log(f instanceof foo);// trueconsole.log(f instanceof fn); // fa">
+<meta name="description" content="1. instanceof运算规则：如果运算符后面的函数 的prototype属性所引用的对象，出现在 运算符前面的对象 的原型链上的话，就返回true；否则就返回false,(只要是在原型链上就输出true)。code block:12345var f = new foo;console.log(f instanceof foo);// trueconsole.log(f instanceof">
 <meta property="og:type" content="article">
 <meta property="og:title" content="面向对象系列之四">
 <meta property="og:url" content="http://yoursite.com/2015/10/11/面向对象系列之四/index.html">
 <meta property="og:site_name" content="chenzq  FE">
-<meta property="og:description" content="1. instanceof运算规则：如果运算符后面的函数 的prototype属性所引用的对象，出现在 运算符前面的对象 的原型链上的话，就返回true；否则就返回false,(只要是在原型链上就输出true)。
-12345var f = new foo;console.log(f instanceof foo);// trueconsole.log(f instanceof fn); // fa">
-<meta property="og:updated_time" content="2016-10-14T07:53:52.329Z">
+<meta property="og:description" content="1. instanceof运算规则：如果运算符后面的函数 的prototype属性所引用的对象，出现在 运算符前面的对象 的原型链上的话，就返回true；否则就返回false,(只要是在原型链上就输出true)。code block:12345var f = new foo;console.log(f instanceof foo);// trueconsole.log(f instanceof">
+<meta property="og:updated_time" content="2016-10-14T11:07:07.128Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面向对象系列之四">
-<meta name="twitter:description" content="1. instanceof运算规则：如果运算符后面的函数 的prototype属性所引用的对象，出现在 运算符前面的对象 的原型链上的话，就返回true；否则就返回false,(只要是在原型链上就输出true)。
-12345var f = new foo;console.log(f instanceof foo);// trueconsole.log(f instanceof fn); // fa">
+<meta name="twitter:description" content="1. instanceof运算规则：如果运算符后面的函数 的prototype属性所引用的对象，出现在 运算符前面的对象 的原型链上的话，就返回true；否则就返回false,(只要是在原型链上就输出true)。code block:12345var f = new foo;console.log(f instanceof foo);// trueconsole.log(f instanceof">
 
 
 
@@ -280,8 +277,7 @@
       
 
       
-        <h3 id="1-instanceof运算规则："><a href="#1-instanceof运算规则：" class="headerlink" title="1. instanceof运算规则："></a>1. instanceof运算规则：</h3><p>如果运算符后面的函数 的prototype属性所引用的对象，<br>出现在 <em>运算符前面的对象</em> 的原型链上的话，就返回true；<br>否则就返回false,(只要是在原型链上就输出true)。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var f = new foo;</div><div class="line">console.log(f instanceof foo);// true</div><div class="line">console.log(f instanceof fn); // false</div><div class="line">console.log(f instanceof Object); // true</div><div class="line">// f -&gt; foo.prototype -&gt; Obejct.prototpye - &gt; null</div></pre></td></tr></table></figure>
+        <h3 id="1-instanceof运算规则："><a href="#1-instanceof运算规则：" class="headerlink" title="1. instanceof运算规则："></a>1. instanceof运算规则：</h3><p>如果运算符后面的函数 的prototype属性所引用的对象，<br>出现在 <em>运算符前面的对象</em> 的原型链上的话，就返回true；<br>否则就返回false,(只要是在原型链上就输出true)。<br>code block:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> f = <span class="keyword">new</span> foo;</div><div class="line"><span class="built_in">console</span>.log(f <span class="keyword">instanceof</span> foo);<span class="comment">// true</span></div><div class="line"><span class="built_in">console</span>.log(f <span class="keyword">instanceof</span> fn); <span class="comment">// false</span></div><div class="line"><span class="built_in">console</span>.log(f <span class="keyword">instanceof</span> <span class="built_in">Object</span>); <span class="comment">// true</span></div><div class="line"><span class="comment">// f -&gt; foo.prototype -&gt; Obejct.prototpye - &gt; null</span></div></pre></td></tr></table></figure></p>
 <h3 id="2-绘制作用域链的规则"><a href="#2-绘制作用域链的规则" class="headerlink" title="2. 绘制作用域链的规则"></a>2. 绘制作用域链的规则</h3><ol>
 <li>将整个script标签的全局作用域，定义为0级作用域链。将全局作用域上的数据（变量、函数、对象等等）绘制在该链上。</li>
 <li>由于在词法作用域中，只有函数可以分割作用域。因此，只要遇到函数，就要引申出新的作用域链，级别为当前链的级别 + 1；</li>
