@@ -245,6 +245,196 @@
             
               
                 
+                <a class="post-title-link" href="/2015/10/08/面向对象系列之二/" itemprop="url">
+                  面向对象系列之二
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2015-10-08T09:59:01+08:00" content="2015-10-08">
+              2015-10-08
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="面向对象系列"><a href="#面向对象系列" class="headerlink" title="面向对象系列"></a>面向对象系列</h2><h3 id="1-面向对象的三大特性"><a href="#1-面向对象的三大特性" class="headerlink" title="1. 面向对象的三大特性"></a>1. 面向对象的三大特性</h3><ol>
+<li>封装性： 将复杂的实现过程包装、隐藏起来，给用户提供使用接口。</li>
+<li>继承性： 在js中，继承是体现在对象与对象之间的关系，继承就是指一个对象有权去访问别的对象上的成员。</li>
+<li>多态性： 体现在子对象和父对象之间： 在父对象上的同一个行为，在各个子对象中的具体实现不同。</li>
+</ol>
+<h4 id="code-show-time"><a href="#code-show-time" class="headerlink" title="code show time:"></a>code show time:</h4><pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var date = new Date;</div><div class="line">console.log(date.toString());</div><div class="line">var arr = [1, 3, 5];</div><div class="line">console.log(arr.toString());</div><div class="line">var o = &#123;name: &apos;shelly&apos;&#125;;</div><div class="line">console.log(o.toString());</div></pre></td></tr></table></figure>
+</code></pre><p><strong> 在这个里头你就可以看出相同的一个函数，在不同的调用结果就是不一样的，所以在js之中，多态就是 函数的重载和重写 </strong></p>
+<h3 id="2-继承的实现方式："><a href="#2-继承的实现方式：" class="headerlink" title="2. 继承的实现方式："></a>2. 继承的实现方式：</h3><ul>
+<li>基于原型</li>
+</ul>
+<ol>
+<li><p>a: 扩展原型 ： 在原有的原型上进行相应的扩展，实现继承。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">// 1&gt;基于原型</div><div class="line">a: 基于原型: 扩展原型</div><div class="line">function A() &#123;</div><div class="line">    </div><div class="line">&#125;</div><div class="line">var a = new A;</div><div class="line">A.prototype.printA = function() &#123;</div><div class="line">    console.log(&apos;a&apos;);</div><div class="line">&#125;;</div><div class="line">a.printA();// a</div><div class="line">a -&gt; A.prototype</div></pre></td></tr></table></figure>
+</li>
+<li><p>b: 置换原型：将要被继承的对象，直接替换掉原有的原型，实现继承</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">// b: 基于原型: 置换原型</div><div class="line">        function parent() &#123;</div><div class="line">            this.name = &apos;tom&apos;;</div><div class="line">        &#125;</div><div class="line">        parent.prototype.printC = function() &#123;</div><div class="line">            console.log(&apos;c&apos;);</div><div class="line">            console.log(this.name);</div><div class="line">        &#125;;</div><div class="line">        function child() &#123;  </div><div class="line">        &#125;</div><div class="line">        child.prototype = new parent;</div><div class="line">        var c = new child;</div><div class="line">        c.printC(); // c</div><div class="line">        // c -&gt; parent实例 -&gt; parent.prototype</div><div class="line">        var name = new child;</div><div class="line">        var name = [1, 2, 3];</div><div class="line">        console.log(typeof name);</div><div class="line">        // 全局变量都是window对象的属性</div><div class="line">        // window的name属性只能为字符串</div></pre></td></tr></table></figure>
+<ul>
+<li>拷贝继承：<br>将指定对象上的所有成员拷贝一份，并添加到当前对象上。这种继承方式成为拷贝继承。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">// 2&gt; 拷贝继承：将别的对象上的所有成员拷贝一份，添加到当前对象本身。</div><div class="line">    var parent = &#123;</div><div class="line">        print: function() &#123;</div><div class="line">            console.log(&apos;i am &apos; + this.name);</div><div class="line">        &#125;,</div><div class="line">        name: &apos;parent&apos;</div><div class="line">    &#125;;</div><div class="line">    var child = &#123;</div><div class="line">        name: &apos;child&apos;</div><div class="line">    &#125;;</div><div class="line">    // 1: 遍历parent</div><div class="line">    for (var k in parent) &#123;</div><div class="line">        // 2: 将parent对象上的成员添加到child上。</div><div class="line">        child[k] = parent[k];</div><div class="line">    &#125;</div><div class="line">    child.print();</div><div class="line">    var parent1 = &#123;</div><div class="line">        print1: function() &#123;</div><div class="line">            console.log(&apos;print1&apos;);</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line">    for (var k in parent1) &#123;</div><div class="line">        // 2: 将parent对象上的成员添加到child上。</div><div class="line">        child[k] = parent1[k];</div><div class="line">    &#125;</div><div class="line">    // 封装</div><div class="line">    // 封装为child对象一个方法extend，谁调用extend方法就是给谁实现继承。</div><div class="line">    child.print1();</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><em>非常的麻烦所以就有了extend</em></p>
+<ul>
+<li>对象冒充： 在一个构造函数中，可以动态的添加一个parent方法，指向已有的构造函数，然后掉用parent方法去实例化当前对象的<pre><code>一部分成员（或全部成员）。此时这种方式被称为对象冒充。
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">    function parent(name, age, gender) &#123;</div><div class="line">    this.name = name;</div><div class="line">    this.age = age;</div><div class="line">    this.gender = gender;</div><div class="line">&#125;</div><div class="line">function child(name, age, gender, address) &#123;</div><div class="line">    this.parent = parent;</div><div class="line">    this.parent(name, age, gender);</div><div class="line">    delete this.parent;</div><div class="line">    this.address = address;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var  c = new child(&apos;xiaoming&apos;, 20, &apos;girl&apos;, &apos;china&apos;);</div><div class="line">console.log(c);</div></pre></td></tr></table></figure>
+</code></pre></li>
+</ul>
+<p><strong>注意 ：利用完parent属性之后，记得删除该属性。<br>    在实际开发中，两种继承方式可以组合起来应用。</strong></p>
+<h3 id="3-extend方法的实现：-为了方便去实现拷贝继承。"><a href="#3-extend方法的实现：-为了方便去实现拷贝继承。" class="headerlink" title="3. extend方法的实现： 为了方便去实现拷贝继承。"></a>3. extend方法的实现： 为了方便去实现拷贝继承。</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">1: 一次只能继承一个对象</div><div class="line">var child = &#123;&#125;;</div><div class="line">child.extend = function(parent) &#123;</div><div class="line">    var k;</div><div class="line">    for( k in parent )&#123;</div><div class="line">        this[k] = parent[k];</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">child.extend(&#123;</div><div class="line">    name: &apos;child&apos;,</div><div class="line">    print: function() &#123;</div><div class="line">        console.log(this.name);</div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line">child.print();</div><div class="line">2: 一次实现继承多个对象</div><div class="line">child.extend = function() &#123;</div><div class="line">    var args = arguments,</div><div class="line">        obj;</div><div class="line">    // 遍历arguments上的所有对象，依次将遍历的每个对象的成员添加到child。</div><div class="line">    for( var i = 0, l = args.length;i &lt; l; i++)&#123;</div><div class="line">        obj = args[i];</div><div class="line">        if( typeof obj === &apos;object&apos;)&#123; // 判断传入的是否为对象，不是对象就不执行下面代码</div><div class="line">            for( var k in obj )&#123;</div><div class="line">                this[k] = obj[k];</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line">child.extend(&#123;</div><div class="line">    name: &apos;child&apos;</div><div class="line">&#125;, &#123; </div><div class="line">    print: function() &#123;</div><div class="line">        console.log(&apos;i am &apos; + this.name);</div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line">child.print();</div></pre></td></tr></table></figure>
+<h3 id="4-ES5-Object-create-通过置换原型的方式来实现继承。"><a href="#4-ES5-Object-create-通过置换原型的方式来实现继承。" class="headerlink" title="4. ES5 Object.create :  通过置换原型的方式来实现继承。"></a>4. ES5 Object.create :  通过置换原型的方式来实现继承。</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Object.create（parent）：//返回值为一个新的对象，并且该对象继承自parent对象。</div><div class="line">var newObject = Object.create（parent）;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">// 兼容问题：</div><div class="line">    if( !Object.create )&#123;</div><div class="line">        Object.create = function(parent) &#123;</div><div class="line">            function F() &#123;&#125;</div><div class="line">            F.prototype = parent;</div><div class="line">            return new F;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    var newobj = Object.create(&#123;</div><div class="line">        name: &apos;tom&apos;,</div><div class="line">        print: function() &#123;</div><div class="line">            console.log(this.name);</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">    newobj.print();</div></pre></td></tr></table></figure>
+<h3 id="5-原型链的概念"><a href="#5-原型链的概念" class="headerlink" title="5. 原型链的概念"></a>5. 原型链的概念</h3><ol>
+<li>几个默认</li>
+</ol>
+<ul>
+<li>a:  所有对象都有<strong>proto</strong>属性，这个属性引用它的原型对象。</li>
+<li>b:  原型对象继承自Object.prototype，具有constructor属性；如果置换了原型，记得要添加constructor属性。</li>
+<li>c:  只有函数具有prototype属性（除了Function.prototype）。</li>
+</ul>
+<ol>
+<li>概念：从当前对象到Object.prototype之间，存在一条层次分明，逐级递进的体现继承关系的链式结构<br>== 这个结构被称为原型链。==</li>
+</ol>
+<h3 id="6-属性搜索原型：-当访问对象成员时"><a href="#6-属性搜索原型：-当访问对象成员时" class="headerlink" title="6. 属性搜索原型： 当访问对象成员时"></a>6. 属性搜索原型： 当访问对象成员时</h3><ol>
+<li><ul>
+<li>首先，在当前对象上查找，如果找到就直接返回（调用），停止查找;</li>
+</ul>
+</li>
+<li><ul>
+<li>如果没有找到，就向其原型对象上查找；如果找到就直接返回（调用），停止查找;</li>
+</ul>
+</li>
+<li><ul>
+<li>如果没有找到，就继续向原型对象的原型对象上查找，直到Object.prototype；</li>
+</ul>
+</li>
+<li><ul>
+<li>如果找到，那么就直接返回（调用），并停止查找；否则返回undefined（报错：xxx is not a function）</li>
+</ul>
+</li>
+</ol>
+<p><em>*注意</em></p>
+<pre><code>- 如果访问对象的某个属性不存在的话，会搜索整个原型链。会导致js性能降低。
+- 在实际开发中，尽量保持一个适度的原型链长度。
+- 兼顾js性能以及代码的可读性可扩展性。
+</code></pre><h3 id="7-Object-prototype介绍"><a href="#7-Object-prototype介绍" class="headerlink" title="7. Object.prototype介绍"></a>7. Object.prototype介绍</h3><ol>
+<li><p>hasOwnProperty：判断当前对象的指定属性是否为自身的，而不是继承过来的；如果是本身的返回true；否则返回false。</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">语法：&lt;object&gt;.hasOwnProperty(&apos;propName&apos;)</div><div class="line">  has: 有</div><div class="line">  own：自己</div><div class="line">  Property ： 属性</div><div class="line"> var o = &#123;name: &apos;tom&apos;&#125;;</div><div class="line"> console.log(o.hasOwnProperty(&apos;name&apos;)); // true</div><div class="line"> console.log(o.hasOwnProperty(&apos;toString&apos;)); // false</div></pre></td></tr></table></figure>
+</li>
+<li><p>isPrototypeOf：判断当前对象是否为指定对象的原型对象。如果是返回true；否则返回false。</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">语法；&lt;a&gt;.isPrototypeOf(&lt;b&gt;);</div><div class="line">&lt;!-- 只要对象a出现在b对象的原型链上就返回true；否则返回false。 --&gt;</div><div class="line">function A() &#123;</div><div class="line">&#125;</div><div class="line">function B() &#123;      </div><div class="line">&#125;</div><div class="line">var a = new A;</div><div class="line">B.prototype = a;</div><div class="line">var b = new B;      </div><div class="line">console.log(a.isPrototypeOf(b)); // false;</div><div class="line">console.log( A.prototype.isPrototypeOf(b));</div><div class="line">// b -&gt; a -&gt; A.prototype -&gt; Object.prototype -&gt; null</div><div class="line">console.log(Object.prototype.isPrototypeOf(a));</div><div class="line">console.log(Object.prototype.isPrototypeOf(b));</div></pre></td></tr></table></figure>
+<p>  如果当前对象出现在指定对象的原型链上就返回true；否则返回false。</p>
+</li>
+<li><p>propertyIsEnumerable：即判断指定属性是否为自身的，并且该属性也是可枚举的</p>
+<pre><code>只有这两个条件都满足才返回true；否则返回false。
+</code></pre><ul>
+<li>// 可枚举？for in遍历出来的属性都是可枚举的。</li>
+<li>// 默认：手动添加属性都是可枚举的，js解析器自动添加的都是不可枚举。</li>
+</ul>
+</li>
+</ol>
+<h3 id="8-构造函数的执行过程"><a href="#8-构造函数的执行过程" class="headerlink" title="8. 构造函数的执行过程"></a>8. 构造函数的执行过程</h3><ol>
+<li>创建了一个空对象obj；</li>
+<li>将obj赋值给this（让this指向obj）</li>
+<li>将当前作用域交给this</li>
+<li>执行构造函数内部的代码</li>
+<li>将 this 返回。（return this;）</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">function Fn(name, age) &#123;</div><div class="line">            this.name = name;</div><div class="line">            this.age = age;         </div><div class="line">        &#125;</div><div class="line">        var fn = new Fn(&apos;tom&apos;, 18);</div><div class="line">        console.log(fn);</div><div class="line">        function Fn(name, age) &#123;</div><div class="line">            var obj = &#123;&#125;;</div><div class="line">            this = obj;</div><div class="line">        //  Fn.call(this, name, age);(这个可以替代上面的两句话)</div><div class="line">            return this;</div><div class="line">        &#125;</div></pre></td></tr></table></figure>
+<h3 id="9-绘制对象的原型链"><a href="#9-绘制对象的原型链" class="headerlink" title="9. 绘制对象的原型链"></a>9. 绘制对象的原型链</h3><p> 绘制规则：</p>
+<ol>
+<li>绘制出简化的原型链</li>
+<li>先将上述简化的原型链上的每一个对象绘制在图形上。</li>
+<li>将每一个对象的默认属性添加上。</li>
+<li>给每一个对象的属性添加指向。</li>
+<li>如果每一个对象的属性都有了指向，说明原型链绘制完成。</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2015/10/05/面向对象系列-原型/" itemprop="url">
                   面向对象系列之一--原型
                 </a>
@@ -1203,119 +1393,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/10/04/手机端开发系列之二/" itemprop="url">
-                  手机端开发系列之二--视口
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2015-10-04T12:54:22+08:00" content="2015-10-04">
-              2015-10-04
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="手机端开发–视口"><a href="#手机端开发–视口" class="headerlink" title="手机端开发–视口"></a>手机端开发–视口</h3><p>什么是视口？视口（viewport）是用来约束你网站中最顶级块元素<html>的，即它决定了<html>的大小。<br>pc视口和手机视口的区别：在于这个pc的视口受那个浏览器窗口的限制，手机的视口可以自己设置</html></html></p>
-<h4 id="移动端浏览器"><a href="#移动端浏览器" class="headerlink" title="移动端浏览器"></a>移动端浏览器</h4><p>移动端开发主要是针对IOS和Android两个操作系统平台的，除此之外还有Windows Phone。<br>移动端主要可以分成三大类，系统自带浏览器、应用内置浏览器、第三方浏览器<br><code>系统浏览器</code>：指跟随移动设备操作系统一起安装的浏览器。</p>
-<p><code>应用内置浏览器</code>：通常在移动设备上都会安装一些APP例如QQ、微信、微博、淘宝等，这些APP里往往会内置一个浏览器，我们称这个浏览器为应用内置浏览器（也叫WebView），这个内置的浏览器一般功能比较简单，并且客户端开发人员可以更改这个浏览器的某些设置，在我们理实的开发里这个浏览器很重要。</p>
-<p><code>第三方浏览器</code>：指安装在手机的浏览器如FireFox、Chrome、360等等。<br>在IOS和Android操作系统上自带浏览器、应用内置浏览器都是基础Webkit内核的。</p>
-<p><em>思考：移动端页面要达到什么效果才最合理？</em> </p>
-<h4 id="viewport"><a href="#viewport" class="headerlink" title="viewport"></a>viewport</h4><p>我们知道移动设备屏幕普遍都是比较小的，但是大部分的网站又都是为PC设备来设计的，要想让移动设备也可以正常显示网页，移动设备不得不做一些处理，只要viewport足够大（块级元素html就会比较大），就能保证原本为PC设备设计的网页也能在移动设备上正常显示，移动设备厂商也的确是这样来处理的。</p>
-<p>在移动设备上viewport不再受限于浏览器的窗口，而是允许开发人员自由设置viewport的大小，通常浏览器会设置一个默认大小的viewport，同时为了能够正常显示那些专为PC设计的网页，一般这个值的大小会大于屏幕的尺寸。 (这个值一般为980px)<br>这样的会我们网页设计的那些网页在移动端就不会错乱了。但是</p>
-<p><strong>在iPhone5s和部分Android中我们发现页面内容（文字、图片）被缩放了（变的非常小），而在部分安卓设备中则出现了滚动条。</strong></p>
-<h4 id="layout-viewport-amp-ideal-viewport"><a href="#layout-viewport-amp-ideal-viewport" class="headerlink" title="layout viewport&amp;ideal viewport"></a>layout viewport&amp;ideal viewport</h4><p><em>为什么呢？</em> 要解释上面的原因，需要进一步对移动设备的viewport进行分析，移动设备上有2个viewport，分别是layout viewport和ideal viewport。</p>
-<ol>
-<li><code>layout viewport</code>（布局视口）指的是我们可以进行网页布局区域的大小，同样是以CSS像素做为计量单位，可以通过下面方式获取 :<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">// 获取layout viewport</div><div class="line">document.documentElement.clientWidth;</div><div class="line">document.documentElement.clientHeight;</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>通过前面介绍我们知道，如果要保证为PC设计的网页在移动设备上布局不发生错乱，移动设备会默认设置一个较大的viewport（如IOS为980px），这个viewport实际指的是layout viewport，我们也可改变这个默认值，后面将会介绍。</p>
-<ol>
-<li><code>ideal viewport</code>（理想视口）设备屏幕区域，以dp（或pt、px）做为计量单位，不同的设备具有不同大小的理想视口，其大小是不可能被改变的，通过下面方式可以获取。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// 获取ideal viewport有两种情形</div><div class="line">// 新设备</div><div class="line">window.screen.width;</div><div class="line">window.screen.height;</div><div class="line">// 老设备</div><div class="line">window.screen.width / window.devicePixelRatio;</div><div class="line">window.screen.height / window.devicePixelRatio;</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p><strong>并不总是正确的，然而在实际开发我们一般无需获取这个值具体大小。</strong></p>
-<p>在理解了上述三个viewport后我们来解释为什么网页会被缩放或出现水平滚动条，其原因在于移动设备浏览器会默认设置一个layout viewport，并且这个值会大于ideal viewport，那么我们也知道ideal viewport就是屏幕区域，layout viewport是我们布局网页的区域，那么最终layout viewport最终是要显示在ideal viewport里的，而layout viewport大于ideal viewport时，于是就出现滚动条了，那么为什么有的移动设备网页内容被缩放了呢？移动设备厂商认为将网页完整显示给用户才最合理，而不该出现滚动条，所以就将layout viewport进行了缩放，使其恰好完整显示在ideal viewport（屏幕）里，其缩放比例为ideal viewport / layout viewport。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1361,7 +1438,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">22</span>
+              <span class="site-state-item-count">23</span>
               <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
