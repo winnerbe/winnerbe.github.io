@@ -173,7 +173,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -183,7 +183,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -249,7 +249,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2015-10-04T17:22:52+08:00" content="2015-10-04">
               2015-10-04
             </time>
@@ -355,7 +355,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2015-10-04T16:56:14+08:00" content="2015-10-04">
               2015-10-04
             </time>
@@ -461,7 +461,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2015-10-04T16:24:22+08:00" content="2015-10-04">
               2015-10-04
             </time>
@@ -493,12 +493,39 @@
         
           
             <h2 id="css预处理器–less"><a href="#css预处理器–less" class="headerlink" title="css预处理器–less"></a>css预处理器–less</h2><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>CSS 预处理器是一种语言，用来为 CSS 增加一些编程的的特性，无需考虑浏览器的兼容性问题，并且你可以在 CSS 中使用变量、简单的程序逻辑、函数等等在编程语言中的一些基本技巧，可以让你的 CSS 更简洁，适应性更强，代码更直观等诸多好处。<br>常见的CSS预处理器有：<code>LESS、SASS、Stylus</code>等<br>其使用方法大致相同，我们在这里以LESS为例进行学习</p>
-<h3 id="less"><a href="#less" class="headerlink" title="less"></a>less</h3><h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>1.安装Nodejs环境 Node Package Manager (验证 node -v  npm -v)<br>2.打开控制台（cmd），执行npm install -g less (验证 lessc -v)<br>3.执行 npm install -g less-plugin-clean-css<br>4.命令行编译 lessc path/xxx.less path/xxx.css</p>
-<h4 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h4><p>一般都会借助于编辑器插件来完成编译任务，以sublime_text为例<br>1.ctrl+shit+p打开命令面板<br>2.输入install package然后回车<br>3.安装 LESS、lessc、Less2Css三个插件<br>4.alt+s快捷键即可实现编译</p>
-<h4 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h4><p>1.变量</p>
-<p>格式：@变量名: 值，定义完成后可以重复使用<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line">@color: red;<span class="comment">//可以重复的使用</span></div><div class="line">    .nav&#123;</div><div class="line">        backgroundColor:@color;</div><div class="line">    &#125;</div><div class="line">    .header&#123;</div><div class="line">        background:@color;</div><div class="line">    &#125;</div><div class="line">```c</div><div class="line"></div><div class="line"><span class="number">2.</span>混合编程</div><div class="line"></div><div class="line">我们可以像使用函数一样来使用CSS、</div><div class="line">```c</div><div class="line">.box-sizing()&#123;</div><div class="line">  -webkit-box-sizing: border-box;</div><div class="line">  -moz-box-sizing: border-box;</div><div class="line">  box-sizing: border-box;</div><div class="line">&#125;</div><div class="line"></div><div class="line">```c</div><div class="line">```c</div><div class="line">.box&#123;</div><div class="line">    .box-sizing;<span class="comment">//调用函数；</span></div><div class="line">&#125;</div><div class="line">```c</div><div class="line"></div><div class="line"><span class="number">3.</span>嵌套可以非常方便的管理我们的CSS层级关系</div><div class="line"></div><div class="line">```c</div><div class="line">.header&#123;</div><div class="line">    color:red;</div><div class="line">    .nav&#123;</div><div class="line">        .....</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">```c</div><div class="line"></div><div class="line">### 浏览器中使用</div><div class="line"></div><div class="line">我们可以引入一个less.js文件，实现实时的解析，而不必每次修改都要编译，最后完成所有开发任务后，再通过编辑器编译成css文件。</div><div class="line"><span class="number">1.</span>[下载](https:<span class="comment">//raw.githubusercontent.com/less/less.js/v2.5.3/dist/less.min.js) 然后引入less.js</span></div><div class="line"><span class="number">2.</span>引入xx.less文件，如：</div></pre></td></tr></table></figure></p>
-<p><link rel="stylesheet/less" type="text/css" href="styles.less"><br><code>``
-注意：</code>rel属性必须指定成stylesheet/less<code>，并且</code>styles.less要先于less.js引入`。<br>必须以服务器方式访问，可以放到study目录下，或者webstrom自带服务器功能，或者我们的 ghostlab调试工具的服务器。</p>
+<h3 id="less"><a href="#less" class="headerlink" title="less"></a>less</h3><h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><ol>
+<li>安装Nodejs环境 Node Package Manager (验证 node -v  npm -v)</li>
+<li>打开控制台（cmd），执行npm install -g less (验证 lessc -v)</li>
+<li>执行 npm install -g less-plugin-clean-css</li>
+<li>命令行编译 lessc path/xxx.less path/xxx.css</li>
+</ol>
+<h4 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h4><p>一般都会借助于编辑器插件来完成编译任务，以sublime_text为例</p>
+<ol>
+<li>ctrl+shit+p打开命令面板</li>
+<li>输入install package然后回车</li>
+<li>安装 LESS、lessc、Less2Css三个插件</li>
+<li>alt+s快捷键即可实现编译</li>
+</ol>
+<h4 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h4><ol>
+<li>变量</li>
+</ol>
+<p>格式：@变量名: 值，定义完成后可以重复使用<br>code block:<br>@color: red;//可以重复的使用<br>    .nav{<br>        backgroundColor:@color;<br>    }<br>    .header{<br>        background:@color;<br>    }</p>
+<ol>
+<li>混合编程</li>
+</ol>
+<p>我们可以像使用函数一样来使用CSS、<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.box-sizing</span>()&#123;</div><div class="line">  <span class="attribute">-webkit-box-sizing</span>: border-box;</div><div class="line">  <span class="attribute">-moz-box-sizing</span>: border-box;</div><div class="line">  <span class="attribute">box-sizing</span>: border-box;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<figure class="highlight gauss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.<span class="built_in">box</span>&#123;</div><div class="line">    .<span class="built_in">box</span>-sizing;<span class="comment">//调用函数；</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol>
+<li>嵌套可以非常方便的管理我们的CSS层级关系</li>
+</ol>
+<figure class="highlight lasso"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">.<span class="keyword">header</span>&#123;</div><div class="line">    color:red;</div><div class="line">    .nav&#123;</div><div class="line">        <span class="params">...</span>..</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="浏览器中使用"><a href="#浏览器中使用" class="headerlink" title="浏览器中使用"></a>浏览器中使用</h3><p>我们可以引入一个less.js文件，实现实时的解析，而不必每次修改都要编译，最后完成所有开发任务后，再通过编辑器编译成css文件。</p>
+<ol>
+<li><a href="https://raw.githubusercontent.com/less/less.js/v2.5.3/dist/less.min.js" target="_blank" rel="external">下载</a> 然后引入less.js</li>
+<li>引入xx.less文件，如：<figure class="highlight fsharp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;link rel=<span class="string">"stylesheet/less"</span> <span class="class"><span class="keyword">type</span></span>=<span class="string">"text/css"</span> href=<span class="string">"styles.less"</span> /&gt;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>注意：<code>rel属性必须指定成stylesheet/less</code>，并且<code>styles.less要先于less.js引入</code>。<br>必须以服务器方式访问，可以放到study目录下，或者webstrom自带服务器功能，或者我们的 ghostlab调试工具的服务器。</p>
 
           
         
@@ -561,7 +588,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2015-10-04T16:15:45+08:00" content="2015-10-04">
               2015-10-04
             </time>
@@ -676,7 +703,7 @@
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">22</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
@@ -686,7 +713,7 @@
             <div class="site-state-item site-state-tags">
               <a href="/tags">
                 <span class="site-state-item-count">4</span>
-                <span class="site-state-item-name">Tags</span>
+                <span class="site-state-item-name">tags</span>
               </a>
             </div>
           
@@ -730,7 +757,7 @@
 </div>
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
