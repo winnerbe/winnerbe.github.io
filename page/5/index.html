@@ -236,6 +236,344 @@
             
               
                 
+                <a class="post-title-link" href="/2015/10/04/手机端开发系列之八/" itemprop="url">
+                  手机端开发系列之八--移动类库
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2015-10-04T16:56:14+08:00" content="2015-10-04">
+              2015-10-04
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="移动的类库"><a href="#移动的类库" class="headerlink" title="移动的类库"></a>移动的类库</h2><p>code block:</p>
+<h2 id="swiper-js"><a href="#swiper-js" class="headerlink" title="swiper.js"></a>swiper.js</h2><p>1.<a href="https://github.com/nolimits4web/Swiper/" target="_blank" rel="external">下载swiper.js，</a><br>2.其<a href="http://www.swiper.com.cn/" target="_blank" rel="external">中文网站</a>非常详细介绍了其使用方法</p>
+<h2 id="swipe-js"><a href="#swipe-js" class="headerlink" title="swipe.js"></a>swipe.js</h2><p>1.<a href="https://github.com/thebird/Swipe" target="_blank" rel="external">下载swipe.js</a><br>2.html结构要求有三层结构，</p>
+<p><strong>注意结构的要求还有对应的CSS样式</strong></p>
+<h2 id="fastclick-js"><a href="#fastclick-js" class="headerlink" title="fastclick.js"></a>fastclick.js</h2><p>在移动设备上为了提升click的响应速度，我们选择了使用Zepto事件封装的tap来进行模拟，但是这会带来一个副作用，这个副作用就是<code>“点透”</code>，(自行查阅)<br>从上可以看出Zepto.js有不完善的地方，并且我们有时也希望我们的移动版页面在PC端上也可用，但是PC端是不支持touch事件的，这时我们面临的问题是即提升click在移动设备上的响应速度，又不能使用Zepto.js的tap事件，这时fastclick可以解决这个问题。</p>
+<ol>
+<li><a href="https://github.com/ftlabs/fastclick" target="_blank" rel="external">下载fastclick</a></li>
+<li>引入lib目录下的fastclick.js</li>
+<li>设用方法即可，</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">'.demo'</span>).on(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        alert(<span class="string">'不会得到快速响应'</span>);</div><div class="line">    &#125;);</div><div class="line">    <span class="comment">// 引入引插件可以解决click延时问题</span></div><div class="line">    <span class="comment">// 代表的含义是body元素以内所有被添加了</span></div><div class="line">    <span class="comment">// click事件元素，都会得到快速响应</span></div><div class="line">    <span class="comment">// FastClick.attach(document.body);</span></div><div class="line">    <span class="comment">// 代表的含义是只有在.box元素以内的click事件</span></div><div class="line">    <span class="comment">// 会得到一个快速响应</span></div><div class="line">    FastClick.attach(<span class="built_in">document</span>.querySelector(<span class="string">'.box'</span>));</div></pre></td></tr></table></figure>
+<h2 id="isSroll-js"><a href="#isSroll-js" class="headerlink" title="isSroll.js"></a>isSroll.js</h2><p>一个可以实现客户端原生滚动效果的类库。</p>
+<p>1.<a href="https://github.com/cubiq/iscroll" target="_blank" rel="external">下载iScroll</a><br>2.build目录下提供了不同版本的iScroll，可根据情况选择使用<br>3.html要求有3层结构</p>
+<p><strong>注意：下载下来会有文档，直接查看文档就可以了</strong></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/10/04/手机端开发系列之七/" itemprop="url">
+                  手机端开发系列之七--less
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2015-10-04T16:24:22+08:00" content="2015-10-04">
+              2015-10-04
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="css预处理器–less"><a href="#css预处理器–less" class="headerlink" title="css预处理器–less"></a>css预处理器–less</h2><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>CSS 预处理器是一种语言，用来为 CSS 增加一些编程的的特性，无需考虑浏览器的兼容性问题，并且你可以在 CSS 中使用变量、简单的程序逻辑、函数等等在编程语言中的一些基本技巧，可以让你的 CSS 更简洁，适应性更强，代码更直观等诸多好处。<br>常见的CSS预处理器有：<code>LESS、SASS、Stylus</code>等<br>其使用方法大致相同，我们在这里以LESS为例进行学习</p>
+<h3 id="less"><a href="#less" class="headerlink" title="less"></a>less</h3><h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><ol>
+<li>安装Nodejs环境 Node Package Manager (验证 node -v  npm -v)</li>
+<li>打开控制台（cmd），执行npm install -g less (验证 lessc -v)</li>
+<li>执行 npm install -g less-plugin-clean-css</li>
+<li>命令行编译 lessc path/xxx.less path/xxx.css</li>
+</ol>
+<h4 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h4><p>一般都会借助于编辑器插件来完成编译任务，以sublime_text为例</p>
+<ol>
+<li>ctrl+shit+p打开命令面板</li>
+<li>输入install package然后回车</li>
+<li>安装 LESS、lessc、Less2Css三个插件</li>
+<li>alt+s快捷键即可实现编译</li>
+</ol>
+<h4 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h4><ol>
+<li>变量</li>
+</ol>
+<p>格式：@变量名: 值，定义完成后可以重复使用<br>code block:<br><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="variable">@color:</span> red;<span class="comment">//可以重复的使用</span></div><div class="line">    <span class="selector-class">.nav</span>&#123;</div><div class="line">        <span class="attribute">backgroundColor</span>:<span class="variable">@color</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="selector-class">.header</span>&#123;</div><div class="line">        <span class="attribute">background</span>:<span class="variable">@color</span>;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<ol>
+<li>混合编程</li>
+</ol>
+<p>我们可以像使用函数一样来使用CSS、<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.box-sizing</span>()&#123;</div><div class="line">  <span class="attribute">-webkit-box-sizing</span>: border-box;</div><div class="line">  <span class="attribute">-moz-box-sizing</span>: border-box;</div><div class="line">  <span class="attribute">box-sizing</span>: border-box;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<figure class="highlight gauss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.<span class="built_in">box</span>&#123;</div><div class="line">    .<span class="built_in">box</span>-sizing;<span class="comment">//调用函数；</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol>
+<li>嵌套可以非常方便的管理我们的CSS层级关系</li>
+</ol>
+<figure class="highlight lasso"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">.<span class="keyword">header</span>&#123;</div><div class="line">    color:red;</div><div class="line">    .nav&#123;</div><div class="line">        <span class="params">...</span>..</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="浏览器中使用"><a href="#浏览器中使用" class="headerlink" title="浏览器中使用"></a>浏览器中使用</h3><p>我们可以引入一个less.js文件，实现实时的解析，而不必每次修改都要编译，最后完成所有开发任务后，再通过编辑器编译成css文件。</p>
+<ol>
+<li><a href="https://raw.githubusercontent.com/less/less.js/v2.5.3/dist/less.min.js" target="_blank" rel="external">下载</a> 然后引入less.js</li>
+<li>引入xx.less文件，如：<figure class="highlight fsharp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;link rel=<span class="string">"stylesheet/less"</span> <span class="class"><span class="keyword">type</span></span>=<span class="string">"text/css"</span> href=<span class="string">"styles.less"</span> /&gt;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>注意：<code>rel属性必须指定成stylesheet/less</code>，并且<code>styles.less要先于less.js引入</code>。<br>必须以服务器方式访问，可以放到study目录下，或者webstrom自带服务器功能，或者我们的 ghostlab调试工具的服务器。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/10/04/手机端开发系列之六/" itemprop="url">
+                  手机端开发系列之六--调试工具
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2015-10-04T16:15:45+08:00" content="2015-10-04">
+              2015-10-04
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="调试工具"><a href="#调试工具" class="headerlink" title="调试工具"></a>调试工具</h2><p>code block:</p>
+<ol>
+<li>模拟测试<br>现代主流浏览器均支持移动开发模拟调试，通常按F12可以调起，其使用也比较简单，可以帮我们方便快捷定位问题。</li>
+<li>测试工具<br>模拟调试可以满足大部分的开发调试任务，但是由于移动设备种类繁多，环境也十分复杂模拟调试容易出现差错，所以真机调试变的非常必要。</li>
+</ol>
+<p>有两种方法可以实现真机调试：</p>
+<ul>
+<li>将做好的网页上传至服务器或者本地搭建服务器，然后移动设备通过网络来访问。</li>
+<li>借助第三方的调试工具，如<code>weinre、debuggap、ghostlab</code>等<br>真机调试必须保证移动设备同服务器间的网络是相通的。</li>
+</ul>
+<p>这个就是直接打开ghostlab然后扫码就可以了，，只要你用的是那个软件就看的懂这句话</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2015/10/04/手机端开发系列之五/" itemprop="url">
                   手机端开发系列之五--手机事件
                 </a>
@@ -330,373 +668,11 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/10/04/手机端开发系列之四/" itemprop="url">
-                  手机端开发系列之四--媒体查询
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2015-10-04T14:11:57+08:00" content="2015-10-04">
-              2015-10-04
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="媒体查询"><a href="#媒体查询" class="headerlink" title="媒体查询"></a>媒体查询</h2><blockquote>
-<p>针对不同的手机设备做出不同的CSS样式<br>code block:</p>
-</blockquote>
-<h3 id="媒体类型"><a href="#媒体类型" class="headerlink" title="媒体类型"></a>媒体类型</h3><p>可以通过媒体类型对不同的设备指定不同的样式，一般我们使用screen。</p>
-<ol>
-<li>all–用于所有的设备。</li>
-<li>print–用于打印机或打印机预览</li>
-<li>screen–用于电脑屏幕，平板电脑，只能手机等。</li>
-</ol>
-<h3 id="媒体的特性"><a href="#媒体的特性" class="headerlink" title="媒体的特性"></a>媒体的特性</h3><blockquote>
-<p>判断的条件和依据。</p>
-</blockquote>
-<ol>
-<li>width–定义输出设备中的页面可见区域的宽度。</li>
-<li>heigh–定义输出设备中的页面可见区域的高度。</li>
-<li>min-width–定义输出设备中的页面最小可见区域的宽度。</li>
-<li>min-height–定义输出设备中的页面最小可见区域的高度。</li>
-<li>max-width–定义输出设备中的页面最大可见区域的宽度。</li>
-<li>max-height–定义输出设备中的页面最大可见区域的高度。</li>
-<li>device-width–定义输出设备屏幕可见的宽度。</li>
-<li>device-height–定义输出设备屏幕可见的高度。</li>
-<li>aspect-ratio–定义输出设备中的页面可是区域的宽度和高度的比率。</li>
-<li>device-aspect-ratio–定义设备中的屏幕可是宽度和高度的比率。</li>
-</ol>
-<h3 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h3><p>1.<code>and</code> 可以将多个媒体特性连接到一起，相当于“且”的意思。<br>2.<code>not</code> 排除某个媒体类型，相当于“非”的意思，可以省略。<br>3.<code>only</code>指定某个特定的媒体类型，可以省略。</p>
-<h3 id="引入的方式"><a href="#引入的方式" class="headerlink" title="引入的方式"></a>引入的方式</h3><p>1.link方法：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"./6-1.css"</span> <span class="attr">media</span>=<span class="string">"only screen and (max-width: 320px)"</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>2.@media方法（写在CSS里）<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">media</span> only screen and (width: <span class="number">360px</span>) &#123;</div><div class="line">    <span class="selector-tag">html</span> &#123;</div><div class="line">        <span class="attribute">font-size</span>: <span class="number">18px</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>基本上就这句话，符合就执行这句话。</p>
-<h3 id="常用的特性"><a href="#常用的特性" class="headerlink" title="常用的特性"></a>常用的特性</h3><p>1、width / height 完全等于layout viewport。<br>2、max-width / max-height 小于等于layout viewport。<br>3、min-width / min-height 大于等于layout viewport。<br>4、device-width / device-height 完全等于ideal viewport。<br>5、orientation: portrait | landscape 肖像/全景模式。<br>…..<a href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Media_queries" target="_blank" rel="external">还有其它</a></p>
-<h3 id="window-resize"><a href="#window-resize" class="headerlink" title="window.resize"></a>window.resize</h3><p>定义和用法</p>
-<p>当调整浏览器窗口的大小时，发生 resize 事件。<br>resize() 方法触发 resize 事件，或规定当发生 resize 事件时运行的函数。<br>当改变了那个浏览的宽度或者是高度的时候。</p>
-<p>在做每个手机不同分辨率的时候改变手机的类型很经常用这个</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/10/04/手机开发系列之三/" itemprop="url">
-                  手机端开发系列之三--适配
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2015-10-04T13:12:12+08:00" content="2015-10-04">
-              2015-10-04
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="手机端开发–适配"><a href="#手机端开发–适配" class="headerlink" title="手机端开发–适配"></a>手机端开发–适配</h2><h3 id="屏幕适配"><a href="#屏幕适配" class="headerlink" title="屏幕适配"></a>屏幕适配</h3><p>经过分析我们得到，移动页面最理想的状态是，避免滚动条且不被默认缩放处理，我们可以通过设置<br>code block:<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta <span class="built_in">name</span>=<span class="string">"viewport"</span> content=<span class="string">""</span>&gt;</div></pre></td></tr></table></figure></p>
-<p>来进行控制，并改变浏览器默认的layout viewport的宽度。</p>
-<h3 id="避免滚动"><a href="#避免滚动" class="headerlink" title="避免滚动"></a>避免滚动</h3><p>我们知道，滚动条是 layout viewport 相对于 ideal viewport 的，所以只要设置 layout viewport 小于或等于 ideal viewport，即<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta <span class="built_in">name</span>=<span class="string">"viewport"</span> content=<span class="string">"width=device-width"</span>&gt;</div></pre></td></tr></table></figure></p>
-<p>经测试发现我们并没有完全的解决滚动条的问题，原因在于页面的宽度.box {width: 1024px;}设置了一个绝对的宽度造成的，要解决这个问题我们可以设置一个百分比（100%）的宽度，</p>
-<h3 id="避免缩放"><a href="#避免缩放" class="headerlink" title="避免缩放"></a>避免缩放</h3><p>1.设置<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta <span class="built_in">name</span>=<span class="string">"viewport"</span> content=<span class="string">"initial-scale=1"</span>&gt;</div></pre></td></tr></table></figure></p>
-<p>这时我们发现网页没有被浏览器设置缩放。<br>2.设置<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta <span class="built_in">name</span>=<span class="string">"viewport"</span> content=<span class="string">"width=device-width"</span>&gt;</div></pre></td></tr></table></figure></p>
-<p>这时我们发现网页也没有被浏览器设设置缩放。<br>当我们设置width=device-width，也达到了initial-scale=1的效果，得知其实 initial-scale = ideal viewport / layout viewport。</p>
-<p>两种方式都可以控制缩放，开发中一般同时设置width=device-width和initial-scale=1.0<a href="http://www.cnblogs.com/2050/p/3877280.html" target="_blank" rel="external">移动前端开发之viewport深度理解</a><br>即mate标签：<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta <span class="built_in">name</span>=<span class="string">"viewport"</span> content=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</div></pre></td></tr></table></figure></p>
-<h3 id="常见的适配"><a href="#常见的适配" class="headerlink" title="常见的适配"></a>常见的适配</h3><ol>
-<li><p>百分比适配</p>
-<ul>
-<li>设置<meta name="viewport" content="width=device-width, initial-scale=1"></li>
-<li>设置页面宽度为百分比</li>
-<li>关于百分比，我们需要重新认识CSS里百分比的使用。<br>// 测试下列属性设置为百分比<br>width参照父元素的宽度<br>height参照父元素的高度<br>padding参照父元素的宽度<br>border不支持百分比设置<br>margin参照父元素的宽度</li>
-</ul>
-</li>
-<li><p>rem 适配</p>
-<ul>
-<li>设置<meta name="viewport" content="width=device-width, initial-scale=1"></li>
-<li>设置页面元素宽度单位为 rem 或 em<br>注：此方案比较灵活，我们的案例将采用这种方案<br>关于em和rem<br><em>em</em> 相对长度单位，其参照当前元素字号大小，如果当前元素未设置字号则会继承其祖先元素字号大小 例如 .box {font-size: 16px;} 则 1em = 16px .box {font-size: 32px;} 则 1em = 32px，0.5em = 16px</li>
-</ul>
-</li>
-</ol>
-<p><em>rem</em> 相对长度单位，其参照根元素(html)字号大小 例如 html {font-size: 16px;} 则 1rem = 16px html {font-size: 32px;} 则 1rem = 32px，0.5rem = 16px;  <strong>注</strong>：所有浏览器默认字号都是16px（某些安卓手机可以调置系统字号后，浏览器默认字号会受影响）</p>
-<h4 id="原理：例子"><a href="#原理：例子" class="headerlink" title="原理：例子"></a>原理：例子</h4><p>假设有一个UI的稿件是640px的（一般来说是640和750的）其中有个小人是16px的，要把他放到不同的手机设备上显示，在不同的手机上的尺寸是不一样的。那么我们是怎么去实现的呢？怎么计算出这个UI的稿件在不同手机上的大小的呢？</p>
-<p>1.把UI妹子的稿件分成若干份（分成20份比较好算）每一份是32px，小人占的是比例是0.5</p>
-<ol>
-<li>如果这个手机iPhone3，它的分辨率是320，也分成20份，每一份是16px。那么这个小人要显示的大小就是 16*0.5=8px; 实际上就是一个按比例显示的。</li>
-</ol>
-<p>怎么做的呢？ 这里涉及媒体查询上的一点知识：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">media</span> only screen and (width: <span class="number">320px</span>) &#123;</div><div class="line">    <span class="comment">/* 320 / 20 = 16px */</span></div><div class="line">    <span class="selector-tag">html</span> &#123;</div><div class="line">        <span class="attribute">font-size</span>: <span class="number">16px</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@<span class="keyword">media</span> only screen and (width: <span class="number">360px</span>) &#123;</div><div class="line">    <span class="comment">/* 360 / 20 = 18px */</span></div><div class="line">    <span class="selector-tag">html</span> &#123;</div><div class="line">        <span class="attribute">font-size</span>: <span class="number">18px</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p><em>只要用上了这个你就可以随心所欲的用你的单位px了</em></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/10/04/手机端开发系列之二/" itemprop="url">
-                  手机端开发系列之二--视口
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2015-10-04T12:54:22+08:00" content="2015-10-04">
-              2015-10-04
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="手机端开发–视口"><a href="#手机端开发–视口" class="headerlink" title="手机端开发–视口"></a>手机端开发–视口</h3><p>什么是视口？视口（viewport）是用来约束你网站中最顶级块元素<html>的，即它决定了<html>的大小。<br>pc视口和手机视口的区别：在于这个pc的视口受那个浏览器窗口的限制，手机的视口可以自己设置</html></html></p>
-<h4 id="移动端浏览器"><a href="#移动端浏览器" class="headerlink" title="移动端浏览器"></a>移动端浏览器</h4><p>移动端开发主要是针对IOS和Android两个操作系统平台的，除此之外还有Windows Phone。<br>移动端主要可以分成三大类，系统自带浏览器、应用内置浏览器、第三方浏览器<br><code>系统浏览器</code>：指跟随移动设备操作系统一起安装的浏览器。</p>
-<p><code>应用内置浏览器</code>：通常在移动设备上都会安装一些APP例如QQ、微信、微博、淘宝等，这些APP里往往会内置一个浏览器，我们称这个浏览器为应用内置浏览器（也叫WebView），这个内置的浏览器一般功能比较简单，并且客户端开发人员可以更改这个浏览器的某些设置，在我们理实的开发里这个浏览器很重要。</p>
-<p><code>第三方浏览器</code>：指安装在手机的浏览器如FireFox、Chrome、360等等。<br>在IOS和Android操作系统上自带浏览器、应用内置浏览器都是基础Webkit内核的。</p>
-<p><em>思考：移动端页面要达到什么效果才最合理？</em> </p>
-<h4 id="viewport"><a href="#viewport" class="headerlink" title="viewport"></a>viewport</h4><p>我们知道移动设备屏幕普遍都是比较小的，但是大部分的网站又都是为PC设备来设计的，要想让移动设备也可以正常显示网页，移动设备不得不做一些处理，只要viewport足够大（块级元素html就会比较大），就能保证原本为PC设备设计的网页也能在移动设备上正常显示，移动设备厂商也的确是这样来处理的。</p>
-<p>在移动设备上viewport不再受限于浏览器的窗口，而是允许开发人员自由设置viewport的大小，通常浏览器会设置一个默认大小的viewport，同时为了能够正常显示那些专为PC设计的网页，一般这个值的大小会大于屏幕的尺寸。 (这个值一般为980px)<br>这样的会我们网页设计的那些网页在移动端就不会错乱了。但是</p>
-<p><strong>在iPhone5s和部分Android中我们发现页面内容（文字、图片）被缩放了（变的非常小），而在部分安卓设备中则出现了滚动条。</strong></p>
-<h4 id="layout-viewport-amp-ideal-viewport"><a href="#layout-viewport-amp-ideal-viewport" class="headerlink" title="layout viewport&amp;ideal viewport"></a>layout viewport&amp;ideal viewport</h4><p><em>为什么呢？</em> 要解释上面的原因，需要进一步对移动设备的viewport进行分析，移动设备上有2个viewport，分别是layout viewport和ideal viewport。</p>
-<ol>
-<li><code>layout viewport</code>（布局视口）指的是我们可以进行网页布局区域的大小，同样是以CSS像素做为计量单位，可以通过下面方式获取 :<br>code block:<figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 获取layout viewport</span></div><div class="line"><span class="built_in">document</span>.documentElement.clientWidth;</div><div class="line"><span class="built_in">document</span>.documentElement.clientHeight;</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>通过前面介绍我们知道，如果要保证为PC设计的网页在移动设备上布局不发生错乱，移动设备会默认设置一个较大的viewport（如IOS为980px），这个viewport实际指的是layout viewport，我们也可改变这个默认值，后面将会介绍。</p>
-<ol>
-<li><code>ideal viewport</code>（理想视口）设备屏幕区域，以dp（或pt、px）做为计量单位，不同的设备具有不同大小的理想视口，其大小是不可能被改变的，通过下面方式可以获取。<figure class="highlight gauss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 获取ideal viewport有两种情形</span></div><div class="line"><span class="comment">// 新设备</span></div><div class="line"><span class="built_in">window</span>.<span class="keyword">screen</span>.width;</div><div class="line"><span class="built_in">window</span>.<span class="keyword">screen</span>.height;</div><div class="line"><span class="comment">// 老设备</span></div><div class="line"><span class="built_in">window</span>.<span class="keyword">screen</span>.width / <span class="built_in">window</span>.devicePixelRatio;</div><div class="line"><span class="built_in">window</span>.<span class="keyword">screen</span>.height / <span class="built_in">window</span>.devicePixelRatio;</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p><strong>并不总是正确的，然而在实际开发我们一般无需获取这个值具体大小。</strong></p>
-<p>在理解了上述三个viewport后我们来解释为什么网页会被缩放或出现水平滚动条，其原因在于移动设备浏览器会默认设置一个layout viewport，并且这个值会大于ideal viewport，那么我们也知道ideal viewport就是屏幕区域，layout viewport是我们布局网页的区域，那么最终layout viewport最终是要显示在ideal viewport里的，而layout viewport大于ideal viewport时，于是就出现滚动条了，那么为什么有的移动设备网页内容被缩放了呢？移动设备厂商认为将网页完整显示给用户才最合理，而不该出现滚动条，所以就将layout viewport进行了缩放，使其恰好完整显示在ideal viewport（屏幕）里，其缩放比例为ideal viewport / layout viewport。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -737,7 +713,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">22</span>
+              <span class="site-state-item-count">25</span>
               <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
@@ -747,7 +723,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">Tags</span>
               </a>
             </div>
