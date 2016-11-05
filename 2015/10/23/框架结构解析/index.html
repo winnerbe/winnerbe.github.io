@@ -84,13 +84,16 @@
 
 
 
+<meta name="description" content="框架结构的解析block1234567891011121314151617181920212223242526272829303132333435363738394041(function (global) &amp;#123;    var init;    function fe(selector) &amp;#123;        // 利用工厂模式来返回fe.fn.init对象        retur">
 <meta property="og:type" content="article">
 <meta property="og:title" content="框架结构解析">
 <meta property="og:url" content="http://yoursite.com/2015/10/23/框架结构解析/index.html">
 <meta property="og:site_name" content="chenzq  FE">
-<meta property="og:updated_time" content="2016-10-23T02:17:21.280Z">
+<meta property="og:description" content="框架结构的解析block1234567891011121314151617181920212223242526272829303132333435363738394041(function (global) &amp;#123;    var init;    function fe(selector) &amp;#123;        // 利用工厂模式来返回fe.fn.init对象        retur">
+<meta property="og:updated_time" content="2016-10-23T11:45:49.052Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="框架结构解析">
+<meta name="twitter:description" content="框架结构的解析block1234567891011121314151617181920212223242526272829303132333435363738394041(function (global) &amp;#123;    var init;    function fe(selector) &amp;#123;        // 利用工厂模式来返回fe.fn.init对象        retur">
 
 
 
@@ -274,7 +277,8 @@
       
 
       
-        
+        <h2 id="框架结构的解析"><a href="#框架结构的解析" class="headerlink" title="框架结构的解析"></a>框架结构的解析</h2><figure class="highlight plain"><figcaption><span>block</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line">(function (global) &#123;</div><div class="line">    var init;</div><div class="line"></div><div class="line">    function fe(selector) &#123;</div><div class="line">        // 利用工厂模式来返回fe.fn.init对象</div><div class="line">        return new fe.fn.init(selector);</div><div class="line">    &#125;</div><div class="line">    // fn 为 prototype的简写方式。</div><div class="line">    // 目的：为了方便用户在原型上扩展成员</div><div class="line">    fe.fn = fe.prototype = &#123;</div><div class="line">        constructor: fe,</div><div class="line">    //在这里扩展的方法可以扩展根据方法列表进行扩展</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    // 给fe原型添加init方法</div><div class="line">    init = fe.fn.init = function (selector) &#123;</div><div class="line">        </div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    // 由于暴露外部的变量有 fe函数 以及 其原型</div><div class="line">    // 而用户要给fe原型扩展成员，但是fe函数返回的是init对象，无法访问fe原型上的成员</div><div class="line">    // 因此让init实例继承自fe原型即可。</div><div class="line">    init.prototype = fe.fn;</div><div class="line"></div><div class="line">    //添加一个扩展的方法这个方法的参数</div><div class="line">    //只能是对象，喜欢的话可以自己过滤--拷贝继承</div><div class="line">    fe.extend = fe.fn.extend = function(source) &#123;</div><div class="line">        var k;</div><div class="line">        for (k in source) &#123;</div><div class="line">            this[k] = source[k]</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    //这样就可以扩展不同的方法了</div><div class="line">   fe.extend(&#123;</div><div class="line">        each:function()&#123;&#125;,</div><div class="line">    &#125;)</div><div class="line"></div><div class="line">    // 暴露给用户</div><div class="line">    global.$ = global.fe = fe;</div><div class="line">&#125;(window));</div></pre></td></tr></table></figure>
+
       
     </div>
 
@@ -312,6 +316,10 @@
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/10/23/next和hexo时遇到的一些问题/" rel="prev" title="next和hexo时遇到的一些问题">
+                next和hexo时遇到的一些问题 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -389,7 +397,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">Tags</span>
               </a>
             </div>
@@ -418,7 +426,7 @@
               
             
             
-              <p class="post-toc-empty">Dieser Artikel hat kein Inhaltsverzeichnis</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#框架结构的解析"><span class="nav-number">1.</span> <span class="nav-text">框架结构的解析</span></a></li></ol></div>
             
           </div>
         </section>

@@ -86,35 +86,38 @@
 
 <meta name="description" content="函数的四种调用模式1、普通函数执行
 this -&amp;gt; window
-声明一个函数后，就直接调用code block:12345function foo() &amp;#123;   console.log(1);   console.log(this === window);//true &amp;#125; foo();
+声明一个函数后，就直接调用code block12345function foo() &amp;#123;   console.log(1);   console.log(this === window);//true &amp;#125; foo();
 
 
 2. 方法调用模式
 this —&amp;gt; 该方法的调用者
-通过一个对象来调用方法1">
+通过一个对象来调用方法
+1">
 <meta property="og:type" content="article">
 <meta property="og:title" content="面向对象系列之五">
 <meta property="og:url" content="http://yoursite.com/2015/10/11/面向对象系列之五/index.html">
 <meta property="og:site_name" content="chenzq  FE">
 <meta property="og:description" content="函数的四种调用模式1、普通函数执行
 this -&amp;gt; window
-声明一个函数后，就直接调用code block:12345function foo() &amp;#123;   console.log(1);   console.log(this === window);//true &amp;#125; foo();
+声明一个函数后，就直接调用code block12345function foo() &amp;#123;   console.log(1);   console.log(this === window);//true &amp;#125; foo();
 
 
 2. 方法调用模式
 this —&amp;gt; 该方法的调用者
-通过一个对象来调用方法1">
-<meta property="og:updated_time" content="2016-10-14T11:07:02.654Z">
+通过一个对象来调用方法
+1">
+<meta property="og:updated_time" content="2016-10-23T05:01:42.230Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面向对象系列之五">
 <meta name="twitter:description" content="函数的四种调用模式1、普通函数执行
 this -&amp;gt; window
-声明一个函数后，就直接调用code block:12345function foo() &amp;#123;   console.log(1);   console.log(this === window);//true &amp;#125; foo();
+声明一个函数后，就直接调用code block12345function foo() &amp;#123;   console.log(1);   console.log(this === window);//true &amp;#125; foo();
 
 
 2. 方法调用模式
 this —&amp;gt; 该方法的调用者
-通过一个对象来调用方法1">
+通过一个对象来调用方法
+1">
 
 
 
@@ -300,17 +303,19 @@ this —&amp;gt; 该方法的调用者
       
         <h2 id="函数的四种调用模式"><a href="#函数的四种调用模式" class="headerlink" title="函数的四种调用模式"></a>函数的四种调用模式</h2><h3 id="1、普通函数执行"><a href="#1、普通函数执行" class="headerlink" title="1、普通函数执行"></a>1、普通函数执行</h3><ul>
 <li>this -&gt; window</li>
-<li>声明一个函数后，就直接调用<br>code block:<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">   <span class="built_in">console</span>.log(<span class="number">1</span>);</div><div class="line">   <span class="built_in">console</span>.log(<span class="keyword">this</span> === <span class="built_in">window</span>);<span class="comment">//true</span></div><div class="line"> &#125;</div><div class="line"> foo();</div></pre></td></tr></table></figure>
+<li>声明一个函数后，就直接调用<br>code block<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">   <span class="built_in">console</span>.log(<span class="number">1</span>);</div><div class="line">   <span class="built_in">console</span>.log(<span class="keyword">this</span> === <span class="built_in">window</span>);<span class="comment">//true</span></div><div class="line"> &#125;</div><div class="line"> foo();</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <h3 id="2-方法调用模式"><a href="#2-方法调用模式" class="headerlink" title="2. 方法调用模式"></a>2. 方法调用模式</h3><ul>
 <li>this —&gt; 该方法的调用者</li>
-<li>通过一个对象来调用方法<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">   <span class="attr">sayHi</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">     <span class="built_in">console</span>.log(<span class="string">"hello, girl."</span>);</div><div class="line">     <span class="built_in">console</span>.log(<span class="keyword">this</span> === obj);<span class="comment">//true</span></div><div class="line">   &#125;</div><div class="line"> &#125;;</div><div class="line"> obj.sayHi();</div></pre></td></tr></table></figure>
+<li><p>通过一个对象来调用方法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">   <span class="attr">sayHi</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">     <span class="built_in">console</span>.log(<span class="string">"hello, girl."</span>);</div><div class="line">     <span class="built_in">console</span>.log(<span class="keyword">this</span> === obj);<span class="comment">//true</span></div><div class="line">   &#125;</div><div class="line"> &#125;;</div><div class="line"> obj.sayHi();</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <h3 id="3-构造函数模式"><a href="#3-构造函数模式" class="headerlink" title="3. 构造函数模式"></a>3. 构造函数模式</h3><ul>
 <li>this -&gt; 当前创建出来的对象</li>
-<li>配合new操作符 来 调用函数<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">name, age, gender</span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.name = name;</div><div class="line">  <span class="keyword">this</span>.age = age;</div><div class="line">  <span class="keyword">this</span>.gender = gender;</div><div class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>);</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> f = <span class="keyword">new</span> fn(<span class="string">'f'</span>);</div></pre></td></tr></table></figure>
+<li><p>配合new操作符 来 调用函数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">name, age, gender</span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.name = name;</div><div class="line">  <span class="keyword">this</span>.age = age;</div><div class="line">  <span class="keyword">this</span>.gender = gender;</div><div class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>);</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> f = <span class="keyword">new</span> fn(<span class="string">'f'</span>);</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <h3 id="4-call-apply-上下文-模式"><a href="#4-call-apply-上下文-模式" class="headerlink" title="4. call/apply(上下文)模式"></a>4. call/apply(上下文)模式</h3><ul>
@@ -323,7 +328,8 @@ this —&amp;gt; 该方法的调用者
 <li><fn>.apply(thisObj, [实参]): thisObj 为 this的指向，数组参数为 fn在执行时的实参</fn></li>
 </ul>
 </li>
-<li>注意：在非严格模式下，如果thisObj 赋值为 null 或者不传实参，此时this -&gt; window 对象，就相当于 普通函数执行模式。<figure class="highlight rust"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var o = &#123;&#125;;</div><div class="line"> <span class="function"><span class="keyword">fn</span>.<span class="title">call</span></span>(o, <span class="string">'o'</span>, <span class="number">18</span>, <span class="symbol">'man</span>');</div><div class="line"> <span class="function"><span class="keyword">fn</span>.<span class="title">apply</span></span>( o, [<span class="string">'o'</span>, <span class="number">18</span>, <span class="symbol">'man</span>'] );</div><div class="line"> console.log(o);</div></pre></td></tr></table></figure>
+<li><p>注意：在非严格模式下，如果thisObj 赋值为 null 或者不传实参，此时this -&gt; window 对象，就相当于 普通函数执行模式。</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var o = &#123;&#125;;</div><div class="line"> <span class="function"><span class="keyword">fn</span>.<span class="title">call</span></span>(o, <span class="string">'o'</span>, <span class="number">18</span>, <span class="symbol">'man</span>');</div><div class="line"> <span class="function"><span class="keyword">fn</span>.<span class="title">apply</span></span>( o, [<span class="string">'o'</span>, <span class="number">18</span>, <span class="symbol">'man</span>'] );</div><div class="line"> console.log(o);</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <h3 id="5-上下文模式的应用"><a href="#5-上下文模式的应用" class="headerlink" title="5. 上下文模式的应用"></a>5. 上下文模式的应用</h3><pre><code>+ 1 数组的合并
@@ -469,7 +475,7 @@ this —&amp;gt; 该方法的调用者
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">Tags</span>
               </a>
             </div>
