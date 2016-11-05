@@ -236,6 +236,293 @@
             
               
                 
+                <a class="post-title-link" href="/2015/10/11/面向对象系列之四/" itemprop="url">
+                  面向对象系列之四
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2015-10-11T10:59:29+08:00" content="2015-10-11">
+              2015-10-11
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="1-instanceof运算规则："><a href="#1-instanceof运算规则：" class="headerlink" title="1. instanceof运算规则："></a>1. instanceof运算规则：</h3><p>如果运算符后面的函数 的prototype属性所引用的对象，<br>出现在 <em>运算符前面的对象</em> 的原型链上的话，就返回true；<br>否则就返回false,(只要是在原型链上就输出true)。<br>code block:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> f = <span class="keyword">new</span> foo;</div><div class="line"><span class="built_in">console</span>.log(f <span class="keyword">instanceof</span> foo);<span class="comment">// true</span></div><div class="line"><span class="built_in">console</span>.log(f <span class="keyword">instanceof</span> fn); <span class="comment">// false</span></div><div class="line"><span class="built_in">console</span>.log(f <span class="keyword">instanceof</span> <span class="built_in">Object</span>); <span class="comment">// true</span></div><div class="line"><span class="comment">// f -&gt; foo.prototype -&gt; Obejct.prototpye - &gt; null</span></div></pre></td></tr></table></figure></p>
+<h3 id="2-绘制作用域链的规则"><a href="#2-绘制作用域链的规则" class="headerlink" title="2. 绘制作用域链的规则"></a>2. 绘制作用域链的规则</h3><ol>
+<li>将整个script标签的全局作用域，定义为0级作用域链。将全局作用域上的数据（变量、函数、对象等等）绘制在该链上。</li>
+<li>由于在词法作用域中，只有函数可以分割作用域。因此，只要遇到函数，就要引申出新的作用域链，级别为当前链的级别 + 1；</li>
+<li>重复第二步骤，直到没有遇到函数为止。</li>
+</ol>
+<h3 id="3-变量的搜索原则：当访问一个变量时，"><a href="#3-变量的搜索原则：当访问一个变量时，" class="headerlink" title="3. 变量的搜索原则：当访问一个变量时，"></a>3. 变量的搜索原则：当访问一个变量时，</h3><ol>
+<li>首先在当前变量所处作用域链上查找，如果找到就直接使用，并停止查找；</li>
+<li>如果没有找到，就向上一级链（T - 1）上去查找，如果找到就直接使用，并停止查找；</li>
+<li>如果没有找到，就继续向上一级链查找。直到0级链，如果找到就直接使用，并停止查找；</li>
+<li>如果没有找到就报错。</li>
+</ol>
+<p><strong>注意：</strong></p>
+<ul>
+<li>如果访问的变量不存在，会搜索整个作用域链（不仅性能低，而且抛出异常。）<br>在实际开发，不推崇所有数据都写在全局上。尽量使用局部变量。推荐使用沙箱。<pre><code>如果在开发中，所有js代码都写在全局上，会造成全局变量的污染。
+</code></pre></li>
+<li>同级别的链上的变量互不干扰。</li>
+</ul>
+<h3 id="4-在函数执行的时候，会创建一个执行的环境，包括activeObject（活动对象）以及作用域链"><a href="#4-在函数执行的时候，会创建一个执行的环境，包括activeObject（活动对象）以及作用域链" class="headerlink" title="4. 在函数执行的时候，会创建一个执行的环境，包括activeObject（活动对象）以及作用域链"></a>4. 在函数执行的时候，会创建一个执行的环境，包括activeObject（活动对象）以及作用域链</h3><p>1&gt; activeObject: 存储的是所有在函数内部定义的变量，以及函数的形参；<br>        会将变量名字以及形参名字作为该对象的属性来存储</p>
+<h3 id="5-闭包"><a href="#5-闭包" class="headerlink" title="5. 闭包"></a>5. 闭包</h3><ul>
+<li>概念：一个函数有权去访问另一个函数的内部数据。(就是要访问函数中的变量，在函数的里头建立一个函数，利用这个函数来输出这个变量然后在放回这个函数，这样就实现了)</li>
+<li>缺点： 会造成函数内部的数据常驻内存，从而引发内存泄漏的问题。</li>
+<li>解决的问题：解决在函数外部无法访问函数内部的数据。</li>
+<li>为了防止闭包导致内存泄漏，在使用完闭包后，将其赋值为null即可。</li>
+<li>闭包怎么缓存数据？因为在函数内部有方法（函数）对其有引用，并且又将其返回到外部作用域上的一个变量接收。</li>
+</ul>
+<h3 id="6-垃圾回收机制：GC（Garbage-Collection）"><a href="#6-垃圾回收机制：GC（Garbage-Collection）" class="headerlink" title="6. 垃圾回收机制：GC（Garbage Collection）"></a>6. 垃圾回收机制：GC（Garbage Collection）</h3><ol>
+<li><p>　<strong>引用计数</strong></p>
+<pre><code>如果一个变量被另一个变量引用，那么该变量的应用计数+1；当这个变量不再引用该变量（该变量被回收掉了）时，
+此时这个变量的引用计数 - 1；
+GC会在一定时间间隔去查看每个变量的计数，如果为0， 就将其占用的内存回收。
+</code></pre><p> <strong>缺点：</strong> 循环引用：会造成无法回收变量的内存</p>
+<pre><code>a{ val : b} , b{val:ａ} b = null;(a = null)
+</code></pre></li>
+</ol>
+<p>2.　<strong>标记清除</strong></p>
+<pre><code>从当前文档根部（window对象）找一条路径，如果能到达该变量，那么说明此变量不应该 被回收掉
+反之，应该被回收其所占用的内存。
+- --如果变量进入某个执行环境，那么给其标记为 “进入环境”；
+- --如果上述执行环境执行完成，被销毁，那么该环境内的所有变量都被标记为“已出环境”
+- --如果变量被标记为已出环境，就会被回收掉其占用的内存空间。
+</code></pre><h3 id="7-闭包的应用"><a href="#7-闭包的应用" class="headerlink" title="7. 闭包的应用"></a>7. 闭包的应用</h3><ol>
+<li>计数器</li>
+<li>对象的私有属性</li>
+<li>解决fib数列递归性能</li>
+<li><p>沙箱模式： 好处： 不会污染全局变量（或者其他作用域的变量），并且能保证自己的代码安全执行。</p>
+<p> <strong>特性：</strong>  a:  能分割作用域，不会污染全局 fn</p>
+<pre><code>b:  在分割后的作用域内部的代码要能自执行。fn()
+</code></pre><p> <strong>结构：</strong><br> (function (){</p>
+<pre><code>//代码块
+window.fn = fn;        
+</code></pre><p> }());</p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/10/08/模拟数据交互系列之五-各种请求与响应/" itemprop="url">
+                  模拟数据交互系列之五--各种请求与响应
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2015-10-08T22:40:36+08:00" content="2015-10-08">
+              2015-10-08
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="各种请求和响应"><a href="#各种请求和响应" class="headerlink" title="各种请求和响应"></a>各种请求和响应</h2><h3 id="a标签"><a href="#a标签" class="headerlink" title="a标签"></a>a标签</h3><p>a标签 的数据一般是用GET方式的请求，，然后在herf中填入的是请求的地址，最后用get方式来发送数据</p>
+<figure class="highlight plain"><figcaption><span>block</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;a href=&quot;01demo.php?username=zhangsan&amp;age=12&quot;&gt;get 方式提交&lt;/a&gt;</div></pre></td></tr></table></figure>
+<h3 id="form类的"><a href="#form类的" class="headerlink" title="form类的"></a>form类的</h3><p>form 的发送，一般使用这个post<br>然后在这个里头增加input的标签在input中的name=”username”  就是这个变量的名字。<br>用户写入input的内容就是username的内容。</p>
+<p>在php中获取。<br>$username = $_GET[“username”];<br>$username = $_POST[“username”];<br>echo $username ;<br>这样点击提交跳转到php的这个页面输出username 的值</p>
+<p><strong>注意</strong></p>
+<ul>
+<li>一定会有一个input标签type的值为submit用来提交</li>
+</ul>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">我要把这个临时的文件放在我的自己的目录下面.</div><div class="line"> 我可以调用php给我提供的另外一个函数.</div><div class="line">&lt;<span class="keyword">form</span> action=<span class="string">"01demo.php"</span> method=<span class="string">"post"</span> enctype=<span class="string">"multipart/form-data"</span>&gt;</div><div class="line">    &lt;<span class="keyword">input</span> <span class="keyword">type</span>=<span class="string">"file"</span> name=<span class="string">"lifephoto"</span>/&gt; &lt;<span class="keyword">br</span> /&gt;</div><div class="line">    &lt;<span class="keyword">input</span> <span class="keyword">type</span>=<span class="string">"submit"</span> value=<span class="string">"文件上传"</span>/&gt;</div><div class="line">&lt;/<span class="keyword">form</span>&gt;</div><div class="line">（记住这个图片的名字必须是中文的不然就出错了）</div><div class="line"> <span class="comment">/*</span></div><div class="line">     1:我要移动的文件的目录.</div><div class="line">     C:\wamp\tmp\php6C62.tmp</div><div class="line">     2:我要移动到那个文件夹里面的那个文件里面去</div><div class="line">     images/2.txt</div><div class="line"> */</div><div class="line"> <span class="comment">//获取文件临时存储位置.</span></div><div class="line"> <span class="variable">$tmp_name</span>=<span class="variable">$_FILES</span>['lifephoto']['tmp_name'];</div><div class="line"> <span class="comment">//获取文件名称 images/1.png</span></div><div class="line"> <span class="variable">$fileName</span>=<span class="variable">$_FILES</span>['lifephoto']['name'];</div><div class="line"> <span class="comment">//把文件移动到另外的一个指定的目录的文件当中</span></div><div class="line"> move_uploaded_file(<span class="variable">$tmp_name</span>,<span class="string">"images/"</span>.<span class="variable">$fileName</span>);</div><div class="line"></div><div class="line"><span class="comment">*变量要一一对应*</span></div></pre></td></tr></table></figure>
+<h3 id="php-的动态输出"><a href="#php-的动态输出" class="headerlink" title="php 的动态输出"></a>php 的动态输出</h3><p>简单的来说这就是一个html页面中间要把自己的php部分用php语言的格式然后利用echo，在这个页面输出。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>订单页面<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">table</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>姓名<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>性别<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>描述<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line">    <span class="php"><span class="meta">&lt;?php</span></span></div><div class="line">            <span class="comment">//我在这里从数据库里面取出来数据</span></div><div class="line">            <span class="comment">//取出来的数据肯定放在一个临时的存储区。</span></div><div class="line">            <span class="comment">//从数据库里面的数据取出来放在一个数据当中，</span></div><div class="line">            <span class="comment">//我把这个数据里面的数据遍历出来，再进行输出.</span></div><div class="line">            $array=<span class="keyword">array</span>(</div><div class="line">                  <span class="keyword">array</span>(<span class="string">"name"</span>=&gt;<span class="string">"chen"</span>,<span class="string">"sex"</span>=&gt;<span class="string">"男"</span>,<span class="string">"detail"</span>=&gt;<span class="string">"有点帅"</span>),</div><div class="line">                  <span class="keyword">array</span>(<span class="string">"name"</span>=&gt;<span class="string">"li"</span>,<span class="string">"sex"</span>=&gt;<span class="string">"女"</span>,<span class="string">"detail"</span>=&gt;<span class="string">"很帅"</span>),</div><div class="line">                  <span class="keyword">array</span>(<span class="string">"name"</span>=&gt;<span class="string">"wang"</span>,<span class="string">"sex"</span>=&gt;<span class="string">"男"</span>,<span class="string">"detail"</span>=&gt;<span class="string">"超帅"</span>),</div><div class="line">            );</div><div class="line">            <span class="keyword">for</span>($i=<span class="number">0</span>;$i&lt;count($array);$i++)&#123;</div><div class="line">                    <span class="keyword">echo</span> <span class="string">"&lt;tr&gt;"</span>;</div><div class="line">                    <span class="keyword">foreach</span>($array[$i] <span class="keyword">as</span> $key=&gt;$val)&#123;</div><div class="line">                            <span class="keyword">echo</span> <span class="string">"&lt;td&gt;"</span>;</div><div class="line">                            <span class="keyword">echo</span> $val;</div><div class="line">                            <span class="keyword">echo</span> <span class="string">"&lt;/td&gt;"</span>;</div><div class="line">                    &#125;</div><div class="line">                    <span class="keyword">echo</span> <span class="string">"&lt;/tr&gt;"</span>;</div><div class="line">            &#125;</div><div class="line">    <span class="meta">?&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p><strong>说明：</strong></p>
+<p>中间的那一部分就是php的内容就可以向页面输出信息</p>
+<h3 id="xml格式-json格式数据（都是ajax请求ajax单独讲）"><a href="#xml格式-json格式数据（都是ajax请求ajax单独讲）" class="headerlink" title="xml格式,json格式数据（都是ajax请求ajax单独讲）"></a>xml格式,json格式数据（都是ajax请求ajax单独讲）</h3><p>什么是xml格式的数据？ 类似标签</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span>  encoding=<span class="string">"utf-8"</span><span class="meta">?&gt;</span></span></div><div class="line"><span class="tag">&lt;<span class="name">users</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">user</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">username</span>&gt;</span>张三<span class="tag">&lt;/<span class="name">username</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">sex</span>&gt;</span>女<span class="tag">&lt;/<span class="name">sex</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">desc</span>&gt;</span>美女<span class="tag">&lt;/<span class="name">desc</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">imageURL</span>&gt;</span>images/1.jpg<span class="tag">&lt;/<span class="name">imageURL</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">user</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">user</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">username</span>&gt;</span>李四<span class="tag">&lt;/<span class="name">username</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">sex</span>&gt;</span>女<span class="tag">&lt;/<span class="name">sex</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">desc</span>&gt;</span>有韵味<span class="tag">&lt;/<span class="name">desc</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">imageURL</span>&gt;</span>images/2.jpg<span class="tag">&lt;/<span class="name">imageURL</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">user</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">user</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">username</span>&gt;</span>王五<span class="tag">&lt;/<span class="name">username</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">sex</span>&gt;</span>男<span class="tag">&lt;/<span class="name">sex</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">desc</span>&gt;</span>大美女<span class="tag">&lt;/<span class="name">desc</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">imageURL</span>&gt;</span>images/3.jpg<span class="tag">&lt;/<span class="name">imageURL</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">user</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">user</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">username</span>&gt;</span>xxx<span class="tag">&lt;/<span class="name">username</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">sex</span>&gt;</span>男<span class="tag">&lt;/<span class="name">sex</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">desc</span>&gt;</span>大美女<span class="tag">&lt;/<span class="name">desc</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">imageURL</span>&gt;</span>images/3.jpg<span class="tag">&lt;/<span class="name">imageURL</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">user</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">users</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>后缀名字为xml<br>什么是json格式的数据 key:value键值对<br>文本的后缀是txt</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&#123;<span class="attr">"rows"</span>:[</div><div class="line">    &#123;<span class="attr">"username"</span>:<span class="string">"冰"</span>,<span class="attr">"age"</span>:<span class="number">21</span>,<span class="attr">"sex"</span>:<span class="string">"女"</span>,<span class="attr">"desc"</span>:<span class="string">"云南来的汉族妹子"</span>&#125;,</div><div class="line">    &#123;<span class="attr">"username"</span>:<span class="string">"石健"</span>,<span class="attr">"age"</span>:<span class="number">23</span>,<span class="attr">"sex"</span>:<span class="string">"男"</span>,<span class="attr">"desc"</span>:<span class="string">"帅哥一枚"</span>&#125;,</div><div class="line">    &#123;<span class="attr">"username"</span>:<span class="string">"王春淼"</span>,<span class="attr">"age"</span>:<span class="number">22</span>,<span class="attr">"sex"</span>:<span class="string">"女"</span>,<span class="attr">"desc"</span>:<span class="string">"命里缺水"</span>&#125;,</div><div class="line">   &#123;<span class="attr">"username"</span>:<span class="string">"齐飞龙"</span>,<span class="attr">"age"</span>:<span class="number">22</span>,<span class="attr">"sex"</span>:<span class="string">"男"</span>,<span class="attr">"desc"</span>:<span class="string">"就是一条龙"</span>&#125;</div><div class="line">],<span class="attr">"total"</span>:<span class="number">20</span>&#125;</div></pre></td></tr></table></figure>
+<h3 id="服务端对xml-json的解析然后给客户端"><a href="#服务端对xml-json的解析然后给客户端" class="headerlink" title="服务端对xml,json的解析然后给客户端"></a>服务端对xml,json的解析然后给客户端</h3><ol>
+<li><p>对xml解析：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">header(<span class="string">"Content-Type:text/xml;charst=utf-8"</span>);</div><div class="line"><span class="variable">$data</span>=file_get_contents(<span class="string">"02demo.xml"</span>);</div><div class="line"><span class="built_in">echo</span> <span class="variable">$data</span>;</div></pre></td></tr></table></figure>
+</li>
+<li><p>对json的解析：</p>
+</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">header(<span class="string">"Content-Type:text/html;charset=utf-8"</span>);</div><div class="line"><span class="variable">$data</span>=file_get_contents(<span class="string">"01json.txt"</span>);</div><div class="line"><span class="built_in">echo</span> <span class="variable">$data</span>;</div></pre></td></tr></table></figure>
+<h3 id="客户端对这种格式数据的处理"><a href="#客户端对这种格式数据的处理" class="headerlink" title="客户端对这种格式数据的处理"></a>客户端对这种格式数据的处理</h3><p>1.对上面的xml格式的处理<br><figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> data=xhr.responseXML;（关键方法，下面要知道怎么用获取到的数据）</div><div class="line"><span class="comment">//我要把这些数据解析，通过dom 解析</span></div><div class="line"><span class="comment">//解析组装成标签，放在我页面对应的位置.</span></div><div class="line"><span class="keyword">var</span> users=data.getElementsByTagName(<span class="string">"user"</span>);</div><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;users.length;i++)&#123;</div><div class="line"> <span class="keyword">var</span> tr=<span class="built_in">document</span>.createElement(<span class="string">"tr"</span>);</div><div class="line"> <span class="comment">//创建四个td</span></div><div class="line"> <span class="keyword">var</span> td1=<span class="built_in">document</span>.createElement(<span class="string">"td"</span>);</div><div class="line"> <span class="keyword">var</span> td2=<span class="built_in">document</span>.createElement(<span class="string">"td"</span>);</div><div class="line"> <span class="keyword">var</span> td3=<span class="built_in">document</span>.createElement(<span class="string">"td"</span>);</div><div class="line"> <span class="keyword">var</span> td4=<span class="built_in">document</span>.createElement(<span class="string">"td"</span>);</div><div class="line"> <span class="comment">//给每个td 给赋值。</span></div><div class="line">td1.innerHTML=users[i].getElementsByTagName(<span class="string">"username"</span>)[<span class="number">0</span>].innerHTML;</div><div class="line">td2.innerHTML=users[i].getElementsByTagName(<span class="string">"sex"</span>)[<span class="number">0</span>].innerHTML;</div><div class="line">td3.innerHTML=users[i].getElementsByTagName(<span class="string">"desc"</span>)[<span class="number">0</span>].innerHTML;</div><div class="line"> <span class="comment">//找个里面目前放置的是一个图片的地址.</span></div><div class="line">  <span class="keyword">var</span> img=<span class="built_in">document</span>.createElement(<span class="string">"img"</span>);</div><div class="line">    img.setAttribute(<span class="string">"src"</span>,users[i].getElementsByTagName(<span class="string">"im     ageURL"</span>)[<span class="number">0</span>].innerHTML);</div><div class="line">    td4.appendChild(img);</div><div class="line">    tr.appendChild(td1);</div><div class="line">    tr.appendChild(td2);</div><div class="line">    tr.appendChild(td3);                                         tr.appendChild(td4);   </div><div class="line">    <span class="built_in">document</span>.<span class="built_in">querySelector</span>(<span class="string">"table"</span>).appendChild(tr);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<ol>
+<li>对于json的处理(注意获取和使用的方法)</li>
+</ol>
+<p>JSON.parse()、JSON.stringify()括号中就是数据，，这个函数会将数据转化为JSON格式的<br><strong>JSON兼容处理json2.js</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//调用这句出问题. 符合json 格式的字符串，才能被转换</span></div><div class="line"><span class="keyword">var</span> data1=<span class="built_in">JSON</span>.parse(data);</div><div class="line"><span class="comment">//alert(data1);</span></div><div class="line">alert(data1.username);</div><div class="line">alert(data1.age);</div><div class="line"><span class="comment">//第二种转换方式</span></div><div class="line">js 给我们提供了一个方法 这个方法叫做</div><div class="line"><span class="built_in">eval</span>()  <span class="comment">//把json 格式字符串传进去</span></div><div class="line">&#123;<span class="string">"username"</span>:<span class="string">"zhangsan"</span>,<span class="string">"age"</span>:<span class="number">11</span>&#125;</div><div class="line"><span class="built_in">eval</span> 函数有要求,要求传进去的json 格式字符串必须使用()</div><div class="line"><span class="comment">//(&#123;"username":"zhangsan","age":11&#125;)</span></div><div class="line"><span class="keyword">var</span> obj=<span class="built_in">eval</span>(<span class="string">"("</span>+data+<span class="string">")"</span>);</div><div class="line">alert(obj.username);</div><div class="line">alert(obj.age);</div></pre></td></tr></table></figure></p>
+<h3 id="客户端利用模板引擎来对数据进行解析（是对json格式的数据）"><a href="#客户端利用模板引擎来对数据进行解析（是对json格式的数据）" class="headerlink" title="客户端利用模板引擎来对数据进行解析（是对json格式的数据）"></a>客户端利用模板引擎来对数据进行解析（是对json格式的数据）</h3><p>以上面的json格式的数据为例子</p>
+<ol>
+<li>肯定需要导入js/template-native.js</li>
+<li>创建一个模板（不知道模板怎么去创建，，模板里面的内容怎么去写.）</li>
+</ol>
+<ul>
+<li><script type="text/template"><script></li>
+<li>模板里面的内容根据要写到页面上面的这个标签有关系.</li>
+</ul>
+<ol>
+<li><p>将数据与模板进行绑定. 得到一个html 的内容<br>我现在怎么将模板跟数据进行绑定，得到字符串<br>我们调用tempate-native.js 下面的一个方法  template()</p>
+</li>
+<li><p>直接html 的内容写到页面上面就可以了.</p>
+</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">    导包就不写出来了</div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/template"</span> <span class="attr">id</span>=<span class="string">"templateId"</span>&gt;</span><span class="javascript"></div><div class="line">        &lt;%<span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;rows.length;i++)&#123;%&gt;</div><div class="line">            <span class="xml"><span class="tag">&lt;<span class="name">tr</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">%=rows[i].username%</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">%=rows[i].age%</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">%=rows[i].sex%</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">%=rows[i].desc%</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span></div><div class="line">        &lt;%&#125;%&gt;</div><div class="line">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">//数据请求成功后对数据的处理</div><div class="line">  var mydata=JSON.parse(data);</div><div class="line">  var html=template("templateId",mydata);</div><div class="line">  $("table").append(html);//在自己页面上的table加入</div></pre></td></tr></table></figure>
+<h4 id="流行模板引擎"><a href="#流行模板引擎" class="headerlink" title="流行模板引擎"></a>流行模板引擎</h4><p>BaiduTemplate：<a href="http://tangram.baidu.com/BaiduTemplate/">http://tangram.baidu.com/BaiduTemplate/</a><br>(百度)<br>ArtTemplate：<a href="https://github.com/aui/artTemplate">https://github.com/aui/artTemplate</a><br>(腾讯)<br>velocity.js：<a href="https://github.com/shepherdwind/velocity.js/">https://github.com/shepherdwind/velocity.js/</a><br>（阿里）<br>Handlebars：<a href="http://handlebarsjs.com/（外国的）">http://handlebarsjs.com/（外国的）</a></p>
+</script></li></ul>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2015/10/08/模拟数据交互系列之四-网络传输协议/" itemprop="url">
                   模拟数据交互系列之四--网络传输协议
                 </a>
@@ -466,271 +753,6 @@ Content-Type: text/html//我告诉客户端浏览器我是一个文本，html
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/10/08/模拟数据交互系列之二-搭建wamp工具/" itemprop="url">
-                  模拟数据交互系列之二--搭建wamp工具
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2015-10-08T13:35:37+08:00" content="2015-10-08">
-              2015-10-08
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="wamp-介绍"><a href="#wamp-介绍" class="headerlink" title="wamp 介绍"></a>wamp 介绍</h2><blockquote>
-<p>这个工具是这个系列主要使用的</p>
-</blockquote>
-<p>Windows + Apache + Mysql + PHP，首字母组合。集成安装环境，即在window下的apache、php和mysql的服务器软件。<br>其中包含了三部分<br><strong>Apache</strong>： Apache是世界使用排名第一的Web服务器软件。它可以运行在几乎所有广泛使用的计算机平台上。由于其跨平台和安全性被广泛使用，是最流行的Web服务器端软件之一。<br><strong>MySQL</strong>：MySQL是一个关系型数据库管理系统，由瑞典MySQL AB 公司开发，目前属于 Oracle 旗下公司。MySQL 最流行的关系型数据库管理系统，在 WEB 应用方面MySQL是最好的 RDBMS (Relational Database Management System，关系数据库管理系统) 应用软件之一。<br><strong>PHP</strong>：php 的运行环境。</p>
-<h3 id="1-安装WampServer"><a href="#1-安装WampServer" class="headerlink" title="1.安装WampServer"></a>1.安装WampServer</h3><p>安装wampserver，和普通软件安装无差别，除指定安装路径外，其它默认安装</p>
-<h3 id="2-管理HTTP服务"><a href="#2-管理HTTP服务" class="headerlink" title="2.管理HTTP服务"></a>2.管理HTTP服务</h3><p>配置apahce 请在这个目录.<br>C:\wamp\bin\apache\Apache2.2.21\conf(路径根据你安装的)<br>任务图标 <em>绿色</em>为正常启动状态<br>通过图形控制台可以启动、重启、停止所有服务<br>（安装后运行再右下角会出现程序的小图标，单击就会出现菜单项）</p>
-<p><em>注意事项</em>：</p>
-<ol>
-<li>检查网络是不是通的 ping 对方IP</li>
-<li>检查防火墙是否开启，如果开启将不能正常被访问</li>
-<li>检查访问权限 Allow from all<br>C:\wamp\bin\apache\Apache2.2.21\conf(路径根据你安装的)<br>打开httpd.conf这个文件夹<br>在第235 行添加 Allow from all</li>
-<li>理解默认索引</li>
-<li>确保端口没有被其它程序占用</li>
-<li>“#”表示注释</li>
-<li>修改配置要格外小心，禁止无意修改其它内容</li>
-</ol>
-<h3 id="3配置根目录"><a href="#3配置根目录" class="headerlink" title="3配置根目录"></a>3配置根目录</h3><blockquote>
-<p>网站根目录是Web服务器上存放网站程序的空间，可通过修改配置文件自定义，<br>如E:/www (简单的说就是我们做的网站要存放在这个文件夹)</p>
-<p><strong>具体步骤：</strong></p>
-</blockquote>
-<ol>
-<li><p>在wampserver安装目录下<br>bin\apache\Apache2.2.21\conf\httpd.conf<br>默认访问的是c://wamp/www/(也有不一样的)</p>
-</li>
-<li><p>设定根目录，查找并修改(默认地178行)<br>code block:<br><code>DocumentRoot &quot;D://wamp/www/&quot;</code><br>例如  <code>DocumentRoot &quot;E:/www/&quot;</code><br>这样我们就指定好了存放网站的根目录</p>
-</li>
-<li><p>配置根目录，查找 205行<br><directory "d:="" wamp="" www="" "="">改为<directory "e:="" www="" "=""></directory></directory></p>
-</li>
-<li><p>修改完后，并不能立即生效，需要重启Apache<br><strong>注：可以指定任意目录为根目录</strong></p>
-</li>
-</ol>
-<h3 id="4-网站部署"><a href="#4-网站部署" class="headerlink" title="4.网站部署"></a>4.网站部署</h3><p>将我们制作好的网页拷贝到配置好的根目录下，浏览器访问127.0.0.1即可。</p>
-<h3 id="5-配置虚拟主机"><a href="#5-配置虚拟主机" class="headerlink" title="5 配置虚拟主机"></a>5 配置虚拟主机</h3><p>在一台Web服务器上，我们可以通过配置虚拟主机，然后分别设定根目录，实现对多个网站的管理。<br>具体步骤如下：</p>
-<ol>
-<li>开启虚拟主机辅配置，在httpd.conf 中找到<br>在第469行我们可以看到</li>
-</ol>
-<p><code># Virtual hosts</code><br><code>#Include conf/extra/httpd-vhosts.conf</code></p>
-<p>去掉第二句话的<code>#</code>这样我们才能配置虚拟的主机</p>
-<ol>
-<li>配置虚拟主机，打开conf/extra/httpd-vhosts.conf（也是在这个目录中）<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;VirtualHost *:<span class="number">80</span>&gt;</div><div class="line">    ServerAdmin webmaster@dummy-host<span class="selector-class">.example</span><span class="selector-class">.com</span></div><div class="line">    DocumentRoot <span class="string">"d:/www/"</span></div><div class="line">    ServerName aichen<span class="selector-class">.com</span></div><div class="line">    ServerAlias www<span class="selector-class">.aichen</span><span class="selector-class">.com</span></div><div class="line">    ErrorLog <span class="string">"logs/dummy-host.example.com-error.log"</span></div><div class="line">    CustomLog <span class="string">"logs/dummy-host.example.com-access.log"</span> common</div><div class="line">&lt;/VirtualHost&gt;</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>分别修改以下三项<br>DocumentRoot “E:/www/example”<br>ServerName “example.com”<br>ServerAlias “www.example.com”<br>其它项无需指定。<br>修改成上的上面我们配置完HOSTS文件就可以直接用www.aichen.com输入在地址栏中就可以显示我们的文件夹。。这个文件夹显示的内容就是我们这个根目录的文件</p>
-<ol>
-<li>修改DNS（hosts）文件<br>打开C:\Windows\System32\drivers\etc\hosts（这个目录是固定）<br><code>127.0.0.1   后面写的就是你的那个网站具体的格式你可以看你原来的那个文件是怎么你就怎么</code></li>
-</ol>
-<h3 id="重启Apache（必须的）"><a href="#重启Apache（必须的）" class="headerlink" title="重启Apache（必须的）"></a>重启Apache（必须的）</h3><h3 id="浏览器访问www-example-com"><a href="#浏览器访问www-example-com" class="headerlink" title="浏览器访问www.example.com"></a>浏览器访问www.example.com</h3>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/10/08/模拟数据交互系列之一/" itemprop="url">
-                  模拟数据交互系列之一--基础的相关概念
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2015-10-08T13:04:08+08:00" content="2015-10-08">
-              2015-10-08
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="了解基础部分的相关概念"><a href="#了解基础部分的相关概念" class="headerlink" title="了解基础部分的相关概念"></a>了解基础部分的相关概念</h2><h3 id="软件的基本架构"><a href="#软件的基本架构" class="headerlink" title="软件的基本架构"></a>软件的基本架构</h3><ol>
-<li><strong>C/S</strong>： Client Server，如：FoxMail  qq ,  263 即时通讯需要去下载一个安装包，客户端程序需要自己去编写。</li>
-<li><strong>B/S</strong>： BrowserServer(需要打开浏览器，通过浏览器访问的软件)<br>天猫 ，世纪佳缘网等一些网站。</li>
-</ol>
-<h4 id="bs-架构与cs-架构的区别"><a href="#bs-架构与cs-架构的区别" class="headerlink" title="bs 架构与cs 架构的区别:"></a>bs 架构与cs 架构的区别:</h4><pre><code>CS 架构：
-    - 升级麻烦
-    - 开发成本高
-    - 性能快
-BS 架构
-    - 升级方便
-    - 开发成本低
-    -  性能要慢一点
-</code></pre><h3 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h3><p>具有向服务器 <em>索取服务能力的终端</em>，如比如手机、电脑等，通过安装不同的客户端软件，可以获取不同的服务，比如通过QQ获得即时通讯服务、通过迅雷获得下载服务等。<br>常见的客户端软件： <em>浏览器</em>、QQ、迅雷、Foxmail等。<br>以浏览器为宿主环境，结合 HTML、CSS、Javascript等技术，而进行的一系列开发，通常称之为 <em>前端开发</em>。</p>
-<h3 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h3><blockquote>
-<pre><code>服务器就是一个软件装在一台计算机里头
-</code></pre><h4 id="1-服务器类型"><a href="#1-服务器类型" class="headerlink" title="1. 服务器类型"></a>1. 服务器类型</h4></blockquote>
-<p>按照不同的划分标准，服务可划分为以下类型：</p>
-<ol>
-<li>按 <strong>服务类型</strong>可分为：文件服务器、数据库服务器、邮件服务器，Web 服务器等；</li>
-<li>按 <strong>操作系统</strong>可分为：Linux服务器、Windows服务器等；</li>
-<li>按 <strong>应用软件</strong>可分为 Apache服务器、Nginx 服务器、IIS服务器、Tomcat服务器、Node服务器等。</li>
-</ol>
-<h4 id="2-服务器软件"><a href="#2-服务器软件" class="headerlink" title="2. 服务器软件"></a>2. 服务器软件</h4><p>使计算机具备提供  <em>某种服务能力的应用软件</em>，称为服务器软件，通过安装相应的服务软件，然后进行配置后就可以使计算具备了提供某种服务的能力。<br>常见的服务器web 服务器软件有：</p>
-<ul>
-<li>web 服务器：Apache、Nginx、IIS、Tomcat、NodeJS等；<br>Apache 使用量最大的一个服务器。</li>
-<li>HTTP服务器<br>即网站服务器，主要提供文档(文本、图片、视频、音频)浏览服务，一般安装Apache、Nginx服务器软件。</li>
-</ul>
-<h3 id="网络的基础"><a href="#网络的基础" class="headerlink" title="网络的基础"></a>网络的基础</h3><h4 id="1-IP地址"><a href="#1-IP地址" class="headerlink" title="1 IP地址"></a>1 IP地址</h4><p>所谓IP地址就是给每个连接在互联网上的主机分配的一个32位地址。(就像每部手机能正常通话需要一个号码一样)<br>查看本机IP地址 ping、ipconfig、ifconfig</p>
-<h4 id="2-域名"><a href="#2-域名" class="headerlink" title="2 域名"></a>2 域名</h4><p>由于IP地址基于数字，不方便记忆，于是便用域名来代替IP地址，域名是一个IP地址的“面具”<br>查看域名对应的IP地址 ping</p>
-<h4 id="3-DNS服务-Domain-Name-System"><a href="#3-DNS服务-Domain-Name-System" class="headerlink" title="3 DNS服务 Domain Name System"></a>3 DNS服务 Domain Name System</h4><p><strong>DNS记录了 IP 地址和域名的映射（对应）关系</strong>；<br>查找优先级本机hosts文件、DNS服务器<br><em>访问过程</em><br>比如我们访问<a href="http://www.baidu.com" target="_blank" rel="external">http://www.baidu.com</a> ，首先会到本机的hosts文件当中进行相应的查找，没有找到，然后去dns 服务器上面去找.找到对应的ip 地址，根据ip 地址定位到互联网上面的主机，根据端口定位到服务。然后由主机完成响应，一般我们都是响应一个html 页面，浏览器得到这个页面，解析这个页面，然后一张网页就出现在我们的面前了。</p>
-<h4 id="4-端口"><a href="#4-端口" class="headerlink" title="4 端口"></a>4 端口</h4><p>端口号是计算机与外界通讯交流的出口，每个端口对应不同的服务。<br>现实生活中，银行不同的窗口办理不同的业务。<br>查看端口占用情况 netstat -an<br>常见端口号 80、8080、3306、21、22</p>
-<h3 id="静态资源与动态资源"><a href="#静态资源与动态资源" class="headerlink" title="静态资源与动态资源"></a>静态资源与动态资源</h3><p>我们可以把服务器上面存放的文件都理解为资源。一种是静态资源，一种是动态资源。我们可以通过浏览器去访问我们的资源，那什么是静态资源，什么是动态资源勒。</p>
-<p><strong>静态资源</strong>：可以直接通过浏览器打开。比如我们的css，js ，html,image<br><strong>动态资源</strong>：php，jsp，asp。比如我们去访问一个服务器上面的动态资源php</p>
-<p>服务器需要把动态资源转换成静态资源然后响应给客户端浏览器。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -776,7 +798,7 @@ BS 架构
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">25</span>
+              <span class="site-state-item-count">27</span>
               <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
@@ -786,7 +808,7 @@ BS 架构
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">Tags</span>
               </a>
             </div>
