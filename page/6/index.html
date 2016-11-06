@@ -1,0 +1,620 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>chenzq  FE</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="chenzq">
+    
+
+    
+    <meta property="og:type" content="website">
+<meta property="og:title" content="chenzq  FE">
+<meta property="og:url" content="http://yoursite.com/page/6/index.html">
+<meta property="og:site_name" content="chenzq  FE">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="chenzq  FE">
+
+    
+    <link rel="alternative" href="/atom.xml" title="chenzq  FE" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="chenzq  FE" title="chenzq  FE"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="chenzq  FE">chenzq  FE</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main">
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/10/04/手机端开发系列之八/" title="手机端开发系列之八--移动类库" itemprop="url">手机端开发系列之八--移动类库</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="chenzq" target="_blank" itemprop="author">chenzq</a>
+		
+  <p class="article-time">
+    <time datetime="2015-10-04T08:56:14.000Z" itemprop="datePublished"> 发表于 2015-10-04</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="移动的类库"><a href="#移动的类库" class="headerlink" title="移动的类库"></a>移动的类库</h2><p>code block:</p>
+<h2 id="swiper-js"><a href="#swiper-js" class="headerlink" title="swiper.js"></a>swiper.js</h2><p>1.<a href="https://github.com/nolimits4web/Swiper/" target="_blank" rel="external">下载swiper.js，</a><br>2.其<a href="http://www.swiper.com.cn/" target="_blank" rel="external">中文网站</a>非常详细介绍了其使用方法</p>
+<h2 id="swipe-js"><a href="#swipe-js" class="headerlink" title="swipe.js"></a>swipe.js</h2><p>1.<a href="https://github.com/thebird/Swipe" target="_blank" rel="external">下载swipe.js</a><br>2.html结构要求有三层结构，</p>
+<p><strong>注意结构的要求还有对应的CSS样式</strong></p>
+<h2 id="fastclick-js"><a href="#fastclick-js" class="headerlink" title="fastclick.js"></a>fastclick.js</h2><p>在移动设备上为了提升click的响应速度，我们选择了使用Zepto事件封装的tap来进行模拟，但是这会带来一个副作用，这个副作用就是<code>“点透”</code>，(自行查阅)<br>从上可以看出Zepto.js有不完善的地方，并且我们有时也希望我们的移动版页面在PC端上也可用，但是PC端是不支持touch事件的，这时我们面临的问题是即提升click在移动设备上的响应速度，又不能使用Zepto.js的tap事件，这时fastclick可以解决这个问题。</p>
+<ol>
+<li><a href="https://github.com/ftlabs/fastclick" target="_blank" rel="external">下载fastclick</a></li>
+<li>引入lib目录下的fastclick.js</li>
+<li>设用方法即可，</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">'.demo'</span>).on(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        alert(<span class="string">'不会得到快速响应'</span>);</div><div class="line">    &#125;);</div><div class="line">    <span class="comment">// 引入引插件可以解决click延时问题</span></div><div class="line">    <span class="comment">// 代表的含义是body元素以内所有被添加了</span></div><div class="line">    <span class="comment">// click事件元素，都会得到快速响应</span></div><div class="line">    <span class="comment">// FastClick.attach(document.body);</span></div><div class="line">    <span class="comment">// 代表的含义是只有在.box元素以内的click事件</span></div><div class="line">    <span class="comment">// 会得到一个快速响应</span></div><div class="line">    FastClick.attach(<span class="built_in">document</span>.querySelector(<span class="string">'.box'</span>));</div></pre></td></tr></table></figure>
+<h2 id="isSroll-js"><a href="#isSroll-js" class="headerlink" title="isSroll.js"></a>isSroll.js</h2><p>一个可以实现客户端原生滚动效果的类库。</p>
+<p>1.<a href="https://github.com/cubiq/iscroll" target="_blank" rel="external">下载iScroll</a><br>2.build目录下提供了不同版本的iScroll，可根据情况选择使用<br>3.html要求有3层结构</p>
+<p><strong>注意：下载下来会有文档，直接查看文档就可以了</strong></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/手机端开发/">手机端开发</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/10/04/手机端开发系列之七/" title="手机端开发系列之七--less" itemprop="url">手机端开发系列之七--less</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="chenzq" target="_blank" itemprop="author">chenzq</a>
+		
+  <p class="article-time">
+    <time datetime="2015-10-04T08:24:22.000Z" itemprop="datePublished"> 发表于 2015-10-04</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="css预处理器–less"><a href="#css预处理器–less" class="headerlink" title="css预处理器–less"></a>css预处理器–less</h2><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>CSS 预处理器是一种语言，用来为 CSS 增加一些编程的的特性，无需考虑浏览器的兼容性问题，并且你可以在 CSS 中使用变量、简单的程序逻辑、函数等等在编程语言中的一些基本技巧，可以让你的 CSS 更简洁，适应性更强，代码更直观等诸多好处。<br>常见的CSS预处理器有：<code>LESS、SASS、Stylus</code>等<br>其使用方法大致相同，我们在这里以LESS为例进行学习</p>
+<h3 id="less"><a href="#less" class="headerlink" title="less"></a>less</h3><h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><ol>
+<li>安装Nodejs环境 Node Package Manager (验证 node -v  npm -v)</li>
+<li>打开控制台（cmd），执行npm install -g less (验证 lessc -v)</li>
+<li>执行 npm install -g less-plugin-clean-css</li>
+<li>命令行编译 lessc path/xxx.less path/xxx.css</li>
+</ol>
+<h4 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h4><p>一般都会借助于编辑器插件来完成编译任务，以sublime_text为例</p>
+<ol>
+<li>ctrl+shit+p打开命令面板</li>
+<li>输入install package然后回车</li>
+<li>安装 LESS、lessc、Less2Css三个插件</li>
+<li>alt+s快捷键即可实现编译</li>
+</ol>
+<h4 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h4><ol>
+<li>变量</li>
+</ol>
+<p>格式：@变量名: 值，定义完成后可以重复使用<br>code block:<br><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="variable">@color:</span> red;<span class="comment">//可以重复的使用</span></div><div class="line">    <span class="selector-class">.nav</span>&#123;</div><div class="line">        <span class="attribute">backgroundColor</span>:<span class="variable">@color</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="selector-class">.header</span>&#123;</div><div class="line">        <span class="attribute">background</span>:<span class="variable">@color</span>;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<ol>
+<li>混合编程</li>
+</ol>
+<p>我们可以像使用函数一样来使用CSS、<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.box-sizing</span>()&#123;</div><div class="line">  <span class="attribute">-webkit-box-sizing</span>: border-box;</div><div class="line">  <span class="attribute">-moz-box-sizing</span>: border-box;</div><div class="line">  <span class="attribute">box-sizing</span>: border-box;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<figure class="highlight gauss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.<span class="built_in">box</span>&#123;</div><div class="line">    .<span class="built_in">box</span>-sizing;<span class="comment">//调用函数；</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol>
+<li>嵌套可以非常方便的管理我们的CSS层级关系</li>
+</ol>
+<figure class="highlight lasso"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">.<span class="keyword">header</span>&#123;</div><div class="line">    color:red;</div><div class="line">    .nav&#123;</div><div class="line">        <span class="params">...</span>..</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="浏览器中使用"><a href="#浏览器中使用" class="headerlink" title="浏览器中使用"></a>浏览器中使用</h3><p>我们可以引入一个less.js文件，实现实时的解析，而不必每次修改都要编译，最后完成所有开发任务后，再通过编辑器编译成css文件。</p>
+<ol>
+<li><a href="https://raw.githubusercontent.com/less/less.js/v2.5.3/dist/less.min.js" target="_blank" rel="external">下载</a> 然后引入less.js</li>
+<li>引入xx.less文件，如：<figure class="highlight fsharp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;link rel=<span class="string">"stylesheet/less"</span> <span class="class"><span class="keyword">type</span></span>=<span class="string">"text/css"</span> href=<span class="string">"styles.less"</span> /&gt;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>注意：<code>rel属性必须指定成stylesheet/less</code>，并且<code>styles.less要先于less.js引入</code>。<br>必须以服务器方式访问，可以放到study目录下，或者webstrom自带服务器功能，或者我们的 ghostlab调试工具的服务器。</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/手机端开发/">手机端开发</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/10/04/手机端开发系列之六/" title="手机端开发系列之六--调试工具" itemprop="url">手机端开发系列之六--调试工具</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="chenzq" target="_blank" itemprop="author">chenzq</a>
+		
+  <p class="article-time">
+    <time datetime="2015-10-04T08:15:45.000Z" itemprop="datePublished"> 发表于 2015-10-04</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="调试工具"><a href="#调试工具" class="headerlink" title="调试工具"></a>调试工具</h2><p>code block:</p>
+<ol>
+<li>模拟测试<br>现代主流浏览器均支持移动开发模拟调试，通常按F12可以调起，其使用也比较简单，可以帮我们方便快捷定位问题。</li>
+<li>测试工具<br>模拟调试可以满足大部分的开发调试任务，但是由于移动设备种类繁多，环境也十分复杂模拟调试容易出现差错，所以真机调试变的非常必要。</li>
+</ol>
+<p>有两种方法可以实现真机调试：</p>
+<ul>
+<li>将做好的网页上传至服务器或者本地搭建服务器，然后移动设备通过网络来访问。</li>
+<li>借助第三方的调试工具，如<code>weinre、debuggap、ghostlab</code>等<br>真机调试必须保证移动设备同服务器间的网络是相通的。</li>
+</ul>
+<p>这个就是直接打开ghostlab然后扫码就可以了，，只要你用的是那个软件就看的懂这句话</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/手机端开发/">手机端开发</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/10/04/手机端开发系列之五/" title="手机端开发系列之五--手机事件" itemprop="url">手机端开发系列之五--手机事件</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="chenzq" target="_blank" itemprop="author">chenzq</a>
+		
+  <p class="article-time">
+    <time datetime="2015-10-04T07:39:34.000Z" itemprop="datePublished"> 发表于 2015-10-04</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="手机触屏的事件"><a href="#手机触屏的事件" class="headerlink" title="手机触屏的事件"></a>手机触屏的事件</h2><p>code block:</p>
+<blockquote>
+<p><strong>事件驱动着页面的变化</strong></p>
+</blockquote>
+<h3 id="事件的类型"><a href="#事件的类型" class="headerlink" title="事件的类型"></a>事件的类型</h3><p>1.touchstart: 手指触摸屏幕时触发<br>2.touchmove: 手指在屏幕上移动时触发<br>3.touchend: 手指离开屏幕时触发</p>
+<h3 id="事件的对象"><a href="#事件的对象" class="headerlink" title="事件的对象"></a>事件的对象</h3><ul>
+<li>touches: 位于屏幕上的所有手指的列表</li>
+<li>targetTouches: 位于该元素上的所有手指的列表 </li>
+<li>changedTouches：touchstart时包含刚与触摸屏接触的触点，touchend时包含离开触摸屏的触点<br><code>注：没有对比出touches同targetTouches的差异，推荐使用targetTouches</code></li>
+</ul>
+<h3 id="touch-的对象"><a href="#touch-的对象" class="headerlink" title="touch 的对象"></a>touch 的对象</h3><ul>
+<li>clientX/Y手指相对 layout viewport的水平/垂直像素距离</li>
+<li>pageX/Y手指相对于layout viewport的水平/垂直像素距离（包含滚动）</li>
+<li>screenX/Y手指相对于layout viewport的水平/垂直像素距离（包含滚动）</li>
+</ul>
+<p>target手指最初与屏幕接触时的元素<br>移动开发通常会设置<meta name="viewport" content="width=device-width, initial-scale=1">，这时这三对坐标值是完全一样的。</p>
+<h3 id="click延时"><a href="#click延时" class="headerlink" title="click延时"></a>click延时</h3><p>早期移动设备浏览器网页时内容非常小，为了增强用户体验，苹果公司专门为移动设备设计了双击放大的功能，确保用户可以非常方便的放大网页内容，但是当用户单击一个按钮时，移动设备会延时（约300ms）执行，判断是单击还是双击。用触屏事件可以解决这个问题。</p>
+<h3 id="手势的分装-–zepto-js"><a href="#手势的分装-–zepto-js" class="headerlink" title="手势的分装 –zepto.js"></a>手势的分装 –zepto.js</h3><blockquote>
+<p>手机上的jq</p>
+</blockquote>
+<p>zeptojs为我们封装了常的触屏事件，需要touch模块支持，默认没有构建此模，我们可以自定义构建。<br>1.安装Nodejs环境<br>2.下载zepto.js<br>3.解压缩<br>4.cmd命令行进入解压缩后的目录<br>5.执行npm install 命令<br>这个make是在我们的这个源代码的目录下的一个文件。<br>6.编辑make文件，添加自定义模块（只要把我们想要的这个模块名字加进去就可以了）并保存<br><figure class="highlight ini"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attr">modules</span> = (env[<span class="string">'MODULES'</span>]||<span class="string">'zepto event ajax form '</span>).split(<span class="string">' '</span>)</div></pre></td></tr></table></figure></p>
+<p>7.然后执行命令 npm run-script dist<br>这个时候在我们的这个源码的目录之下就会出现一个目录这个目录就是dist.<br>8查看目录dist即构建好的zepto.js<br>注：关于命令行的使用<br>cd 切换目录<br>dir 查看当前目录<br>e:  切换到e盘<br>f:  切换到f盘<br>先切换盘符再使用cd目录</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/手机端开发/">手机端开发</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+
+  <nav id="page-nav" class="clearfix">
+    <a class="extend prev" rel="prev" href="/page/5/"><span></span>Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/7/">Next<span></span></a>
+  </nav>
+
+</div>
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/手机端开发/" title="手机端开发">手机端开发<sup>9</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/模拟数据交互/" title="模拟数据交互">模拟数据交互<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/面向对象/" title="面向对象">面向对象<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/h5/" title="h5">h5<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/next-hexo/" title="next,hexo">next,hexo<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/晋级高手-js核心/" title="晋级高手-js核心">晋级高手-js核心<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/框架解析/" title="框架解析">框架解析<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Larry Page in Google. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="chenzq">chenzq</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+ </html>

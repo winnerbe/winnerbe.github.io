@@ -1,0 +1,539 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>模拟数据交互系列之一--基础的相关概念 | chenzq  FE</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="chenzq">
+    
+
+    
+    <meta name="description" content="了解基础部分的相关概念软件的基本架构
+C/S： Client Server，如：FoxMail  qq ,  263 即时通讯需要去下载一个安装包，客户端程序需要自己去编写。
+B/S： BrowserServer(需要打开浏览器，通过浏览器访问的软件)天猫 ，世纪佳缘网等一些网站。
+
+bs 架构与cs 架构的区别:CS 架构：
+    - 升级麻烦
+    - 开发成本高
+    - 性能快
+BS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="模拟数据交互系列之一--基础的相关概念">
+<meta property="og:url" content="http://yoursite.com/2015/10/08/模拟数据交互系列之一/index.html">
+<meta property="og:site_name" content="chenzq  FE">
+<meta property="og:description" content="了解基础部分的相关概念软件的基本架构
+C/S： Client Server，如：FoxMail  qq ,  263 即时通讯需要去下载一个安装包，客户端程序需要自己去编写。
+B/S： BrowserServer(需要打开浏览器，通过浏览器访问的软件)天猫 ，世纪佳缘网等一些网站。
+
+bs 架构与cs 架构的区别:CS 架构：
+    - 升级麻烦
+    - 开发成本高
+    - 性能快
+BS">
+<meta property="og:updated_time" content="2016-10-14T11:06:17.618Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="模拟数据交互系列之一--基础的相关概念">
+<meta name="twitter:description" content="了解基础部分的相关概念软件的基本架构
+C/S： Client Server，如：FoxMail  qq ,  263 即时通讯需要去下载一个安装包，客户端程序需要自己去编写。
+B/S： BrowserServer(需要打开浏览器，通过浏览器访问的软件)天猫 ，世纪佳缘网等一些网站。
+
+bs 架构与cs 架构的区别:CS 架构：
+    - 升级麻烦
+    - 开发成本高
+    - 性能快
+BS">
+
+    
+    <link rel="alternative" href="/atom.xml" title="chenzq  FE" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="chenzq  FE" title="chenzq  FE"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="chenzq  FE">chenzq  FE</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/10/08/模拟数据交互系列之一/" title="模拟数据交互系列之一--基础的相关概念" itemprop="url">模拟数据交互系列之一--基础的相关概念</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="chenzq" target="_blank" itemprop="author">chenzq</a>
+		
+  <p class="article-time">
+    <time datetime="2015-10-08T05:04:08.000Z" itemprop="datePublished"> 发表于 2015-10-08</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#了解基础部分的相关概念"><span class="toc-number">1.</span> <span class="toc-text">了解基础部分的相关概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#软件的基本架构"><span class="toc-number">1.1.</span> <span class="toc-text">软件的基本架构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#bs-架构与cs-架构的区别"><span class="toc-number">1.1.1.</span> <span class="toc-text">bs 架构与cs 架构的区别:</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#客户端"><span class="toc-number">1.2.</span> <span class="toc-text">客户端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#服务器"><span class="toc-number">1.3.</span> <span class="toc-text">服务器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-服务器类型"><span class="toc-number">1.3.1.</span> <span class="toc-text">1. 服务器类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-服务器软件"><span class="toc-number">1.3.2.</span> <span class="toc-text">2. 服务器软件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#网络的基础"><span class="toc-number">1.4.</span> <span class="toc-text">网络的基础</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-IP地址"><span class="toc-number">1.4.1.</span> <span class="toc-text">1 IP地址</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-域名"><span class="toc-number">1.4.2.</span> <span class="toc-text">2 域名</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-DNS服务-Domain-Name-System"><span class="toc-number">1.4.3.</span> <span class="toc-text">3 DNS服务 Domain Name System</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-端口"><span class="toc-number">1.4.4.</span> <span class="toc-text">4 端口</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#静态资源与动态资源"><span class="toc-number">1.5.</span> <span class="toc-text">静态资源与动态资源</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<h2 id="了解基础部分的相关概念"><a href="#了解基础部分的相关概念" class="headerlink" title="了解基础部分的相关概念"></a>了解基础部分的相关概念</h2><h3 id="软件的基本架构"><a href="#软件的基本架构" class="headerlink" title="软件的基本架构"></a>软件的基本架构</h3><ol>
+<li><strong>C/S</strong>： Client Server，如：FoxMail  qq ,  263 即时通讯需要去下载一个安装包，客户端程序需要自己去编写。</li>
+<li><strong>B/S</strong>： BrowserServer(需要打开浏览器，通过浏览器访问的软件)<br>天猫 ，世纪佳缘网等一些网站。</li>
+</ol>
+<h4 id="bs-架构与cs-架构的区别"><a href="#bs-架构与cs-架构的区别" class="headerlink" title="bs 架构与cs 架构的区别:"></a>bs 架构与cs 架构的区别:</h4><pre><code>CS 架构：
+    - 升级麻烦
+    - 开发成本高
+    - 性能快
+BS 架构
+    - 升级方便
+    - 开发成本低
+    -  性能要慢一点
+</code></pre><h3 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h3><p>具有向服务器 <em>索取服务能力的终端</em>，如比如手机、电脑等，通过安装不同的客户端软件，可以获取不同的服务，比如通过QQ获得即时通讯服务、通过迅雷获得下载服务等。<br>常见的客户端软件： <em>浏览器</em>、QQ、迅雷、Foxmail等。<br>以浏览器为宿主环境，结合 HTML、CSS、Javascript等技术，而进行的一系列开发，通常称之为 <em>前端开发</em>。</p>
+<h3 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h3><blockquote>
+<pre><code>服务器就是一个软件装在一台计算机里头
+</code></pre><h4 id="1-服务器类型"><a href="#1-服务器类型" class="headerlink" title="1. 服务器类型"></a>1. 服务器类型</h4></blockquote>
+<p>按照不同的划分标准，服务可划分为以下类型：</p>
+<ol>
+<li>按 <strong>服务类型</strong>可分为：文件服务器、数据库服务器、邮件服务器，Web 服务器等；</li>
+<li>按 <strong>操作系统</strong>可分为：Linux服务器、Windows服务器等；</li>
+<li>按 <strong>应用软件</strong>可分为 Apache服务器、Nginx 服务器、IIS服务器、Tomcat服务器、Node服务器等。</li>
+</ol>
+<h4 id="2-服务器软件"><a href="#2-服务器软件" class="headerlink" title="2. 服务器软件"></a>2. 服务器软件</h4><p>使计算机具备提供  <em>某种服务能力的应用软件</em>，称为服务器软件，通过安装相应的服务软件，然后进行配置后就可以使计算具备了提供某种服务的能力。<br>常见的服务器web 服务器软件有：</p>
+<ul>
+<li>web 服务器：Apache、Nginx、IIS、Tomcat、NodeJS等；<br>Apache 使用量最大的一个服务器。</li>
+<li>HTTP服务器<br>即网站服务器，主要提供文档(文本、图片、视频、音频)浏览服务，一般安装Apache、Nginx服务器软件。</li>
+</ul>
+<h3 id="网络的基础"><a href="#网络的基础" class="headerlink" title="网络的基础"></a>网络的基础</h3><h4 id="1-IP地址"><a href="#1-IP地址" class="headerlink" title="1 IP地址"></a>1 IP地址</h4><p>所谓IP地址就是给每个连接在互联网上的主机分配的一个32位地址。(就像每部手机能正常通话需要一个号码一样)<br>查看本机IP地址 ping、ipconfig、ifconfig</p>
+<h4 id="2-域名"><a href="#2-域名" class="headerlink" title="2 域名"></a>2 域名</h4><p>由于IP地址基于数字，不方便记忆，于是便用域名来代替IP地址，域名是一个IP地址的“面具”<br>查看域名对应的IP地址 ping</p>
+<h4 id="3-DNS服务-Domain-Name-System"><a href="#3-DNS服务-Domain-Name-System" class="headerlink" title="3 DNS服务 Domain Name System"></a>3 DNS服务 Domain Name System</h4><p><strong>DNS记录了 IP 地址和域名的映射（对应）关系</strong>；<br>查找优先级本机hosts文件、DNS服务器<br><em>访问过程</em><br>比如我们访问<a href="http://www.baidu.com" target="_blank" rel="external">http://www.baidu.com</a> ，首先会到本机的hosts文件当中进行相应的查找，没有找到，然后去dns 服务器上面去找.找到对应的ip 地址，根据ip 地址定位到互联网上面的主机，根据端口定位到服务。然后由主机完成响应，一般我们都是响应一个html 页面，浏览器得到这个页面，解析这个页面，然后一张网页就出现在我们的面前了。</p>
+<h4 id="4-端口"><a href="#4-端口" class="headerlink" title="4 端口"></a>4 端口</h4><p>端口号是计算机与外界通讯交流的出口，每个端口对应不同的服务。<br>现实生活中，银行不同的窗口办理不同的业务。<br>查看端口占用情况 netstat -an<br>常见端口号 80、8080、3306、21、22</p>
+<h3 id="静态资源与动态资源"><a href="#静态资源与动态资源" class="headerlink" title="静态资源与动态资源"></a>静态资源与动态资源</h3><p>我们可以把服务器上面存放的文件都理解为资源。一种是静态资源，一种是动态资源。我们可以通过浏览器去访问我们的资源，那什么是静态资源，什么是动态资源勒。</p>
+<p><strong>静态资源</strong>：可以直接通过浏览器打开。比如我们的css，js ，html,image<br><strong>动态资源</strong>：php，jsp，asp。比如我们去访问一个服务器上面的动态资源php</p>
+<p>服务器需要把动态资源转换成静态资源然后响应给客户端浏览器。</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/模拟数据交互/">模拟数据交互</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://yoursite.com/2015/10/08/模拟数据交互系列之一/" data-title="模拟数据交互系列之一--基础的相关概念 | chenzq  FE" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2015/10/08/模拟数据交互系列之二-搭建wamp工具/" title="模拟数据交互系列之二--搭建wamp工具">
+  <strong>上一篇：</strong><br/>
+  <span>
+  模拟数据交互系列之二--搭建wamp工具</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2015/10/08/面向对象系列之三/"  title="面向对象系列之三">
+ <strong>下一篇：</strong><br/> 
+ <span>面向对象系列之三
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#了解基础部分的相关概念"><span class="toc-number">1.</span> <span class="toc-text">了解基础部分的相关概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#软件的基本架构"><span class="toc-number">1.1.</span> <span class="toc-text">软件的基本架构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#bs-架构与cs-架构的区别"><span class="toc-number">1.1.1.</span> <span class="toc-text">bs 架构与cs 架构的区别:</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#客户端"><span class="toc-number">1.2.</span> <span class="toc-text">客户端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#服务器"><span class="toc-number">1.3.</span> <span class="toc-text">服务器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-服务器类型"><span class="toc-number">1.3.1.</span> <span class="toc-text">1. 服务器类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-服务器软件"><span class="toc-number">1.3.2.</span> <span class="toc-text">2. 服务器软件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#网络的基础"><span class="toc-number">1.4.</span> <span class="toc-text">网络的基础</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-IP地址"><span class="toc-number">1.4.1.</span> <span class="toc-text">1 IP地址</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-域名"><span class="toc-number">1.4.2.</span> <span class="toc-text">2 域名</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-DNS服务-Domain-Name-System"><span class="toc-number">1.4.3.</span> <span class="toc-text">3 DNS服务 Domain Name System</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-端口"><span class="toc-number">1.4.4.</span> <span class="toc-text">4 端口</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#静态资源与动态资源"><span class="toc-number">1.5.</span> <span class="toc-text">静态资源与动态资源</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/手机端开发/" title="手机端开发">手机端开发<sup>9</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/模拟数据交互/" title="模拟数据交互">模拟数据交互<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/面向对象/" title="面向对象">面向对象<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/h5/" title="h5">h5<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/next-hexo/" title="next,hexo">next,hexo<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/晋级高手-js核心/" title="晋级高手-js核心">晋级高手-js核心<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/框架解析/" title="框架解析">框架解析<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Larry Page in Google. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="chenzq">chenzq</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

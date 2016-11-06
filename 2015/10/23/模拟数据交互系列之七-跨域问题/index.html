@@ -1,0 +1,548 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>模拟数据交互系列之七--跨域问题 | chenzq  FE</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="chenzq">
+    
+
+    
+    <meta name="description" content="跨域问题在说跨域这个问题之前我什么需要了解什么是 同源
+同源同源策略是浏览器的一种安全策略，所谓同源是指，域名，协议，端口完全相同。
+跨域
+不同源则跨域
+
+我们来举一个例子
+例如 :http://www.example.com/
+code block1234567891011121314151617181920http://api.example.com/detail.html//不同源,域名不同">
+<meta property="og:type" content="article">
+<meta property="og:title" content="模拟数据交互系列之七--跨域问题">
+<meta property="og:url" content="http://yoursite.com/2015/10/23/模拟数据交互系列之七-跨域问题/index.html">
+<meta property="og:site_name" content="chenzq  FE">
+<meta property="og:description" content="跨域问题在说跨域这个问题之前我什么需要了解什么是 同源
+同源同源策略是浏览器的一种安全策略，所谓同源是指，域名，协议，端口完全相同。
+跨域
+不同源则跨域
+
+我们来举一个例子
+例如 :http://www.example.com/
+code block1234567891011121314151617181920http://api.example.com/detail.html//不同源,域名不同">
+<meta property="og:updated_time" content="2016-10-26T07:12:23.998Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="模拟数据交互系列之七--跨域问题">
+<meta name="twitter:description" content="跨域问题在说跨域这个问题之前我什么需要了解什么是 同源
+同源同源策略是浏览器的一种安全策略，所谓同源是指，域名，协议，端口完全相同。
+跨域
+不同源则跨域
+
+我们来举一个例子
+例如 :http://www.example.com/
+code block1234567891011121314151617181920http://api.example.com/detail.html//不同源,域名不同">
+
+    
+    <link rel="alternative" href="/atom.xml" title="chenzq  FE" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="chenzq  FE" title="chenzq  FE"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="chenzq  FE">chenzq  FE</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/10/23/模拟数据交互系列之七-跨域问题/" title="模拟数据交互系列之七--跨域问题" itemprop="url">模拟数据交互系列之七--跨域问题</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="chenzq" target="_blank" itemprop="author">chenzq</a>
+		
+  <p class="article-time">
+    <time datetime="2015-10-23T02:15:18.000Z" itemprop="datePublished"> 发表于 2015-10-23</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#跨域问题"><span class="toc-number">1.</span> <span class="toc-text">跨域问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#同源"><span class="toc-number">1.1.</span> <span class="toc-text">同源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#跨域"><span class="toc-number">1.2.</span> <span class="toc-text">跨域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#跨域的解决办法"><span class="toc-number">1.3.</span> <span class="toc-text">跨域的解决办法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#利用这个iframe标签（这个可以看另一个文件夹）"><span class="toc-number">1.3.1.</span> <span class="toc-text">利用这个iframe标签（这个可以看另一个文件夹）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#jsonp"><span class="toc-number">1.3.2.</span> <span class="toc-text">jsonp</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#jq-中的一些请求"><span class="toc-number">1.4.</span> <span class="toc-text">jq 中的一些请求</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<h2 id="跨域问题"><a href="#跨域问题" class="headerlink" title="跨域问题"></a>跨域问题</h2><p>在说跨域这个问题之前我什么需要了解什么是 <strong>同源</strong></p>
+<h3 id="同源"><a href="#同源" class="headerlink" title="同源"></a>同源</h3><p><strong>同源策略</strong>是浏览器的一种安全策略，所谓同源是指，<strong>域名，协议，端口</strong>完全相同。</p>
+<h3 id="跨域"><a href="#跨域" class="headerlink" title="跨域"></a>跨域</h3><blockquote>
+<p>不同源则跨域</p>
+</blockquote>
+<p>我们来举一个例子</p>
+<p>例如 :<a href="http://www.example.com/" target="_blank" rel="external">http://www.example.com/</a></p>
+<p>code block<br><figure class="highlight dts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">http:</span><span class="comment">//api.example.com/detail.html</span></div><div class="line"><span class="comment">//不同源,域名不同</span></div><div class="line"></div><div class="line">https<span class="comment">//www.example.com/detail.html</span></div><div class="line"><span class="comment">//不同源,协议不同</span></div><div class="line"><span class="symbol"></span></div><div class="line">http:<span class="comment">//www.example.com:8080/detail.html</span></div><div class="line"><span class="comment">//不同源,端口不同</span></div><div class="line"><span class="symbol"></span></div><div class="line">http:<span class="comment">//api.example.com:8080/detail.html</span></div><div class="line"><span class="comment">//不同源.域名、端口不同</span></div><div class="line"><span class="symbol"></span></div><div class="line">https:<span class="comment">//api.example.com/detail.html</span></div><div class="line"><span class="comment">//不同源,协议、域名不同</span></div><div class="line"><span class="symbol"></span></div><div class="line">https:<span class="comment">//www.example.com:8080/detail.html</span></div><div class="line"><span class="comment">//不同源,端口、协议不同</span></div><div class="line"><span class="symbol"></span></div><div class="line">http:<span class="comment">//www.example.com/detail/index.html</span></div><div class="line"><span class="comment">//同源,只是目录不同</span></div></pre></td></tr></table></figure></p>
+<h3 id="跨域的解决办法"><a href="#跨域的解决办法" class="headerlink" title="跨域的解决办法"></a>跨域的解决办法</h3><h4 id="利用这个iframe标签（这个可以看另一个文件夹）"><a href="#利用这个iframe标签（这个可以看另一个文件夹）" class="headerlink" title="利用这个iframe标签（这个可以看另一个文件夹）"></a>利用这个iframe标签（这个可以看另一个文件夹）</h4><ol>
+<li>顶级域名相同的可以通过domain.name来解决，即同时设置 domain.name = 顶级域名（如example.com）</li>
+<li>document.domain + iframe（比较重要）</li>
+<li>window.name + iframe</li>
+<li>location.hash + iframe</li>
+<li>window.postMessage()</li>
+</ol>
+<p><strong>具体的实现</strong></p>
+<p>因为是同域名：协议，端口，域名相同的情况下，我是可以去访问<br>另一个页面中的里面的资源</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">src</span>=<span class="string">"访问的URL"</span> <span class="attr">width</span>=<span class="string">"100%"</span> <span class="attr">frameborder</span>=<span class="string">"0"</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">    <span class="comment">/*</span></div><div class="line">       我想在这个页面，访问URL</div><div class="line">     * 页面的dom 元素</div><div class="line">     *</div><div class="line">     * */</div><div class="line">    <span class="keyword">var</span> iframe=<span class="built_in">document</span>.querySelector(<span class="string">"iframe"</span>);</div><div class="line">    iframe.onload=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">            <span class="built_in">document</span>.domain=<span class="string">"aichen.com"</span>；<span class="comment">//（重要）</span></div><div class="line">            <span class="keyword">var</span> win=<span class="keyword">this</span>.contentWindow;</div><div class="line">            win.document.querySelector(<span class="string">"p"</span>).color=<span class="string">"blue"</span>;</div><div class="line">            &#125;</div><div class="line">     <span class="comment">//这样既实现了访问的url页面之中操作上面的p标签。</span></div><div class="line"> <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"></div><div class="line">**link**只能载入这个css文件。</div><div class="line"></div><div class="line"><span class="comment">&lt;!-- link 标签引入css，实际上它也是去发送一个请求的能不能去载入</span></div><div class="line">http://static.meilishuo.net/pc/css/base.css?</div><div class="line">1608231432.25找个站点的css 文件.--&gt;</div><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"http://static.meilishuo.net/</span></span></div><div class="line">pc/css/base.css?1608231432.25"</div><div class="line"><span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span>&gt;</div></pre></td></tr></table></figure>
+<h4 id="jsonp"><a href="#jsonp" class="headerlink" title="jsonp"></a>jsonp</h4><blockquote>
+<p>JSON with Padding</p>
+</blockquote>
+<p><strong>原理剖析</strong></p>
+<ul>
+<li><p>其本质是利用了<script src=""></script>和link标签页<br>是可以用来访问另一个网站的样式.</p>
+</li>
+<li><p>标签具有可跨域的特性，由服务端 <strong>返回一个预先定义好的Javascript函数的调用</strong>，并且将服务器数据以该函数参数的形式传递过来，此方法需要前后端配合完成。</p>
+</li>
+<li><strong>只能以GET方式请求</strong></li>
+</ul>
+<p><strong>具体的实现</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//实质上就是这个的。</span></div><div class="line"><span class="built_in">document</span>.querySelector(<span class="string">"#buttonId"</span>).onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line"><span class="comment">//创建标签，创建script 标签，&lt;script&gt;&lt;script&gt;</span></div><div class="line"><span class="keyword">var</span> script=<span class="built_in">document</span>.createElement(<span class="string">"script"</span>);</div><div class="line"><span class="comment">//&lt;script src=""&gt;&lt;script&gt;</span></div><div class="line">script.setAttribute(<span class="string">"src"</span>,<span class="string">"04jsonp.php?username=18"</span>);</div><div class="line"><span class="comment">//我现在这些操作都在dom 里面，都在内存里面。</span></div><div class="line"><span class="comment">//我把这个标签放在页面上面.</span></div><div class="line"><span class="comment">//也就是说</span></div><div class="line"><span class="built_in">console</span>.log(script);</div><div class="line"><span class="built_in">document</span>.querySelector(<span class="string">"body"</span>).appendChild(script);</div><div class="line"><span class="comment">//因为我现在是我在浏览器使用script 标签发送一个请求给服务器</span></div><div class="line"><span class="comment">//服务器返回返回数据，返回的找个数据直接由浏览器进行解析.</span></div><div class="line"><span class="comment">//因为我现在是使用的是script 标签，服务器返回的数据</span></div><div class="line"><span class="comment">//浏览器默认使用js 去取解析服务器返回的数据。</span></div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<h3 id="jq-中的一些请求"><a href="#jq-中的一些请求" class="headerlink" title="jq 中的一些请求"></a>jq 中的一些请求</h3><p><strong>jQuery 的$.ajax()方法</strong><br>当中集成了JSONP的实现，可以非常方便的实现跨域数据的访问。</p>
+<p><strong>dataType: ‘jsonp’ 设置dataType值为jsonp即开启跨域访问</strong><br>jsonp 可以指定服务端接收的参数的“key”值，默认为callback<br>jsonpCallback 可以指定相应的回调函数，默认自动生成</p>
+<p><strong>实现不从缓存中读取数据：本代码端中的最后几行注释中就有说明这个问题</strong></p>
+<ol>
+<li><p>$getScript(url,function(){})</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line"></div><div class="line">$(<span class="string">"#buttonId"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line"><span class="comment">//getScript 从在面上面去理解我们是获取一段js 脚本.</span></div><div class="line"><span class="comment">//我假设我的页面非常庞大，我不可能一次性把所有的当前页面的这些</span></div><div class="line"><span class="comment">//内容全部加载完毕，只有需要使用到的时候才去记载</span></div><div class="line"><span class="comment">//我们ajax 可以用来做性能优化.</span></div><div class="line"><span class="comment">//我调用这个方法getScript 方法，然后底层是给</span></div><div class="line"><span class="comment">//js/script.js 发送一个请求.</span></div><div class="line"><span class="comment">//它这个是用来处理浏览器缓存的</span></div><div class="line">$.getScript(<span class="string">"js/script.js"</span>);</div><div class="line"><span class="comment">//当我点击button 我给js/script.js发送请求</span></div><div class="line"><span class="comment">//当我再次点击button 我又去请求js/script.js</span></div><div class="line"><span class="comment">//浏览器会有一些默认行为.</span></div><div class="line"><span class="comment">//当我现在请求的地址js/script.js跟我上次请求的地址js/script.js</span></div><div class="line"><span class="comment">//一样的时候，这个时候浏览器就不会去请求服务器.</span></div><div class="line"><span class="comment">//jQuery 怎么去帮我做js/script.js?_=1474683550796</span></div><div class="line"><span class="comment">//第二次请求地址js/script.js?_=1474683577792</span></div><div class="line"><span class="comment">//浏览器就不会从缓存里面去找了，就会每次都去请求js/script.js</span></div><div class="line">  &#125;)</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</li>
+<li><p>$.ajax</p>
+<figure class="highlight scilab"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">$.ajax(&#123;</div><div class="line">    url:<span class="string">"https://sug.so.360.cn/suggest?</span></div><div class="line">    callback=suggest_so&amp;</div><div class="line">    encodein=utf-8&amp;encodeout=utf-8&amp;</div><div class="line">    format=json&amp;fields=word,obdata&amp;word=z",</div><div class="line">    <span class="built_in">type</span>:<span class="string">"get"</span>,</div><div class="line"><span class="comment">//默认是使用xmlhttpRequest 发送请求，但是有跨域限制</span></div><div class="line"><span class="comment">//添加这个dataType 底层是发送script 标签的请求.</span></div><div class="line">    dataType:<span class="string">"jsonp"</span>,</div><div class="line">    success:<span class="function"><span class="keyword">function</span><span class="params">()</span>&#123;</span></div><div class="line">    &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+</li>
+<li><p>getJSON</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">$(<span class="string">"#buttonId"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line"><span class="comment">//这个方法去请求服务器</span></div><div class="line"><span class="comment">//要求服务器返回的数据格式一定是json的数据格式.</span></div><div class="line">    $.getJSON(<span class="string">"06getjson.php"</span>,<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</div><div class="line">            <span class="comment">//打印的是什么.</span></div><div class="line">            alert(data);</div><div class="line">    &#125;);</div><div class="line">&#125;)</div><div class="line">&#125;);</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>其他的在这里就不多说了自行查阅W3C文档</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/模拟数据交互/">模拟数据交互</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://yoursite.com/2015/10/23/模拟数据交互系列之七-跨域问题/" data-title="模拟数据交互系列之七--跨域问题 | chenzq  FE" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2015/10/23/框架结构解析/" title="框架结构解析">
+  <strong>上一篇：</strong><br/>
+  <span>
+  框架结构解析</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2015/10/23/模拟数据交互系列之六-ajax/"  title="模拟数据交互系列之六--ajax">
+ <strong>下一篇：</strong><br/> 
+ <span>模拟数据交互系列之六--ajax
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#跨域问题"><span class="toc-number">1.</span> <span class="toc-text">跨域问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#同源"><span class="toc-number">1.1.</span> <span class="toc-text">同源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#跨域"><span class="toc-number">1.2.</span> <span class="toc-text">跨域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#跨域的解决办法"><span class="toc-number">1.3.</span> <span class="toc-text">跨域的解决办法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#利用这个iframe标签（这个可以看另一个文件夹）"><span class="toc-number">1.3.1.</span> <span class="toc-text">利用这个iframe标签（这个可以看另一个文件夹）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#jsonp"><span class="toc-number">1.3.2.</span> <span class="toc-text">jsonp</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#jq-中的一些请求"><span class="toc-number">1.4.</span> <span class="toc-text">jq 中的一些请求</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/手机端开发/" title="手机端开发">手机端开发<sup>9</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/模拟数据交互/" title="模拟数据交互">模拟数据交互<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/面向对象/" title="面向对象">面向对象<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/h5/" title="h5">h5<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/next-hexo/" title="next,hexo">next,hexo<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/晋级高手-js核心/" title="晋级高手-js核心">晋级高手-js核心<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/框架解析/" title="框架解析">框架解析<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Larry Page in Google. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="chenzq">chenzq</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

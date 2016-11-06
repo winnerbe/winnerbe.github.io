@@ -1,0 +1,517 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>手机端开发系列之一-基础的概念解析 | chenzq  FE</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="chenzq">
+    
+
+    
+    <meta name="description" content="手机端开发基础对于手机端的开发首先来理解一些概念上的一些东西。
+
+这就是一个故事。code block:
+
+1.屏幕移动设备与PC设备最大的差异在于屏幕，这主要体现在屏幕尺寸和屏幕分辨率两个方面。通常我们所指的屏幕尺，实际上指的是屏幕对角线的长度。
+而分辨率则一般用像素来度量，表示屏幕水平和垂直方向的像素数，例如1920*1080指的是屏幕垂直方向和水平方向分别有1920和1080个像素点而构成。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="手机端开发系列之一-基础的概念解析">
+<meta property="og:url" content="http://yoursite.com/2015/10/04/手机端开发/index.html">
+<meta property="og:site_name" content="chenzq  FE">
+<meta property="og:description" content="手机端开发基础对于手机端的开发首先来理解一些概念上的一些东西。
+
+这就是一个故事。code block:
+
+1.屏幕移动设备与PC设备最大的差异在于屏幕，这主要体现在屏幕尺寸和屏幕分辨率两个方面。通常我们所指的屏幕尺，实际上指的是屏幕对角线的长度。
+而分辨率则一般用像素来度量，表示屏幕水平和垂直方向的像素数，例如1920*1080指的是屏幕垂直方向和水平方向分别有1920和1080个像素点而构成。">
+<meta property="og:updated_time" content="2016-10-14T10:31:27.322Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="手机端开发系列之一-基础的概念解析">
+<meta name="twitter:description" content="手机端开发基础对于手机端的开发首先来理解一些概念上的一些东西。
+
+这就是一个故事。code block:
+
+1.屏幕移动设备与PC设备最大的差异在于屏幕，这主要体现在屏幕尺寸和屏幕分辨率两个方面。通常我们所指的屏幕尺，实际上指的是屏幕对角线的长度。
+而分辨率则一般用像素来度量，表示屏幕水平和垂直方向的像素数，例如1920*1080指的是屏幕垂直方向和水平方向分别有1920和1080个像素点而构成。">
+
+    
+    <link rel="alternative" href="/atom.xml" title="chenzq  FE" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="chenzq  FE" title="chenzq  FE"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="chenzq  FE">chenzq  FE</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/10/04/手机端开发/" title="手机端开发系列之一-基础的概念解析" itemprop="url">手机端开发系列之一-基础的概念解析</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="chenzq" target="_blank" itemprop="author">chenzq</a>
+		
+  <p class="article-time">
+    <time datetime="2015-10-04T03:08:07.000Z" itemprop="datePublished"> 发表于 2015-10-04</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#手机端开发基础"><span class="toc-number">1.</span> <span class="toc-text">手机端开发基础</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-屏幕"><span class="toc-number">1.1.</span> <span class="toc-text">1.屏幕</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-像素"><span class="toc-number">1.2.</span> <span class="toc-text">2.像素</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-长度单位"><span class="toc-number">1.3.</span> <span class="toc-text">3.长度单位</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-像素的密度"><span class="toc-number">1.4.</span> <span class="toc-text">4.像素的密度</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-独立像素"><span class="toc-number">1.5.</span> <span class="toc-text">5.独立像素</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-二倍图"><span class="toc-number">1.6.</span> <span class="toc-text">6.二倍图</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<h3 id="手机端开发基础"><a href="#手机端开发基础" class="headerlink" title="手机端开发基础"></a>手机端开发基础</h3><p>对于手机端的开发首先来理解一些概念上的一些东西。</p>
+<blockquote>
+<p>这就是一个故事。<br>code block:</p>
+</blockquote>
+<h4 id="1-屏幕"><a href="#1-屏幕" class="headerlink" title="1.屏幕"></a>1.屏幕</h4><p>移动设备与PC设备最大的差异在于<code>屏幕</code>，这主要体现在屏幕<code>尺寸</code>和<code>屏幕分辨率</code>两个方面。通常我们所指的屏幕尺，实际上指的是屏幕<code>对角线的长度</code>。</p>
+<p>而分辨率则一般用<code>像素</code>来度量，表示屏幕水平和垂直方向的像素数，例如1920*1080指的是屏幕垂直方向和水平方向分别有1920和1080个像素点而构成。</p>
+<h4 id="2-像素"><a href="#2-像素" class="headerlink" title="2.像素"></a>2.像素</h4><p><code>物理像素</code>指的是屏幕渲染图像的最小单位，不可人为进行改变，其值大小决定了屏幕渲染图像的品质，我们以上所讨论的都指的是物理像素。</p>
+<figure class="highlight gauss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 获取屏幕的物理像素尺寸</span></div><div class="line"><span class="built_in">window</span>.<span class="keyword">screen</span>.width;</div><div class="line"><span class="built_in">window</span>.<span class="keyword">screen</span>.height;</div><div class="line"><span class="comment">// 部分移动设备下获取会有错误</span></div></pre></td></tr></table></figure>
+<p><code>CSS像素</code>指的是通过CSS进行网页布局时用到的单位，其默认值(PC端)是和物理像素保持一致的（1个单位的CSS像素等于1个单位的物理像素），但是我们可通缩放来改变其大小。</p>
+<p><code>浏览器窗口</code>尺寸是CSS像素来度量的，部分浏览器存在兼容问题（IE低版本无此属性），但是可以忽略这些细节。</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 获取浏览器窗口尺寸</span></div><div class="line"><span class="built_in">window</span>.innerWidth;</div><div class="line"><span class="built_in">window</span>.innerHeight;</div><div class="line"><span class="comment">// 此值大小包含滚动条的大小</span></div></pre></td></tr></table></figure>
+<p>我们需要理解的是物理像素和CSS像素的一个关系，1个物理像素并不总是等于一个CSS像素通过调整浏览器缩放比例，所以存在3种情况。</p>
+<h4 id="3-长度单位"><a href="#3-长度单位" class="headerlink" title="3.长度单位"></a>3.长度单位</h4><p>在Web开发中可以使用px（像素）、em、pt（点）、in（英寸）、cm（厘米）做为长度单位，我们最常用px（像素）做为长度单位。<br>我们可以将上述的几种长度单位划分成<code>相对长度单位</code>和<code>绝对长度单位</code>。</p>
+<p>iPhone3G/S和iPhone4/S的屏幕尺寸都为3.5英寸（in）但是屏幕分辨率却分别为480<em>320px、960</em>480px，<br>由此我们可以得出<code>英寸是一个绝对长度单位</code>，而<code>像素是一个相对长度单位</code>（像素并没有固定的长度)。</p>
+<h4 id="4-像素的密度"><a href="#4-像素的密度" class="headerlink" title="4.像素的密度"></a>4.像素的密度</h4><p><code>DPI（Dots Per Inch）</code>是印刷行业中用来表示打印机每英寸可以喷的墨汁点数，计算机显示设备从打印机中借鉴了DPI的概念。</p>
+<p>由于计算机显示设备中的最小单位不是墨汁点而是像素，所以用<code>PPI（Pixels Per Inch）</code>值来表示屏幕每英寸的像素数量，我们将<code>PPI、DPI</code>都称为<code>像素密度</code>，但PPI应用更广泛，DPI在Android设备比较常见。<br>利用 勾股定理 我们可以计算得出PPI：<code>如IPHONE 4 (960^2+640^2)/3.5</code>所以屏幕尺寸固定的话 PPI的值越大画面就更好，更清晰。</p>
+<h4 id="5-独立像素"><a href="#5-独立像素" class="headerlink" title="5.独立像素"></a>5.独立像素</h4><p>随着技术发展，设备不断更新，出现了不同PPI的屏幕共存的状态（iPhone3G/S为163，iPhone4/S为326），这时像素不再是统一的度量单位，会造成同样尺寸的图像在不同PPI设备上的显示大小不一样。</p>
+<p>做为用户是不会关心这些细节的，他们只是希望在不同PPI的设备上看到的图像内容差不多大小，所以这时我们需要一个新的单位，这个新的单位能够保证图像内容在不同的PPI设备看上去大小应该差不多，这就是<code>独立像素</code>，<code>IOS设备上叫PT(Point)</code>，<code>Android设备上叫DIP(Device independent Pixel)或DP</code>。</p>
+<p>举例说明就是iPhone 3G（PPI为163）1dp = 1px，iPhone 4（PPI为326）1dp = 2px。</p>
+<p>这个对应（比例）关系是操作系统确定并处理，通过<code>window.devicePixelRatio</code>可以获得该比例值。</p>
+<h4 id="6-二倍图"><a href="#6-二倍图" class="headerlink" title="6.二倍图"></a>6.二倍图</h4><p>这个是开发的时候，为了解决在不同的设备上，因为像素的不同，小图在（iPhone3上用的图）高的PPI（在iPhone上用）是会被拉伸，就变得模糊，所以就要用一个大的图来</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/手机端开发/">手机端开发</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://yoursite.com/2015/10/04/手机端开发/" data-title="手机端开发系列之一-基础的概念解析 | chenzq  FE" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2015/10/04/手机端开发系列之二/" title="手机端开发系列之二--视口">
+  <strong>上一篇：</strong><br/>
+  <span>
+  手机端开发系列之二--视口</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2015/10/03/hello-world/"  title="Hello World">
+ <strong>下一篇：</strong><br/> 
+ <span>Hello World
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#手机端开发基础"><span class="toc-number">1.</span> <span class="toc-text">手机端开发基础</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-屏幕"><span class="toc-number">1.1.</span> <span class="toc-text">1.屏幕</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-像素"><span class="toc-number">1.2.</span> <span class="toc-text">2.像素</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-长度单位"><span class="toc-number">1.3.</span> <span class="toc-text">3.长度单位</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-像素的密度"><span class="toc-number">1.4.</span> <span class="toc-text">4.像素的密度</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-独立像素"><span class="toc-number">1.5.</span> <span class="toc-text">5.独立像素</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-二倍图"><span class="toc-number">1.6.</span> <span class="toc-text">6.二倍图</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/手机端开发/" title="手机端开发">手机端开发<sup>9</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/模拟数据交互/" title="模拟数据交互">模拟数据交互<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/面向对象/" title="面向对象">面向对象<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/h5/" title="h5">h5<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/next-hexo/" title="next,hexo">next,hexo<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/晋级高手-js核心/" title="晋级高手-js核心">晋级高手-js核心<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/框架解析/" title="框架解析">框架解析<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Larry Page in Google. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="chenzq">chenzq</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

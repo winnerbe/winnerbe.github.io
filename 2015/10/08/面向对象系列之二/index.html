@@ -1,0 +1,597 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>面向对象系列之二 | chenzq  FE</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="chenzq">
+    
+
+    
+    <meta name="description" content="面向对象系列1. 面向对象的三大特性
+封装性： 将复杂的实现过程包装、隐藏起来，给用户提供使用接口。
+继承性： 在js中，继承是体现在对象与对象之间的关系，继承就是指一个对象有权去访问别的对象上的成员。
+多态性： 体现在子对象和父对象之间： 在父对象上的同一个行为，在各个子对象中的具体实现不同。
+
+code show time:code block:
+123456var date = new Da">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面向对象系列之二">
+<meta property="og:url" content="http://yoursite.com/2015/10/08/面向对象系列之二/index.html">
+<meta property="og:site_name" content="chenzq  FE">
+<meta property="og:description" content="面向对象系列1. 面向对象的三大特性
+封装性： 将复杂的实现过程包装、隐藏起来，给用户提供使用接口。
+继承性： 在js中，继承是体现在对象与对象之间的关系，继承就是指一个对象有权去访问别的对象上的成员。
+多态性： 体现在子对象和父对象之间： 在父对象上的同一个行为，在各个子对象中的具体实现不同。
+
+code show time:code block:
+123456var date = new Da">
+<meta property="og:updated_time" content="2016-10-14T12:49:55.181Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="面向对象系列之二">
+<meta name="twitter:description" content="面向对象系列1. 面向对象的三大特性
+封装性： 将复杂的实现过程包装、隐藏起来，给用户提供使用接口。
+继承性： 在js中，继承是体现在对象与对象之间的关系，继承就是指一个对象有权去访问别的对象上的成员。
+多态性： 体现在子对象和父对象之间： 在父对象上的同一个行为，在各个子对象中的具体实现不同。
+
+code show time:code block:
+123456var date = new Da">
+
+    
+    <link rel="alternative" href="/atom.xml" title="chenzq  FE" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="chenzq  FE" title="chenzq  FE"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="chenzq  FE">chenzq  FE</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/10/08/面向对象系列之二/" title="面向对象系列之二" itemprop="url">面向对象系列之二</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="chenzq" target="_blank" itemprop="author">chenzq</a>
+		
+  <p class="article-time">
+    <time datetime="2015-10-08T01:59:01.000Z" itemprop="datePublished"> 发表于 2015-10-08</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#面向对象系列"><span class="toc-number">1.</span> <span class="toc-text">面向对象系列</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-面向对象的三大特性"><span class="toc-number">1.1.</span> <span class="toc-text">1. 面向对象的三大特性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#code-show-time"><span class="toc-number">1.1.1.</span> <span class="toc-text">code show time:</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-继承的实现方式："><span class="toc-number">1.2.</span> <span class="toc-text">2. 继承的实现方式：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-extend方法的实现：-为了方便去实现拷贝继承。"><span class="toc-number">1.3.</span> <span class="toc-text">3. extend方法的实现： 为了方便去实现拷贝继承。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-ES5-Object-create-通过置换原型的方式来实现继承。"><span class="toc-number">1.4.</span> <span class="toc-text">4. ES5 Object.create :  通过置换原型的方式来实现继承。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-原型链的概念"><span class="toc-number">1.5.</span> <span class="toc-text">5. 原型链的概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-属性搜索原型：-当访问对象成员时"><span class="toc-number">1.6.</span> <span class="toc-text">6. 属性搜索原型： 当访问对象成员时</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-Object-prototype介绍"><span class="toc-number">1.7.</span> <span class="toc-text">7. Object.prototype介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-构造函数的执行过程"><span class="toc-number">1.8.</span> <span class="toc-text">8. 构造函数的执行过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-绘制对象的原型链"><span class="toc-number">1.9.</span> <span class="toc-text">9. 绘制对象的原型链</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<h2 id="面向对象系列"><a href="#面向对象系列" class="headerlink" title="面向对象系列"></a>面向对象系列</h2><h3 id="1-面向对象的三大特性"><a href="#1-面向对象的三大特性" class="headerlink" title="1. 面向对象的三大特性"></a>1. 面向对象的三大特性</h3><ol>
+<li>封装性： 将复杂的实现过程包装、隐藏起来，给用户提供使用接口。</li>
+<li>继承性： 在js中，继承是体现在对象与对象之间的关系，继承就是指一个对象有权去访问别的对象上的成员。</li>
+<li>多态性： 体现在子对象和父对象之间： 在父对象上的同一个行为，在各个子对象中的具体实现不同。</li>
+</ol>
+<h4 id="code-show-time"><a href="#code-show-time" class="headerlink" title="code show time:"></a>code show time:</h4><p>code block:</p>
+<pre><code><figure class="highlight qml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">var</span> <span class="built_in">date</span> = <span class="keyword">new</span> <span class="built_in">Date</span>;</div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">date</span>.toString());</div><div class="line"><span class="built_in">var</span> arr = [<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>];</div><div class="line"><span class="built_in">console</span>.log(arr.toString());</div><div class="line"><span class="built_in">var</span> o = &#123;<span class="attribute">name</span>: <span class="string">'shelly'</span>&#125;;</div><div class="line"><span class="built_in">console</span>.log(o.toString());</div></pre></td></tr></table></figure>
+</code></pre><p><strong> 在这个里头你就可以看出相同的一个函数，在不同的调用结果就是不一样的，所以在js之中，多态就是 函数的重载和重写 </strong></p>
+<h3 id="2-继承的实现方式："><a href="#2-继承的实现方式：" class="headerlink" title="2. 继承的实现方式："></a>2. 继承的实现方式：</h3><ul>
+<li>基于原型</li>
+</ul>
+<ol>
+<li><p>a: 扩展原型 ： 在原有的原型上进行相应的扩展，实现继承。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 1&gt;基于原型</span></div><div class="line">a: 基于原型: 扩展原型</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">A</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    </div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> A;</div><div class="line">A.prototype.printA = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'a'</span>);</div><div class="line">&#125;;</div><div class="line">a.printA();<span class="comment">// a</span></div><div class="line">a -&gt; A.prototype</div></pre></td></tr></table></figure>
+</li>
+<li><p>b: 置换原型：将要被继承的对象，直接替换掉原有的原型，实现继承</p>
+</li>
+</ol>
+<figure class="highlight qml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// b: 基于原型: 置换原型</span></div><div class="line">        <span class="function"><span class="keyword">function</span> <span class="title">parent</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">this</span>.name = <span class="string">'tom'</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">parent</span>.prototype.printC = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="string">'c'</span>);</div><div class="line">            <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</div><div class="line">        &#125;;</div><div class="line">        <span class="function"><span class="keyword">function</span> <span class="title">child</span>(<span class="params"></span>) </span>&#123;  </div><div class="line">        &#125;</div><div class="line">        child.prototype = <span class="keyword">new</span> <span class="built_in">parent</span>;</div><div class="line">        <span class="built_in">var</span> c = <span class="keyword">new</span> child;</div><div class="line">        c.printC(); <span class="comment">// c</span></div><div class="line">        <span class="comment">// c -&gt; parent实例 -&gt; parent.prototype</span></div><div class="line">        <span class="built_in">var</span> name = <span class="keyword">new</span> child;</div><div class="line">        <span class="built_in">var</span> name = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</div><div class="line">        <span class="built_in">console</span>.log(<span class="keyword">typeof</span> name);</div><div class="line">        <span class="comment">// 全局变量都是window对象的属性</span></div><div class="line">        <span class="comment">// window的name属性只能为字符串</span></div></pre></td></tr></table></figure>
+<ul>
+<li>拷贝继承：<br>将指定对象上的所有成员拷贝一份，并添加到当前对象上。这种继承方式成为拷贝继承。<figure class="highlight qml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 2&gt; 拷贝继承：将别的对象上的所有成员拷贝一份，添加到当前对象本身。</span></div><div class="line">    <span class="built_in">var</span> <span class="built_in">parent</span> = &#123;</div><div class="line">        <span class="attribute">print</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="string">'i am '</span> + <span class="keyword">this</span>.name);</div><div class="line">        &#125;,</div><div class="line">        <span class="attribute">name</span>: <span class="string">'parent'</span></div><div class="line">    &#125;;</div><div class="line">    <span class="built_in">var</span> child = &#123;</div><div class="line">        <span class="attribute">name</span>: <span class="string">'child'</span></div><div class="line">    &#125;;</div><div class="line">    <span class="comment">// 1: 遍历parent</span></div><div class="line">    <span class="keyword">for</span> (<span class="built_in">var</span> k <span class="keyword">in</span> <span class="built_in">parent</span>) &#123;</div><div class="line">        <span class="comment">// 2: 将parent对象上的成员添加到child上。</span></div><div class="line">        child[k] = <span class="built_in">parent</span>[k];</div><div class="line">    &#125;</div><div class="line">    child.print();</div><div class="line">    <span class="built_in">var</span> parent1 = &#123;</div><div class="line">        <span class="attribute">print1</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="string">'print1'</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line">    <span class="keyword">for</span> (<span class="built_in">var</span> k <span class="keyword">in</span> parent1) &#123;</div><div class="line">        <span class="comment">// 2: 将parent对象上的成员添加到child上。</span></div><div class="line">        child[k] = parent1[k];</div><div class="line">    &#125;</div><div class="line">    <span class="comment">// 封装</span></div><div class="line">    <span class="comment">// 封装为child对象一个方法extend，谁调用extend方法就是给谁实现继承。</span></div><div class="line">    child.print1();</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><em>非常的麻烦所以就有了extend</em></p>
+<ul>
+<li>对象冒充： 在一个构造函数中，可以动态的添加一个parent方法，指向已有的构造函数，然后掉用parent方法去实例化当前对象的<pre><code>一部分成员（或全部成员）。此时这种方式被称为对象冒充。
+<figure class="highlight qml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">parent</span>(<span class="params">name, age, gender</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">    <span class="keyword">this</span>.age = age;</div><div class="line">    <span class="keyword">this</span>.gender = gender;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">child</span>(<span class="params">name, age, gender, address</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.parent = <span class="built_in">parent</span>;</div><div class="line">    <span class="keyword">this</span>.parent(name, age, gender);</div><div class="line">    <span class="keyword">delete</span> <span class="keyword">this</span>.parent;</div><div class="line">    <span class="keyword">this</span>.address = address;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">var</span>  c = <span class="keyword">new</span> child(<span class="string">'xiaoming'</span>, <span class="number">20</span>, <span class="string">'girl'</span>, <span class="string">'china'</span>);</div><div class="line"><span class="built_in">console</span>.log(c);</div></pre></td></tr></table></figure>
+</code></pre></li>
+</ul>
+<p><strong>注意 ：利用完parent属性之后，记得删除该属性。<br>    在实际开发中，两种继承方式可以组合起来应用。</strong></p>
+<h3 id="3-extend方法的实现：-为了方便去实现拷贝继承。"><a href="#3-extend方法的实现：-为了方便去实现拷贝继承。" class="headerlink" title="3. extend方法的实现： 为了方便去实现拷贝继承。"></a>3. extend方法的实现： 为了方便去实现拷贝继承。</h3><figure class="highlight qml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="number">1</span>: 一次只能继承一个对象</div><div class="line"><span class="built_in">var</span> child = &#123;&#125;;</div><div class="line">child.extend = <span class="function"><span class="keyword">function</span>(<span class="params">parent</span>) </span>&#123;</div><div class="line">    <span class="built_in">var</span> k;</div><div class="line">    <span class="keyword">for</span>( k <span class="keyword">in</span> <span class="built_in">parent</span> )&#123;</div><div class="line">        <span class="keyword">this</span>[k] = <span class="built_in">parent</span>[k];</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">child.extend(&#123;</div><div class="line">    <span class="attribute">name</span>: <span class="string">'child'</span>,</div><div class="line">    <span class="attribute">print</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line">child.print();</div><div class="line"><span class="number">2</span>: 一次实现继承多个对象</div><div class="line">child.extend = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">var</span> args = <span class="built_in">arguments</span>,</div><div class="line">        obj;</div><div class="line">    <span class="comment">// 遍历arguments上的所有对象，依次将遍历的每个对象的成员添加到child。</span></div><div class="line">    <span class="keyword">for</span>( <span class="built_in">var</span> i = <span class="number">0</span>, l = args.length;i &lt; l; i++)&#123;</div><div class="line">        obj = args[i];</div><div class="line">        <span class="keyword">if</span>( <span class="keyword">typeof</span> obj === <span class="string">'object'</span>)&#123; <span class="comment">// 判断传入的是否为对象，不是对象就不执行下面代码</span></div><div class="line">            <span class="keyword">for</span>( <span class="built_in">var</span> k <span class="keyword">in</span> obj )&#123;</div><div class="line">                <span class="keyword">this</span>[k] = obj[k];</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line">child.extend(&#123;</div><div class="line">    <span class="attribute">name</span>: <span class="string">'child'</span></div><div class="line">&#125;, &#123; </div><div class="line">    <span class="attribute">print</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'i am '</span> + <span class="keyword">this</span>.name);</div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line">child.print();</div></pre></td></tr></table></figure>
+<h3 id="4-ES5-Object-create-通过置换原型的方式来实现继承。"><a href="#4-ES5-Object-create-通过置换原型的方式来实现继承。" class="headerlink" title="4. ES5 Object.create :  通过置换原型的方式来实现继承。"></a>4. ES5 Object.create :  通过置换原型的方式来实现继承。</h3><figure class="highlight qml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Object</span>.create（<span class="built_in">parent</span>）：<span class="comment">//返回值为一个新的对象，并且该对象继承自parent对象。</span></div><div class="line"><span class="built_in">var</span> newObject = <span class="built_in">Object</span>.create（<span class="built_in">parent</span>）;</div></pre></td></tr></table></figure>
+<figure class="highlight qml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 兼容问题：</span></div><div class="line">    <span class="keyword">if</span>( !<span class="built_in">Object</span>.create )&#123;</div><div class="line">        <span class="built_in">Object</span>.create = <span class="function"><span class="keyword">function</span>(<span class="params">parent</span>) </span>&#123;</div><div class="line">            <span class="function"><span class="keyword">function</span> <span class="title">F</span>(<span class="params"></span>) </span>&#123;&#125;</div><div class="line">            F.prototype = <span class="built_in">parent</span>;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">new</span> F;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">var</span> newobj = <span class="built_in">Object</span>.create(&#123;</div><div class="line">        <span class="attribute">name</span>: <span class="string">'tom'</span>,</div><div class="line">        <span class="attribute">print</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">    newobj.print();</div></pre></td></tr></table></figure>
+<h3 id="5-原型链的概念"><a href="#5-原型链的概念" class="headerlink" title="5. 原型链的概念"></a>5. 原型链的概念</h3><ol>
+<li>几个默认</li>
+</ol>
+<ul>
+<li>a:  所有对象都有<strong>proto</strong>属性，这个属性引用它的原型对象。</li>
+<li>b:  原型对象继承自Object.prototype，具有constructor属性；如果置换了原型，记得要添加constructor属性。</li>
+<li>c:  只有函数具有prototype属性（除了Function.prototype）。</li>
+</ul>
+<ol>
+<li>概念：从当前对象到Object.prototype之间，存在一条层次分明，逐级递进的体现继承关系的链式结构<br>== 这个结构被称为原型链。==</li>
+</ol>
+<h3 id="6-属性搜索原型：-当访问对象成员时"><a href="#6-属性搜索原型：-当访问对象成员时" class="headerlink" title="6. 属性搜索原型： 当访问对象成员时"></a>6. 属性搜索原型： 当访问对象成员时</h3><ol>
+<li><ul>
+<li>首先，在当前对象上查找，如果找到就直接返回（调用），停止查找;</li>
+</ul>
+</li>
+<li><ul>
+<li>如果没有找到，就向其原型对象上查找；如果找到就直接返回（调用），停止查找;</li>
+</ul>
+</li>
+<li><ul>
+<li>如果没有找到，就继续向原型对象的原型对象上查找，直到Object.prototype；</li>
+</ul>
+</li>
+<li><ul>
+<li>如果找到，那么就直接返回（调用），并停止查找；否则返回undefined（报错：xxx is not a function）</li>
+</ul>
+</li>
+</ol>
+<p><em>*注意</em></p>
+<pre><code>- 如果访问对象的某个属性不存在的话，会搜索整个原型链。会导致js性能降低。
+- 在实际开发中，尽量保持一个适度的原型链长度。
+- 兼顾js性能以及代码的可读性可扩展性。
+</code></pre><h3 id="7-Object-prototype介绍"><a href="#7-Object-prototype介绍" class="headerlink" title="7. Object.prototype介绍"></a>7. Object.prototype介绍</h3><ol>
+<li><p>hasOwnProperty：判断当前对象的指定属性是否为自身的，而不是继承过来的；如果是本身的返回true；否则返回false。</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">语法：&lt;object&gt;.hasOwnProperty(<span class="string">'propName'</span>)</div><div class="line">  has: 有</div><div class="line">  own：自己</div><div class="line">  Property ： 属性</div><div class="line"> <span class="keyword">var</span> o = &#123;<span class="attr">name</span>: <span class="string">'tom'</span>&#125;;</div><div class="line"> <span class="built_in">console</span>.log(o.hasOwnProperty(<span class="string">'name'</span>)); <span class="comment">// true</span></div><div class="line"> <span class="built_in">console</span>.log(o.hasOwnProperty(<span class="string">'toString'</span>)); <span class="comment">// false</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>isPrototypeOf：判断当前对象是否为指定对象的原型对象。如果是返回true；否则返回false。</p>
+ <figure class="highlight elm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">语法；&lt;a&gt;.isPrototypeOf(&lt;b&gt;);</div><div class="line">&lt;!<span class="comment">-- 只要对象a出现在b对象的原型链上就返回true；否则返回false。 --&gt;</span></div><div class="line"><span class="title">function</span> <span class="type">A</span>() &#123;</div><div class="line">&#125;</div><div class="line"><span class="title">function</span> <span class="type">B</span>() &#123;      </div><div class="line">&#125;</div><div class="line"><span class="title">var</span> a = new <span class="type">A</span>;</div><div class="line"><span class="type">B</span>.proto<span class="keyword">type</span> = a;</div><div class="line"><span class="title">var</span> b = new <span class="type">B</span>;      </div><div class="line"><span class="title">console</span>.log(a.isPrototypeOf(b)); // false;</div><div class="line"><span class="title">console</span>.log( <span class="type">A</span>.proto<span class="keyword">type</span>.isPrototypeOf(b));</div><div class="line">// b -&gt; a -&gt; <span class="type">A</span>.proto<span class="keyword">type</span> -&gt; <span class="type">Object</span>.prototype -&gt; null</div><div class="line"><span class="title">console</span>.log(<span class="type">Object</span>.proto<span class="keyword">type</span>.isPrototypeOf(a));</div><div class="line"><span class="title">console</span>.log(<span class="type">Object</span>.proto<span class="keyword">type</span>.isPrototypeOf(b));</div></pre></td></tr></table></figure>
+<p>  如果当前对象出现在指定对象的原型链上就返回true；否则返回false。</p>
+</li>
+<li><p>propertyIsEnumerable：即判断指定属性是否为自身的，并且该属性也是可枚举的</p>
+<pre><code>只有这两个条件都满足才返回true；否则返回false。
+</code></pre><ul>
+<li>// 可枚举？for in遍历出来的属性都是可枚举的。</li>
+<li>// 默认：手动添加属性都是可枚举的，js解析器自动添加的都是不可枚举。</li>
+</ul>
+</li>
+</ol>
+<h3 id="8-构造函数的执行过程"><a href="#8-构造函数的执行过程" class="headerlink" title="8. 构造函数的执行过程"></a>8. 构造函数的执行过程</h3><ol>
+<li>创建了一个空对象obj；</li>
+<li>将obj赋值给this（让this指向obj）</li>
+<li>将当前作用域交给this</li>
+<li>执行构造函数内部的代码</li>
+<li>将 this 返回。（return this;）</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Fn</span>(<span class="params">name, age</span>) </span>&#123;</div><div class="line">            <span class="keyword">this</span>.name = name;</div><div class="line">            <span class="keyword">this</span>.age = age;         </div><div class="line">        &#125;</div><div class="line">        <span class="keyword">var</span> fn = <span class="keyword">new</span> Fn(<span class="string">'tom'</span>, <span class="number">18</span>);</div><div class="line">        <span class="built_in">console</span>.log(fn);</div><div class="line">        <span class="function"><span class="keyword">function</span> <span class="title">Fn</span>(<span class="params">name, age</span>) </span>&#123;</div><div class="line">            <span class="keyword">var</span> obj = &#123;&#125;;</div><div class="line">            <span class="keyword">this</span> = obj;</div><div class="line">        <span class="comment">//  Fn.call(this, name, age);(这个可以替代上面的两句话)</span></div><div class="line">            <span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">        &#125;</div></pre></td></tr></table></figure>
+<h3 id="9-绘制对象的原型链"><a href="#9-绘制对象的原型链" class="headerlink" title="9. 绘制对象的原型链"></a>9. 绘制对象的原型链</h3><p> 绘制规则：</p>
+<ol>
+<li>绘制出简化的原型链</li>
+<li>先将上述简化的原型链上的每一个对象绘制在图形上。</li>
+<li>将每一个对象的默认属性添加上。</li>
+<li>给每一个对象的属性添加指向。</li>
+<li>如果每一个对象的属性都有了指向，说明原型链绘制完成。</li>
+</ol>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/面向对象/">面向对象</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://yoursite.com/2015/10/08/面向对象系列之二/" data-title="面向对象系列之二 | chenzq  FE" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2015/10/08/面向对象系列之三/" title="面向对象系列之三">
+  <strong>上一篇：</strong><br/>
+  <span>
+  面向对象系列之三</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2015/10/05/面向对象系列-原型/"  title="面向对象系列之一--原型">
+ <strong>下一篇：</strong><br/> 
+ <span>面向对象系列之一--原型
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#面向对象系列"><span class="toc-number">1.</span> <span class="toc-text">面向对象系列</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-面向对象的三大特性"><span class="toc-number">1.1.</span> <span class="toc-text">1. 面向对象的三大特性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#code-show-time"><span class="toc-number">1.1.1.</span> <span class="toc-text">code show time:</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-继承的实现方式："><span class="toc-number">1.2.</span> <span class="toc-text">2. 继承的实现方式：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-extend方法的实现：-为了方便去实现拷贝继承。"><span class="toc-number">1.3.</span> <span class="toc-text">3. extend方法的实现： 为了方便去实现拷贝继承。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-ES5-Object-create-通过置换原型的方式来实现继承。"><span class="toc-number">1.4.</span> <span class="toc-text">4. ES5 Object.create :  通过置换原型的方式来实现继承。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-原型链的概念"><span class="toc-number">1.5.</span> <span class="toc-text">5. 原型链的概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-属性搜索原型：-当访问对象成员时"><span class="toc-number">1.6.</span> <span class="toc-text">6. 属性搜索原型： 当访问对象成员时</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-Object-prototype介绍"><span class="toc-number">1.7.</span> <span class="toc-text">7. Object.prototype介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-构造函数的执行过程"><span class="toc-number">1.8.</span> <span class="toc-text">8. 构造函数的执行过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-绘制对象的原型链"><span class="toc-number">1.9.</span> <span class="toc-text">9. 绘制对象的原型链</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/手机端开发/" title="手机端开发">手机端开发<sup>9</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/模拟数据交互/" title="模拟数据交互">模拟数据交互<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/面向对象/" title="面向对象">面向对象<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/h5/" title="h5">h5<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/next-hexo/" title="next,hexo">next,hexo<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/晋级高手-js核心/" title="晋级高手-js核心">晋级高手-js核心<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/框架解析/" title="框架解析">框架解析<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Larry Page in Google. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="chenzq">chenzq</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

@@ -1,0 +1,486 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>h5新增加的DOM操作 | chenzq  FE</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="chenzq">
+    
+
+    
+    <meta name="description" content="新增加的DOM操作获取元素：code block123456781、document.getElementsByClassName (&apos;class&apos;)//通过类名获取元素，以伪数组形式存在。//填入的类名是不加点的2、document.querySelector(&apos;selector&apos;)//通过CSS选择器获取元素，符合匹配条件的第1个元素。3、document.querySelectorAll(&apos;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="h5新增加的DOM操作">
+<meta property="og:url" content="http://yoursite.com/2016/11/06/h5新增加的DOM操作/index.html">
+<meta property="og:site_name" content="chenzq  FE">
+<meta property="og:description" content="新增加的DOM操作获取元素：code block123456781、document.getElementsByClassName (&apos;class&apos;)//通过类名获取元素，以伪数组形式存在。//填入的类名是不加点的2、document.querySelector(&apos;selector&apos;)//通过CSS选择器获取元素，符合匹配条件的第1个元素。3、document.querySelectorAll(&apos;">
+<meta property="og:updated_time" content="2016-11-05T16:52:06.092Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="h5新增加的DOM操作">
+<meta name="twitter:description" content="新增加的DOM操作获取元素：code block123456781、document.getElementsByClassName (&apos;class&apos;)//通过类名获取元素，以伪数组形式存在。//填入的类名是不加点的2、document.querySelector(&apos;selector&apos;)//通过CSS选择器获取元素，符合匹配条件的第1个元素。3、document.querySelectorAll(&apos;">
+
+    
+    <link rel="alternative" href="/atom.xml" title="chenzq  FE" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="chenzq  FE" title="chenzq  FE"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="chenzq  FE">chenzq  FE</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/11/06/h5新增加的DOM操作/" title="h5新增加的DOM操作" itemprop="url">h5新增加的DOM操作</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="chenzq" target="_blank" itemprop="author">chenzq</a>
+		
+  <p class="article-time">
+    <time datetime="2016-11-05T16:51:25.000Z" itemprop="datePublished"> 发表于 2016-11-06</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#新增加的DOM操作"><span class="toc-number">1.</span> <span class="toc-text">新增加的DOM操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#获取元素："><span class="toc-number">1.1.</span> <span class="toc-text">获取元素：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#类名操作："><span class="toc-number">1.2.</span> <span class="toc-text">类名操作：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#自定义属性：（这个的思想很重要）"><span class="toc-number">1.3.</span> <span class="toc-text">自定义属性：（这个的思想很重要）</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<h3 id="新增加的DOM操作"><a href="#新增加的DOM操作" class="headerlink" title="新增加的DOM操作"></a>新增加的DOM操作</h3><h4 id="获取元素："><a href="#获取元素：" class="headerlink" title="获取元素："></a>获取元素：</h4><p>code block<br><figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="number">1</span>、<span class="built_in">document</span>.getElementsByClassName (<span class="string">'class'</span>)</div><div class="line"><span class="comment">//通过类名获取元素，以伪数组形式存在。</span></div><div class="line"><span class="comment">//填入的类名是不加点的</span></div><div class="line"><span class="number">2</span>、<span class="built_in">document</span>.<span class="built_in">querySelector</span>(<span class="string">'selector'</span>)</div><div class="line"><span class="comment">//通过CSS选择器获取元素，符合匹配条件的第1个元素。</span></div><div class="line"><span class="number">3</span>、<span class="built_in">document</span>.<span class="built_in">querySelectorAll</span>(<span class="string">'selector'</span>)</div><div class="line"><span class="comment">//通过CSS选择器获取元素，以伪数组形式存在。</span></div><div class="line"><span class="comment">//其他这个写法跟给标签写样式的写法是一样的</span></div></pre></td></tr></table></figure></p>
+<h4 id="类名操作："><a href="#类名操作：" class="headerlink" title="类名操作："></a>类名操作：</h4><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="number">1</span>、Node<span class="selector-class">.classList</span><span class="selector-class">.add</span>(<span class="string">'class'</span>) <span class="comment">//添加class</span></div><div class="line"><span class="number">2</span>、Node<span class="selector-class">.classList</span><span class="selector-class">.remove</span>(<span class="string">'class'</span>) <span class="comment">//移除class</span></div><div class="line"><span class="number">3</span>、Node<span class="selector-class">.classList</span><span class="selector-class">.toggle</span>(<span class="string">'class'</span>)</div><div class="line"><span class="comment">//切换class，有则删除，无则添加</span></div><div class="line"><span class="number">4</span>、Node<span class="selector-class">.classList</span><span class="selector-class">.contains</span>(<span class="string">'class'</span>) </div><div class="line"><span class="comment">//检测是否存在class</span></div><div class="line"><span class="comment">//Node指一个有效的DOM节点，是一个通称。</span></div><div class="line"><span class="comment">//clss是没有点的。</span></div></pre></td></tr></table></figure>
+<h4 id="自定义属性：（这个的思想很重要）"><a href="#自定义属性：（这个的思想很重要）" class="headerlink" title="自定义属性：（这个的思想很重要）"></a>自定义属性：（这个的思想很重要）</h4><p>在HTML5中我们可以自定义属性，</p>
+<ul>
+<li>其格式如下<code>data-*=&quot;&quot;</code>，例如<code>data-info=</code>“我是自定义属性”</li>
+<li>通过<code>Node.dataset[&#39;info&#39;]</code> 我们便可以获取到自定义的属性值。</li>
+<li><code>Node.dataset</code>是以对象形式存在的，  当我们为同一个DOM节点指定了多个自定义属性时，<code>Node.dataset</code>则存储了所有的自定义属性的值。</li>
+</ul>
+<p>假设某元素:<br><code>&lt;div id=&quot;demo&quot; data-name=&quot;itcast&quot; data-age=&quot;10&quot;&gt;</code><br><code>var demo = document.querySelector(&#39;#demo&#39;);</code></p>
+<ul>
+<li>读取 <code>demo.dataset[&#39;name&#39;]</code>或者 <code>demo.dataset[&#39;age&#39;]</code></li>
+<li>设置<code>demo.dataset[&#39;name&#39;] = &#39;web developer&#39;</code><br>注：当我们如下格式设置时，则需要以驼峰格式才能正确获取<br><code>&lt;div data-my-name=&quot;itcast&quot;&gt;</code> 这样获取<code>Node.dataset[&#39;myName&#39;]</code>。</li>
+</ul>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/h5/">h5</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://yoursite.com/2016/11/06/h5新增加的DOM操作/" data-title="h5新增加的DOM操作 | chenzq  FE" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2015/11/06/h5表单/"  title="h5表单">
+ <strong>下一篇：</strong><br/> 
+ <span>h5表单
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#新增加的DOM操作"><span class="toc-number">1.</span> <span class="toc-text">新增加的DOM操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#获取元素："><span class="toc-number">1.1.</span> <span class="toc-text">获取元素：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#类名操作："><span class="toc-number">1.2.</span> <span class="toc-text">类名操作：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#自定义属性：（这个的思想很重要）"><span class="toc-number">1.3.</span> <span class="toc-text">自定义属性：（这个的思想很重要）</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/手机端开发/" title="手机端开发">手机端开发<sup>9</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/模拟数据交互/" title="模拟数据交互">模拟数据交互<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/面向对象/" title="面向对象">面向对象<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/h5/" title="h5">h5<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/next-hexo/" title="next,hexo">next,hexo<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/晋级高手-js核心/" title="晋级高手-js核心">晋级高手-js核心<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/框架解析/" title="框架解析">框架解析<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Larry Page in Google. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="chenzq">chenzq</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
