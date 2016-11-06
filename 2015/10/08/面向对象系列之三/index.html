@@ -75,7 +75,7 @@
 				<h1 class="site-name"><a href="/" title="chenzq  FE">chenzq  FE</a></h1>
 				<h2 class="blog-motto"></h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -85,13 +85,11 @@
 					
 						<li><a href="/archives">Archives</a></li>
 					
-						<li><a href="/about">About</a></li>
-					
 					<li>
  					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
 						<input type="hidden" name="q" value="site:yoursite.com">
 					</form>
 					
@@ -114,14 +112,14 @@
 		<a href="/about" title="chenzq" target="_blank" itemprop="author">chenzq</a>
 		
   <p class="article-time">
-    <time datetime="2015-10-08T02:00:40.000Z" itemprop="datePublished"> 发表于 2015-10-08</time>
+    <time datetime="2015-10-08T02:00:40.000Z" itemprop="datePublished"> Published 2015-10-08</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">文章目录</strong>
+			<strong class="toc-title">Contents</strong>
 		
 			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Function的介绍"><span class="toc-number">1.</span> <span class="toc-text">1. Function的介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-相关结论："><span class="toc-number">2.</span> <span class="toc-text">2. 相关结论：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-小结"><span class="toc-number">3.</span> <span class="toc-text">3. 小结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-绘制函数的原型链"><span class="toc-number">4.</span> <span class="toc-text">4.  绘制函数的原型链</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-arguments对象属性-这是一个类数组，保存着的是这个"><span class="toc-number">5.</span> <span class="toc-text">5. arguments对象属性(这是一个类数组，保存着的是这个)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-函数相关属性"><span class="toc-number">6.</span> <span class="toc-text">6. 函数相关属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-模拟函数重载"><span class="toc-number">7.</span> <span class="toc-text">7. 模拟函数重载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-函数递归："><span class="toc-number">8.</span> <span class="toc-text">8. 函数递归：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-词法作用域：-规定变量的作用域是由变量声明的位置决定，而不是由使用变量的位置决定。"><span class="toc-number">9.</span> <span class="toc-text">9. 词法作用域： 规定变量的作用域是由变量声明的位置决定，而不是由使用变量的位置决定。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-变量名（函数名）提升"><span class="toc-number">10.</span> <span class="toc-text">10. 变量名（函数名）提升</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-在预解析阶段："><span class="toc-number">11.</span> <span class="toc-text">11. 在预解析阶段：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-in运算符"><span class="toc-number">12.</span> <span class="toc-text">12. in运算符</span></a></li></ol>
 		
@@ -264,17 +262,17 @@ js本身是边解析边执行的。
 	
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">文章目录</strong>
+  <strong class="toc-title">Contents</strong>
  
  <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Function的介绍"><span class="toc-number">1.</span> <span class="toc-text">1. Function的介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-相关结论："><span class="toc-number">2.</span> <span class="toc-text">2. 相关结论：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-小结"><span class="toc-number">3.</span> <span class="toc-text">3. 小结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-绘制函数的原型链"><span class="toc-number">4.</span> <span class="toc-text">4.  绘制函数的原型链</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-arguments对象属性-这是一个类数组，保存着的是这个"><span class="toc-number">5.</span> <span class="toc-text">5. arguments对象属性(这是一个类数组，保存着的是这个)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-函数相关属性"><span class="toc-number">6.</span> <span class="toc-text">6. 函数相关属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-模拟函数重载"><span class="toc-number">7.</span> <span class="toc-text">7. 模拟函数重载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-函数递归："><span class="toc-number">8.</span> <span class="toc-text">8. 函数递归：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-词法作用域：-规定变量的作用域是由变量声明的位置决定，而不是由使用变量的位置决定。"><span class="toc-number">9.</span> <span class="toc-text">9. 词法作用域： 规定变量的作用域是由变量声明的位置决定，而不是由使用变量的位置决定。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-变量名（函数名）提升"><span class="toc-number">10.</span> <span class="toc-text">10. 变量名（函数名）提升</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-在预解析阶段："><span class="toc-number">11.</span> <span class="toc-text">11. 在预解析阶段：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-in运算符"><span class="toc-number">12.</span> <span class="toc-text">12. in运算符</span></a></li></ol>
  
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
 <aside class="clearfix">
 
   
@@ -284,7 +282,7 @@ js本身是边解析边执行的。
 
   
 <div class="tagslist">
-	<p class="asidetitle">标签</p>
+	<p class="asidetitle">Tags</p>
 		<ul class="clearfix">
 		
 			
@@ -320,7 +318,7 @@ js本身是边解析边执行的。
 
 
   <div class="linkslist">
-  <p class="asidetitle">友情链接</p>
+  <p class="asidetitle">Links</p>
     <ul>
         
           <li>
@@ -342,11 +340,11 @@ js本身是边解析边执行的。
 
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
 </div>
 
   <div class="weiboshow">
-  <p class="asidetitle">新浪微博</p>
+  <p class="asidetitle">Weibo</p>
     <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
 </div>
 
@@ -573,7 +571,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 
